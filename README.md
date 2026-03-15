@@ -14,9 +14,9 @@ This is a monorepo. Each package is also published as a standalone repo for inde
 
 | Package | Description | Standalone Repo | Install |
 |---------|-------------|-----------------|---------|
-| [packages/core](packages/core/) | MCP server + npm library (7 tools) | — | `npx adaptive-cards-ai-builder` |
-| [packages/vscode-extension](packages/vscode-extension/) | VS Code extension — generate, preview, validate, optimize | [adaptive-cards-ai-builder-vscode](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) | VS Code Marketplace (coming soon) |
-| [packages/browser-extension](packages/browser-extension/) | Chrome/Edge extension — AI panel for AC Designer | [adaptive-cards-ai-builder-browser](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser) | Chrome Web Store (coming soon) |
+| [packages/core](packages/core/) | MCP server + npm library (7 tools) | — | `npx adaptive-cards-mcp` |
+| [packages/vscode-extension](packages/vscode-extension/) | VS Code extension — generate, preview, validate, optimize | [adaptive-cards-ai-builder-vscode](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) | VS Code Marketplace (coming soon) |
+| [packages/browser-extension](packages/browser-extension/) | Chrome/Edge extension — AI panel for AC Designer | [adaptive-cards-ai-builder-browser](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) | Chrome Web Store (coming soon) |
 
 ## Quick Start
 
@@ -24,10 +24,10 @@ This is a monorepo. Each package is also published as a standalone repo for inde
 
 ```bash
 # Add to Claude Code
-claude mcp add adaptive-cards-ai-builder -- npx adaptive-cards-ai-builder
+claude mcp add adaptive-cards-mcp -- npx adaptive-cards-mcp
 
 # Or run directly
-npx adaptive-cards-ai-builder
+npx adaptive-cards-mcp
 ```
 
 Then ask your AI assistant:
@@ -38,7 +38,7 @@ Then ask your AI assistant:
 ### npm Library
 
 ```typescript
-import { generateCard, validateCardFull, dataToCard, optimizeCard } from 'adaptive-cards-ai-builder';
+import { generateCard, validateCardFull, dataToCard, optimizeCard } from 'adaptive-cards-mcp';
 
 const result = await generateCard({
   content: "Create a flight status card",
@@ -49,7 +49,7 @@ const result = await generateCard({
 
 ### VS Code Extension
 
-Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) or from `packages/vscode-extension/`:
+Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) or from `packages/vscode-extension/`:
 
 ```bash
 cd packages/vscode-extension && npm install && npm run compile
@@ -59,7 +59,7 @@ Press `Cmd+Shift+A` to generate a card. See the [extension README](packages/vsco
 
 ### Browser Extension
 
-Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser) or load `packages/browser-extension/` as an unpacked extension:
+Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) or load `packages/browser-extension/` as an unpacked extension:
 
 1. Open `chrome://extensions/` → Enable Developer mode
 2. Click "Load unpacked" → select `packages/browser-extension/`

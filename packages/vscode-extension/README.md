@@ -2,8 +2,8 @@
 
 AI-powered Adaptive Card generation, preview, and validation inside VS Code.
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) ecosystem.
-> Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-ai-builder/tree/main/packages/core) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser).
+> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer).
 
 ## Features
 
@@ -21,8 +21,8 @@ AI-powered Adaptive Card generation, preview, and validation inside VS Code.
 ### From Source
 
 ```bash
-git clone https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode.git
-cd adaptive-cards-ai-builder-vscode
+git clone https://github.com/VikrantSingh01/adaptive-cards-ai-vscode.git
+cd adaptive-cards-ai-vscode
 npm install
 npm run compile
 ```
@@ -32,7 +32,7 @@ Then open the folder in VS Code and press **F5** to launch the Extension Develop
 ### From Monorepo
 
 ```bash
-git clone https://github.com/VikrantSingh01/adaptive-cards-ai-builder.git
+git clone https://github.com/VikrantSingh01/adaptive-cards-mcp.git
 cd adaptive-cards-ai-builder/packages/vscode-extension
 npm install
 npm run compile
@@ -75,12 +75,12 @@ Type any prefix in a `.json` file to insert:
 
 ## Powered By
 
-This extension uses [adaptive-cards-ai-builder](https://github.com/VikrantSingh01/adaptive-cards-ai-builder/tree/main/packages/core) as its core engine — the same library available as an MCP server for Claude Code, Copilot, and Cursor.
+This extension uses [adaptive-cards-ai-builder](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) as its core engine — the same library available as an MCP server for Claude Code, Copilot, and Cursor.
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) — MCP server + core library + all extensions
-- [Adaptive Cards AI Builder (browser extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser) — Chrome/Edge extension for the AC Designer
+- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
+- [Adaptive Cards AI Builder (browser extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) — Chrome/Edge extension for the AC Designer
 - [Adaptive Cards Documentation](https://adaptivecards.io/) — Official docs and Designer
 
 ## License

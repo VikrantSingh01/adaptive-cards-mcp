@@ -103,7 +103,7 @@ export class CardDesignerPanel {
               });
             } else {
               // Fallback to deterministic
-              const { generateCard } = await import("adaptive-cards-ai-builder");
+              const { generateCard } = await import("adaptive-cards-mcp");
               const fallback = await generateCard({
                 content: message.prompt,
                 host: message.host || "teams",

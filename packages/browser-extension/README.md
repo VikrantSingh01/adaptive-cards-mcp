@@ -2,8 +2,8 @@
 
 AI-powered card generation panel for the [Adaptive Cards Designer](https://adaptivecards.io/designer).
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) ecosystem.
-> Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-ai-builder/tree/main/packages/core) and [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode).
+> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) and [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode).
 
 ## Features
 
@@ -19,7 +19,7 @@ AI-powered card generation panel for the [Adaptive Cards Designer](https://adapt
 ### Chrome / Edge (Developer Mode)
 
 ```bash
-git clone https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser.git
+git clone https://github.com/VikrantSingh01/adaptive-cards-ai-designer.git
 ```
 
 1. Open `chrome://extensions/` (Chrome) or `edge://extensions/` (Edge)
@@ -32,7 +32,7 @@ git clone https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser.gi
 ### From Monorepo
 
 ```bash
-git clone https://github.com/VikrantSingh01/adaptive-cards-ai-builder.git
+git clone https://github.com/VikrantSingh01/adaptive-cards-mcp.git
 ```
 
 Then load `packages/browser-extension/` as an unpacked extension.
@@ -69,7 +69,7 @@ The extension uses lightweight pattern-matching card generation (no API keys nee
 3. Fills in the template with contextual content
 4. Validates the output against the Adaptive Card v1.6 schema
 
-For more advanced AI-powered generation, use the [MCP server](https://github.com/VikrantSingh01/adaptive-cards-ai-builder/tree/main/packages/core) with Claude Code or Copilot.
+For more advanced AI-powered generation, use the [MCP server](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) with Claude Code or Copilot.
 
 ## Icons
 
@@ -80,8 +80,8 @@ Replace the placeholder icons in `icons/` with actual PNG files:
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) — MCP server + core library + all extensions
-- [Adaptive Cards AI Builder (VS Code extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) — Generate, preview, validate cards in VS Code
+- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
+- [Adaptive Cards AI Builder (VS Code extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) — Generate, preview, validate cards in VS Code
 - [Adaptive Cards Documentation](https://adaptivecards.io/) — Official docs and Designer
 
 ## License

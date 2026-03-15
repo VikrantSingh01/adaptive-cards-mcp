@@ -1,12 +1,12 @@
 {
-  "name": "adaptive-cards-ai-builder",
+  "name": "adaptive-cards-mcp",
   "version": "1.0.0",
-  "description": "AI-powered Adaptive Card generator — MCP server, VS Code extension, and library for converting any content into schema-validated Adaptive Card v1.6 JSON",
+  "description": "AI-powered Adaptive Card generator — MCP server + npm library. 7 tools: generate, validate, optimize, template, transform cards for Teams, Outlook, Copilot.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "adaptive-cards-ai-builder": "dist/server.js"
+    "adaptive-cards-mcp": "dist/server.js"
   },
   "exports": {
     ".": {
@@ -32,22 +32,31 @@
   "keywords": [
     "adaptive-cards",
     "mcp",
+    "mcp-server",
+    "model-context-protocol",
     "microsoft-teams",
+    "teams",
     "copilot",
     "card-generator",
     "ai",
-    "model-context-protocol",
     "outlook",
-    "bot-framework"
+    "bot-framework",
+    "claude",
+    "cursor",
+    "json-schema",
+    "accessibility",
+    "adaptive-card-template",
+    "webex",
+    "viva-connections"
   ],
   "author": "Vikrant Singh <msg.vikrant@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VikrantSingh01/adaptive-cards-ai-builder.git",
+    "url": "git+https://github.com/VikrantSingh01/adaptive-cards-mcp.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/VikrantSingh01/adaptive-cards-ai-builder#readme",
+  "homepage": "https://github.com/VikrantSingh01/adaptive-cards-mcp#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"

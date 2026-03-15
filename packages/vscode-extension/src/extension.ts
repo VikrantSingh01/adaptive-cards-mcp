@@ -42,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
       try {
         const card = JSON.parse(editor.document.getText());
-        const { validateCardFull } = await import("adaptive-cards-ai-builder");
+        const { validateCardFull } = await import("adaptive-cards-mcp");
         const result = validateCardFull({ card });
         const diags: vscode.Diagnostic[] = [];
         for (const err of result.errors) {
@@ -86,7 +86,7 @@ export function activate(context: vscode.ExtensionContext) {
       }
       const title = await vscode.window.showInputBox({ prompt: "Card title", placeHolder: "My Data" });
       try {
-        const { dataToCard } = await import("adaptive-cards-ai-builder");
+        const { dataToCard } = await import("adaptive-cards-mcp");
         let data: unknown = selection;
         try {
           data = JSON.parse(selection);
@@ -112,7 +112,7 @@ export function activate(context: vscode.ExtensionContext) {
       if (!editor) return;
       try {
         const card = JSON.parse(editor.document.getText());
-        const { optimizeCard } = await import("adaptive-cards-ai-builder");
+        const { optimizeCard } = await import("adaptive-cards-mcp");
         const result = optimizeCard({ card });
         const edit = new vscode.WorkspaceEdit();
         const fullRange = new vscode.Range(

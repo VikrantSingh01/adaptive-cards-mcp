@@ -2,20 +2,20 @@
 
 MCP server + npm library for AI-powered Adaptive Card generation, validation, and optimization.
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) ecosystem.
-> Also available as a [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser).
+> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Also available as a [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer).
 
 ## Install
 
 ```bash
 # As MCP server
-npx adaptive-cards-ai-builder
+npx adaptive-cards-mcp
 
 # Add to Claude Code
-claude mcp add adaptive-cards-ai-builder -- npx adaptive-cards-ai-builder
+claude mcp add adaptive-cards-mcp -- npx adaptive-cards-mcp
 
 # As npm library
-npm install adaptive-cards-ai-builder
+npm install adaptive-cards-mcp
 ```
 
 ## MCP Tools (7)
@@ -41,7 +41,7 @@ import {
   templateCard,
   transformCard,
   suggestLayout
-} from 'adaptive-cards-ai-builder';
+} from 'adaptive-cards-mcp';
 
 // Generate from description
 const result = await generateCard({
@@ -110,9 +110,9 @@ npm run lint     # TypeScript type check
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-ai-builder) — All packages in one repo
-- [VS Code Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) — Generate, preview, validate cards in VS Code
-- [Browser Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser) — AI panel for the Adaptive Cards Designer
+- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — All packages in one repo
+- [VS Code Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) — Generate, preview, validate cards in VS Code
+- [Browser Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) — AI panel for the Adaptive Cards Designer
 
 ## License
 
