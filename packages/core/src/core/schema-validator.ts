@@ -11,9 +11,27 @@ import type { ValidationError } from "../types/index.js";
 
 // ─── Load & prepare the official Adaptive Card v1.6 JSON Schema ─────────────
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const schemaPath = path.resolve(__dirname, "..", "data", "schema.json");
-const rawSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
+// Support both ESM (import.meta.url) and CJS (__dirname) environments
+let resolvedDir: string;
+try {
+  resolvedDir = path.dirname(fileURLToPath(import.meta.url));
+} catch {
+  resolvedDir = __dirname;
+}
+const schemaPath = path.resolve(resolvedDir, "..", "data", "schema.json");
+let rawSchema: Record<string, unknown>;
+try {
+  rawSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
+} catch {
+  // Fallback: try relative to process.cwd() for bundled environments
+  try {
+    const fallbackPath = path.resolve(process.cwd(), "node_modules", "adaptive-cards-mcp", "dist", "data", "schema.json");
+    rawSchema = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+  } catch {
+    // Minimal inline schema as last resort
+    rawSchema = { type: "object", properties: { type: { type: "string" }, version: { type: "string" }, body: { type: "array" } } };
+  }
+}
 
 // The official schema declares "id" (draft-04 style) but uses "$schema" draft-06.
 // Ajv v8 expects "$id". Normalise so ajv can resolve internal $ref pointers.
