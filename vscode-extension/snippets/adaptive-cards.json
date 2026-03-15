@@ -1,0 +1,162 @@
+{
+  "Adaptive Card": {
+    "prefix": "ac-card",
+    "body": [
+      "{",
+      "  \"type\": \"AdaptiveCard\",",
+      "  \"version\": \"1.6\",",
+      "  \"body\": [",
+      "    {",
+      "      \"type\": \"TextBlock\",",
+      "      \"text\": \"${1:Title}\",",
+      "      \"size\": \"medium\",",
+      "      \"weight\": \"bolder\",",
+      "      \"wrap\": true,",
+      "      \"style\": \"heading\"",
+      "    }$0",
+      "  ],",
+      "  \"actions\": []",
+      "}"
+    ],
+    "description": "Basic Adaptive Card v1.6 skeleton"
+  },
+  "TextBlock": {
+    "prefix": "ac-textblock",
+    "body": [
+      "{",
+      "  \"type\": \"TextBlock\",",
+      "  \"text\": \"${1:Text content}\",",
+      "  \"wrap\": true$0",
+      "}"
+    ],
+    "description": "Adaptive Card TextBlock element"
+  },
+  "Image": {
+    "prefix": "ac-image",
+    "body": [
+      "{",
+      "  \"type\": \"Image\",",
+      "  \"url\": \"${1:https://example.com/image.png}\",",
+      "  \"altText\": \"${2:Image description}\",",
+      "  \"size\": \"${3|small,medium,large,stretch|}\"$0",
+      "}"
+    ],
+    "description": "Adaptive Card Image with altText"
+  },
+  "ColumnSet": {
+    "prefix": "ac-columnset",
+    "body": [
+      "{",
+      "  \"type\": \"ColumnSet\",",
+      "  \"columns\": [",
+      "    {",
+      "      \"type\": \"Column\",",
+      "      \"width\": \"stretch\",",
+      "      \"items\": [$1]",
+      "    },",
+      "    {",
+      "      \"type\": \"Column\",",
+      "      \"width\": \"stretch\",",
+      "      \"items\": [$2]",
+      "    }",
+      "  ]$0",
+      "}"
+    ],
+    "description": "Adaptive Card ColumnSet with 2 columns"
+  },
+  "FactSet": {
+    "prefix": "ac-factset",
+    "body": [
+      "{",
+      "  \"type\": \"FactSet\",",
+      "  \"facts\": [",
+      "    { \"title\": \"${1:Label}\", \"value\": \"${2:Value}\" }$0",
+      "  ]",
+      "}"
+    ],
+    "description": "Adaptive Card FactSet"
+  },
+  "Table": {
+    "prefix": "ac-table",
+    "body": [
+      "{",
+      "  \"type\": \"Table\",",
+      "  \"firstRowAsHeader\": true,",
+      "  \"showGridLines\": true,",
+      "  \"gridStyle\": \"accent\",",
+      "  \"columns\": [{ \"width\": 1 }, { \"width\": 1 }],",
+      "  \"rows\": [",
+      "    {",
+      "      \"type\": \"TableRow\",",
+      "      \"cells\": [",
+      "        { \"type\": \"TableCell\", \"items\": [{ \"type\": \"TextBlock\", \"text\": \"${1:Header 1}\", \"weight\": \"bolder\", \"wrap\": true }] },",
+      "        { \"type\": \"TableCell\", \"items\": [{ \"type\": \"TextBlock\", \"text\": \"${2:Header 2}\", \"weight\": \"bolder\", \"wrap\": true }] }",
+      "      ]",
+      "    }$0",
+      "  ]",
+      "}"
+    ],
+    "description": "Adaptive Card Table with headers"
+  },
+  "Input.Text": {
+    "prefix": "ac-input-text",
+    "body": [
+      "{",
+      "  \"type\": \"Input.Text\",",
+      "  \"id\": \"${1:inputId}\",",
+      "  \"label\": \"${2:Label}\",",
+      "  \"placeholder\": \"${3:Enter text...}\"$0",
+      "}"
+    ],
+    "description": "Adaptive Card Text Input with label"
+  },
+  "Input.ChoiceSet": {
+    "prefix": "ac-input-choice",
+    "body": [
+      "{",
+      "  \"type\": \"Input.ChoiceSet\",",
+      "  \"id\": \"${1:choiceId}\",",
+      "  \"label\": \"${2:Label}\",",
+      "  \"style\": \"compact\",",
+      "  \"choices\": [",
+      "    { \"title\": \"${3:Option 1}\", \"value\": \"${4:option1}\" }$0",
+      "  ]",
+      "}"
+    ],
+    "description": "Adaptive Card ChoiceSet Input"
+  },
+  "Action.Execute": {
+    "prefix": "ac-action-execute",
+    "body": [
+      "{",
+      "  \"type\": \"Action.Execute\",",
+      "  \"title\": \"${1:Submit}\",",
+      "  \"verb\": \"${2:submit}\"$0",
+      "}"
+    ],
+    "description": "Adaptive Card Action.Execute (Universal Actions)"
+  },
+  "Action.OpenUrl": {
+    "prefix": "ac-action-openurl",
+    "body": [
+      "{",
+      "  \"type\": \"Action.OpenUrl\",",
+      "  \"title\": \"${1:Open}\",",
+      "  \"url\": \"${2:https://example.com}\"$0",
+      "}"
+    ],
+    "description": "Adaptive Card Action.OpenUrl"
+  },
+  "Container": {
+    "prefix": "ac-container",
+    "body": [
+      "{",
+      "  \"type\": \"Container\",",
+      "  \"items\": [",
+      "    $0",
+      "  ]",
+      "}"
+    ],
+    "description": "Adaptive Card Container"
+  }
+}

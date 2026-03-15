@@ -1,0 +1,59 @@
+{
+  "name": "adaptive-cards-ai-builder-vscode",
+  "displayName": "Adaptive Cards AI Builder",
+  "description": "AI-powered Adaptive Card generation, preview, and validation for VS Code",
+  "version": "1.0.0",
+  "publisher": "VikrantSingh",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other", "Snippets"],
+  "keywords": ["adaptive-cards", "microsoft-teams", "card-generator", "ai", "copilot"],
+  "icon": "media/icon.png",
+  "activationEvents": [
+    "onLanguage:json",
+    "workspaceContains:**/*.card.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "adaptiveCards.generate", "title": "Adaptive Cards: Generate Card" },
+      { "command": "adaptiveCards.validate", "title": "Adaptive Cards: Validate Card" },
+      { "command": "adaptiveCards.preview", "title": "Adaptive Cards: Preview Card" },
+      { "command": "adaptiveCards.dataToCard", "title": "Adaptive Cards: Convert Data to Card" },
+      { "command": "adaptiveCards.optimize", "title": "Adaptive Cards: Optimize Card" }
+    ],
+    "keybindings": [
+      { "command": "adaptiveCards.generate", "key": "ctrl+shift+a", "mac": "cmd+shift+a" }
+    ],
+    "menus": {
+      "editor/context": [
+        { "command": "adaptiveCards.generate", "when": "editorHasSelection", "group": "adaptiveCards" },
+        { "command": "adaptiveCards.dataToCard", "when": "editorHasSelection", "group": "adaptiveCards" }
+      ]
+    },
+    "snippets": [
+      { "language": "json", "path": "./snippets/adaptive-cards.json" }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0",
+    "@vscode/vsce": "^3.0.0"
+  },
+  "dependencies": {
+    "adaptive-cards-ai-builder": "^1.0.0"
+  }
+}
