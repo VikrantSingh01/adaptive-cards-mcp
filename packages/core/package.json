@@ -1,6 +1,6 @@
 {
   "name": "adaptive-cards-mcp",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "AI-powered Adaptive Card generator — MCP server + npm library. 7 tools: generate, validate, optimize, template, transform cards for Teams, Outlook, Copilot.",
   "type": "module",
   "main": "dist/index.js",
