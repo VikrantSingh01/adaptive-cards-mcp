@@ -13,14 +13,23 @@ The world's first MCP server for Adaptive Cards — 7 tools, 21 patterns, 862 te
 
 ## Install
 
+**Claude Code:**
 ```bash
-# As MCP server
-npx adaptive-cards-mcp
-
-# Add to Claude Code
 claude mcp add adaptive-cards-mcp -- npx adaptive-cards-mcp
+```
 
-# As npm library
+**GitHub Copilot (VS Code)** — add to `.vscode/mcp.json`:
+```json
+{ "servers": { "adaptive-cards-mcp": { "command": "npx", "args": ["adaptive-cards-mcp"] } } }
+```
+
+**Cursor** — add to `.cursor/mcp.json`:
+```json
+{ "mcpServers": { "adaptive-cards-mcp": { "command": "npx", "args": ["adaptive-cards-mcp"] } } }
+```
+
+**npm library:**
+```bash
 npm install adaptive-cards-mcp
 ```
 

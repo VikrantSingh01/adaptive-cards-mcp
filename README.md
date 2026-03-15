@@ -27,13 +27,51 @@ This is a monorepo. Each package is also published as a standalone repo for inde
 
 ## Quick Start
 
-### MCP Server (Claude Code / Copilot / Cursor)
+### MCP Server Setup
 
+**Claude Code:**
 ```bash
-# Add to Claude Code
 claude mcp add adaptive-cards-mcp -- npx adaptive-cards-mcp
+```
 
-# Or run directly
+**GitHub Copilot (VS Code):** Add to `.vscode/mcp.json`:
+```json
+{
+  "servers": {
+    "adaptive-cards-mcp": {
+      "command": "npx",
+      "args": ["adaptive-cards-mcp"]
+    }
+  }
+}
+```
+
+**Cursor:** Add to `.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "adaptive-cards-mcp": {
+      "command": "npx",
+      "args": ["adaptive-cards-mcp"]
+    }
+  }
+}
+```
+
+**Windsurf:** Add to `~/.codeium/windsurf/mcp_config.json`:
+```json
+{
+  "mcpServers": {
+    "adaptive-cards-mcp": {
+      "command": "npx",
+      "args": ["adaptive-cards-mcp"]
+    }
+  }
+}
+```
+
+**Any MCP client (stdio):**
+```bash
 npx adaptive-cards-mcp
 ```
 
