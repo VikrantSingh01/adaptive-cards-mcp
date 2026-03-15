@@ -11,13 +11,13 @@ import { analyzeCard } from "./card-analyzer.js";
 const HOST_SUPPORT: Record<HostApp, HostVersionSupport> = {
   teams: {
     host: "teams",
-    maxVersion: "1.5",
+    maxVersion: "1.6",
     unsupportedElements: ["Media"],
     unsupportedActions: [],
     maxActions: 6,
     notes: [
-      "Teams supports up to v1.5 on most clients",
-      "Carousel requires Teams v1.6 client (limited rollout)",
+      "Teams supports up to v1.6 on latest clients",
+      "Carousel requires Teams v1.6 client",
       "Charts are Teams-specific extensions",
       "Action.Execute preferred over Action.Submit for Universal Actions",
     ],

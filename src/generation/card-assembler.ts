@@ -32,6 +32,11 @@ export function assembleCard(options: AssembleOptions): Record<string, unknown> 
     });
   }
 
+  // Special handling for form intent — generate actual input fields
+  if (intent === "form" || (content && /\b(form|input|survey|collect|register)\b/i.test(content))) {
+    return buildFormCard(options);
+  }
+
   // If we have an intent, use the matching pattern
   if (intent) {
     const pattern = findPatternByIntent(intent);
@@ -405,6 +410,124 @@ function buildCarouselCard(
       {
         type: "Carousel",
         pages,
+      },
+    ],
+  };
+}
+
+function buildFormCard(options: AssembleOptions): Record<string, unknown> {
+  const content = (options.content || "").toLowerCase();
+  const title = options.title || extractTitle(options.content || "Form");
+  const body: Record<string, unknown>[] = [
+    {
+      type: "TextBlock",
+      text: title,
+      size: "medium",
+      weight: "bolder",
+      wrap: true,
+      style: "heading",
+    },
+  ];
+
+  // Parse field hints from the content description
+  const fieldPatterns: Array<{
+    match: RegExp;
+    field: Record<string, unknown>;
+  }> = [
+    {
+      match: /\b(title|name|subject)\b/,
+      field: { type: "Input.Text", id: "title", label: "Title", placeholder: "Enter title..." },
+    },
+    {
+      match: /\b(description|details|body|summary|notes)\b/,
+      field: { type: "Input.Text", id: "description", label: "Description", isMultiline: true, placeholder: "Enter description..." },
+    },
+    {
+      match: /\b(severity|priority|urgency|level)\b/,
+      field: {
+        type: "Input.ChoiceSet",
+        id: "severity",
+        label: "Severity",
+        style: "compact",
+        choices: [
+          { title: "Critical", value: "critical" },
+          { title: "High", value: "high" },
+          { title: "Medium", value: "medium" },
+          { title: "Low", value: "low" },
+        ],
+      },
+    },
+    {
+      match: /\b(category|type|kind)\b/,
+      field: {
+        type: "Input.ChoiceSet",
+        id: "category",
+        label: "Category",
+        style: "compact",
+        choices: [
+          { title: "Bug", value: "bug" },
+          { title: "Feature", value: "feature" },
+          { title: "Improvement", value: "improvement" },
+          { title: "Task", value: "task" },
+        ],
+      },
+    },
+    {
+      match: /\b(date|due|deadline|when)\b/,
+      field: { type: "Input.Date", id: "date", label: "Date" },
+    },
+    {
+      match: /\b(time)\b/,
+      field: { type: "Input.Time", id: "time", label: "Time" },
+    },
+    {
+      match: /\b(email|e-mail)\b/,
+      field: { type: "Input.Text", id: "email", label: "Email", placeholder: "user@example.com", style: "email" },
+    },
+    {
+      match: /\b(steps|reproduce|repro)\b/,
+      field: { type: "Input.Text", id: "steps", label: "Steps to Reproduce", isMultiline: true, placeholder: "1. ...\n2. ...\n3. ..." },
+    },
+    {
+      match: /\b(comment|feedback|message)\b/,
+      field: { type: "Input.Text", id: "comment", label: "Comment", isMultiline: true, placeholder: "Enter your comment..." },
+    },
+    {
+      match: /\b(number|amount|quantity|count)\b/,
+      field: { type: "Input.Number", id: "amount", label: "Amount" },
+    },
+    {
+      match: /\b(agree|consent|terms|accept)\b/,
+      field: { type: "Input.Toggle", id: "agree", label: "I agree to the terms", title: "I agree" },
+    },
+  ];
+
+  let addedFields = 0;
+  for (const { match, field } of fieldPatterns) {
+    if (match.test(content)) {
+      body.push(field);
+      addedFields++;
+    }
+  }
+
+  // If no fields matched, add some generic fields
+  if (addedFields === 0) {
+    body.push(
+      { type: "Input.Text", id: "name", label: "Name", placeholder: "Enter name..." },
+      { type: "Input.Text", id: "details", label: "Details", isMultiline: true, placeholder: "Enter details..." },
+    );
+  }
+
+  return {
+    type: "AdaptiveCard",
+    version: options.version || "1.6",
+    body,
+    actions: [
+      {
+        type: "Action.Execute",
+        title: "Submit",
+        style: "positive",
+        verb: "submit",
       },
     ],
   };
