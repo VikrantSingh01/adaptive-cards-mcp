@@ -13,6 +13,7 @@ export {
   checkHostCompatibility,
   getHostSupport,
   getAllHostSupport,
+  adaptCardForHost,
 } from "./core/host-compatibility.js";
 
 // Tool handlers (high-level API)
