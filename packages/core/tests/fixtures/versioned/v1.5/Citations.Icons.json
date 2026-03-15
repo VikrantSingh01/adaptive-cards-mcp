@@ -1,0 +1,413 @@
+{
+	"type": "AdaptiveCard",
+	"body": [
+		{
+			"type": "Container",
+			"style": "emphasis",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "Inside RichText Block",
+					"size": "Large"
+				},
+				{
+					"type": "RichTextBlock",
+					"inlines": [
+						{
+							"type": "CitationRun",
+							"referenceIndex": 1,
+							"text": "adobeFlash"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 2,
+							"text": "adobeIllustrator"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 3,
+							"text": "adobeInDesign"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 4,
+							"text": "adobePhotoshop"
+						},
+						"\n\n",
+						{
+							"type": "CitationRun",
+							"referenceIndex": 5,
+							"text": "msExcel"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 6,
+							"text": "msLoop"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 7,
+							"text": "msVisio"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 8,
+							"text": "msOneNote"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 9,
+							"text": "msPowerPoint"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 10,
+							"text": "msSharePoint"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 11,
+							"text": "msWhiteboard"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 12,
+							"text": "msWord"
+						},
+						"\n\n",
+						{
+							"type": "CitationRun",
+							"referenceIndex": 13,
+							"text": "sketch"
+						},
+						"\n\n",
+						{
+							"type": "CitationRun",
+							"referenceIndex": 14,
+							"text": "code"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 15,
+							"text": "gif"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 16,
+							"text": "image"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 17,
+							"text": "pdf"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 18,
+							"text": "sound"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 19,
+							"text": "text"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 20,
+							"text": "video"
+						},
+						{
+							"type": "CitationRun",
+							"referenceIndex": 21,
+							"text": "zip"
+						},
+						"."
+					]
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"style": "good",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "Inside Text Block",
+					"size": "Large"
+				},
+				{
+					"type": "TextBlock",
+					"text": "[AdobeFlash](cite:1)[AdobeIllustrator](cite:2)[AdobeInDesign](cite:3)[AdobePhotoshop](cite:4)"
+				},
+				{
+					"type": "TextBlock",
+					"text": "[MsExcel](cite:5)[MsLoop](cite:6)[MsVisio](cite:7)[MsOneNote](cite:8)[MsPowerPoint](cite:9)[MsSharePoint](cite:10)[MsWhiteboard](cite:11)[MsWord](cite:12)"
+				},
+				{
+					"type": "TextBlock",
+					"text": "[Sketch](cite:13)"
+				},
+				{
+					"type": "TextBlock",
+					"text": "[Code](cite:14)[Gif](cite:15)[Image](cite:16)[Pdf](cite:17)[Sound](cite:18)[Text](cite:19)[Video](cite:20)[Zip](cite:21)"
+				}
+			]
+		}
+
+	],
+	"version": "1.6",
+	"references": [
+		{
+			"type": "DocumentReference",
+			"title": "adobeFlash",
+			"icon": "adobeFlash",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "adobeIllustrator",
+			"icon": "adobeIllustrator",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "adobeInDesign",
+			"icon": "adobeInDesign",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "adobePhotoshop",
+			"icon": "adobePhotoshop",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msExcel",
+			"icon": "msExcel",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msLoop",
+			"icon": "msLoop",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msVisio",
+			"icon": "msVisio",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msOneNote",
+			"icon": "msOneNote",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msPowerPoint",
+			"icon": "msPowerPoint",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msSharePoint",
+			"icon": "msSharePoint",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msWhiteboard",
+			"icon": "msWhiteboard",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "msWord",
+			"icon": "msWord",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "sketch",
+			"icon": "sketch",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "code",
+			"icon": "code",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "gif",
+			"icon": "gif",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "image",
+			"icon": "image",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "pdf",
+			"icon": "pdf",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "sound",
+			"icon": "sound",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "text",
+			"icon": "text",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "video",
+			"icon": "video",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "zip",
+			"icon": "zip",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		}
+	]
+}

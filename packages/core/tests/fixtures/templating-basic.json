@@ -1,0 +1,30 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Hello, ${userName}!",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Welcome to ${appName}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Your account status: ${accountStatus}",
+      "wrap": true,
+      "color": "${statusColor}"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Member since: ${memberSince}",
+      "wrap": true,
+      "isSubtle": true
+    }
+  ]
+}

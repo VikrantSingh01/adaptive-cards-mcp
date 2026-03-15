@@ -1,0 +1,98 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Table",
+      "gridStyle": "accent",
+      "firstRowAsHeaders": true,
+      "columns": [
+        {
+          "width": 1
+        }
+      ],
+      "rows": [
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "layouts": [
+                {
+                  "type": "Layout.Flow",
+                  "minItemWidth": "150px",
+                  "itemWidth": "200px"
+                }
+              ],
+              "items": [
+                {
+                  "type": "CompoundButton",
+                  "title": "Summarize",
+                  "icon": {
+                    "name": "TextBulletList"
+                  },
+                  "description": "Review key points in file",
+                  "height": "stretch"
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Summarize",
+                  "icon": {
+                    "name": "TextBulletList"
+                  },
+                  "description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+                  "height": "stretch"
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Insights",
+                  "description": "Who's reviewed my latest document?",
+                  "height": "stretch"
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Insights",
+                  "badge": "Updated",
+                  "description": "Tell me about John Doe",
+                  "height": "stretch"
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Get key info",
+                  "badge": "New",
+                  "description": "List key points from my latest document",
+                  "height": "stretch",
+                  "selectAction": {
+                    "type": "Action.OpenUrl",
+                    "tooltip": "Go to www.microsoft.com",
+                    "url": "https://www.microsoft.com"
+                  }
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Catch up on meeting",
+                  "icon": {
+                    "name": "Calendar"
+                  },
+                  "description": "Recap my latest meeting summarizing key takeaways and action items as separate sections including who's responsible for each",
+                  "height": "stretch"
+                },
+                {
+                  "type": "CompoundButton",
+                  "title": "Share meeting notes",
+                  "icon": {
+                    "name": "Edit"
+                  },
+                  "description": "Draft an email with notes and action items from my latest meeting",
+                  "height": "stretch"
+                }
+              ]
+            }
+          ],
+          "style": "accent"
+        }
+      ]
+    }
+  ]
+}

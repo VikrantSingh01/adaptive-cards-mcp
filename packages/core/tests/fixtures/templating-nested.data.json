@@ -1,0 +1,40 @@
+{
+  "orderId": "AC-20260313-0042",
+  "customer": {
+    "name": "Emily Thompson",
+    "email": "emily.thompson@example.com",
+    "isPremium": true,
+    "address": {
+      "street": "742 Evergreen Terrace",
+      "city": "Seattle, WA 98101"
+    }
+  },
+  "items": [
+    {
+      "product": {
+        "name": "Wireless Keyboard",
+        "description": "Compact Bluetooth keyboard with backlit keys",
+        "price": 79.99
+      },
+      "quantity": 1
+    },
+    {
+      "product": {
+        "name": "USB-C Hub",
+        "description": "7-in-1 multiport adapter with HDMI and SD card reader",
+        "price": 49.99
+      },
+      "quantity": 2
+    },
+    {
+      "product": {
+        "name": "Mouse Pad",
+        "description": "Large extended desk mat, 900x400mm",
+        "price": 24.99
+      },
+      "quantity": 1
+    }
+  ],
+  "subtotal": 204.96,
+  "tax": 20.50
+}

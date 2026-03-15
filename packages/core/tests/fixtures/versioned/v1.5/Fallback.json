@@ -1,0 +1,34 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+	{
+	  "type": "TextBlock",
+	  "text": "This TextBlock should always render",
+	  "wrap": true
+	},
+	{
+	  "type": "TextBlock",
+	  "text": "This TextBLock should NOT render, but its fallback should render",
+	  "wrap": true,
+	  "requires": {
+		"abc": "*"
+	  },
+	  "fallback": {
+		"type": "TextBlock",
+		"text": "This is the fallback TextBlock of the second TextBlock. If it renders, things work as expected",
+		"wrap": true
+	  }
+	},
+	{
+	  "type": "TextBlock",
+	  "text": "This TextBlock should NOT render at all",
+	  "wrap": true,
+	  "requires": {
+		"abc": "*"
+	  },
+	  "fallback": "drop"
+	}
+  ]
+}

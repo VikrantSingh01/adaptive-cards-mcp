@@ -1,0 +1,82 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Split Buttons & Menu Actions",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Test ActionSet with overflow mode and menu actions.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Default ActionSet (buttons)",
+      "weight": "Bolder",
+      "spacing": "Medium"
+    },
+    {
+      "type": "ActionSet",
+      "mode": "default",
+      "actions": [
+        {
+          "type": "Action.Submit",
+          "title": "Primary"
+        },
+        {
+          "type": "Action.Execute",
+          "title": "Secondary",
+          "verb": "secondary"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Overflow ActionSet (dropdown menu)",
+      "weight": "Bolder",
+      "spacing": "Medium"
+    },
+    {
+      "type": "ActionSet",
+      "mode": "overflow",
+      "actions": [
+        {
+          "type": "Action.Execute",
+          "title": "Edit",
+          "verb": "edit"
+        },
+        {
+          "type": "Action.Execute",
+          "title": "Delete",
+          "verb": "delete"
+        },
+        {
+          "type": "Action.Execute",
+          "title": "Share",
+          "verb": "share"
+        },
+        {
+          "type": "Action.Execute",
+          "title": "Archive",
+          "verb": "archive"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Save"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Cancel",
+      "verb": "cancel"
+    }
+  ]
+}

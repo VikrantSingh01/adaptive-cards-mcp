@@ -1,0 +1,322 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Container",
+			"style" : "accent",
+			"items": [
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId00, required, label: ID 00**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId00",
+					"placeholder": "Placeholder 00",
+					"isRequired": true,
+					"label": "ID 00"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId01, not required, label: ID 01**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId01",
+					"placeholder": "Placeholder 01",
+					"isRequired": false,
+					"label": "ID 01"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId02, required, label: ID 02**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId02",
+					"placeholder": "Placeholder 02",
+					"isRequired": true,
+					"label": "ID 02"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId03, not required, label: ID 03 [No Match]**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId03",
+					"placeholder": "Placeholder 03",
+					"isRequired": false,
+					"label": "ID 03"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId04, required, no label [No Match]**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId04",
+					"placeholder": "Placeholder 04",
+					"isRequired": true
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"style": "accent",
+			"items": [
+				{
+					"type":"TextBlock",
+					"text": "**RichTextBlock 1 labelFor:textInputId00**"
+				},
+				{
+					"type": "RichTextBlock",
+					"labelFor": "textInputId00",
+					"id": "RichTextBlockId1",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "RichTextBlock 1"
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the first text run. "
+						},
+						{
+							"type": "TextRun",
+							"text": "Click here for action.",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"title": "Open URL",
+								"url": "https://example.com"
+							}
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the second text run. "
+						}
+					]
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**RichTextBlock 2 labelFor:textInputId01**"
+				},
+				{
+					"type": "RichTextBlock",
+					"labelFor": "textInputId01",
+					"id": "RichTextBlockId2",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "RichTextBlock 2"
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the first text run. "
+						},
+						{
+							"type": "TextRun",
+							"text": "Click here for action.",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"title": "Open URL",
+								"url": "https://example.com"
+							}
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the second text run. "
+						}
+					]
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**RichTextBlock 3 labelFor:textInputId000 [No Match]**"
+				},
+				{
+					"type": "RichTextBlock",
+					"labelFor": "textInputId000",
+					"id": "RichTextBlockId3",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "RichTextBlock 3"
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the first text run. "
+						},
+						{
+							"type": "TextRun",
+							"text": "Click here for action.",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"title": "Open URL",
+								"url": "https://example.com"
+							}
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the second text run. "
+						}
+					]
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**RichTextBlock 4 labelFor:textInputId00 [Duplicate with RichTextBlock 1]**"
+				},
+				{
+					"type": "RichTextBlock",
+					"labelFor": "textInputId00",
+					"id": "RichTextBlockId4",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "RichTextBlock 4"
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the first text run. "
+						},
+						{
+							"type": "TextRun",
+							"text": "Click here for action.",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"title": "Open URL",
+								"url": "https://example.com"
+							}
+						},
+						{
+							"type": "TextRun",
+							"text": "This is the second text run. "
+						}
+					]
+				}
+			]
+		},
+
+		{
+			"type": "Container",
+			"style" : "good",
+			"items": [
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId10, required, label: ID 10**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId10",
+					"placeholder": "Placeholder 10",
+					"isRequired": true,
+					"label": "ID 10"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId11, not required, label: ID 11**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId11",
+					"placeholder": "Placeholder 11",
+					"isRequired": false,
+					"label": "ID 11"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId12, required, label: ID 12**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId12",
+					"placeholder": "Placeholder 12",
+					"isRequired": true,
+					"label": "ID 12"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId13, not required, label: ID 13 [No Match]**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId13",
+					"placeholder": "Placeholder 13",
+					"isRequired": false,
+					"label": "ID 13"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**id:textInputId14, required, no label [No Match]**"
+				},
+				{
+					"type": "Input.Text",
+					"id": "textInputId14",
+					"placeholder": "Placeholder 14",
+					"isRequired": true
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"style" : "good",
+			"items": [
+				{
+					"type":"TextBlock",
+					"text": "**TextBlock 1 labelFor:textInputId10**"
+				},
+				{
+					"type": "TextBlock",
+					"text": "First Block",
+					"wrap": true,
+					"labelFor": "textInputId10"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**TextBlock 2 labelFor:textInputId11**"
+				},
+				{
+					"type": "TextBlock",
+					"text": "Second Block",
+					"wrap": true,
+					"labelFor": "textInputId11"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**TextBlock 3 labelFor:textInputId100 [No Match]**"
+				},
+				{
+					"type": "TextBlock",
+					"text": "Third Block",
+					"wrap": true,
+					"labelFor": "textInputId100"
+				},
+
+				{
+					"type":"TextBlock",
+					"text": "**TextBlock 4 labelFor:textInputId10 [Duplicate with TextBlock 1]**"
+				},
+				{
+					"type": "TextBlock",
+					"text": "Fourth Block",
+					"wrap": true,
+					"labelFor": "textInputId10"
+				}
+			]
+		}
+	]
+}
+

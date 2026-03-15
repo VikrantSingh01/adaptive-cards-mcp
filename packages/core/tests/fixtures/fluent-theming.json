@@ -1,0 +1,98 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Fluent UI Theming Demo",
+      "weight": "Bolder",
+      "size": "Large",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card demonstrates Fluent Design tokens including brand colors, typography, spacing, and corner radii.",
+      "wrap": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Brand Color Container",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "Uses brand background and foreground colors",
+          "isSubtle": true,
+          "wrap": true
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "spacing": "Medium",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Typography Scale",
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Caption 1",
+              "size": "Small"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Body 1",
+              "size": "Default"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Subtitle 1",
+              "size": "Medium",
+              "weight": "Bolder"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Spacing Demo",
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Small (8dp)",
+              "spacing": "Small"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Medium (16dp)",
+              "spacing": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Large (24dp)",
+              "spacing": "Large"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

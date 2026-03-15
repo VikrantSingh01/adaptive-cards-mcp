@@ -1,0 +1,61 @@
+{
+  "type": "AdaptiveCard",
+  "body": [
+	{
+	  "type": "ColumnSet",
+	  "columns": [
+		{
+		  "type": "Column",
+		  "items": [
+			{
+			  "type": "Image",
+			  "style": "Person",
+			  "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
+			  "size": "Small"
+			}
+		  ],
+		  "width": "auto"
+		},
+		{
+		  "type": "Column",
+		  "spacing": "medium",
+		  "items": [
+			{
+			  "type": "TextBlock",
+			  "weight": "Bolder",
+			  "text": "Should always show",
+			  "wrap": true
+			},
+			{
+			  "type": "TextBlock",
+			  "targetWidth": "narrow",
+			  "spacing": "None",
+			  "text": "show for targetWidth == narrow",
+			  "isSubtle": true,
+			  "wrap": true
+			}
+		  ],
+		  "width": "auto",
+		  "verticalContentAlignment": "center"
+		},
+		{
+		  "type": "Column",
+		  "targetWidth": "atLeast:standard",
+		  "spacing": "medium",
+		  "items": [
+			{
+			  "type": "TextBlock",
+			  "text": "show for targetWidth >= standard",
+			  "isSubtle": true,
+			  "wrap": true
+			}
+		  ],
+		  "width": "stretch",
+		  "verticalContentAlignment": "center"
+		}
+	  ]
+	}
+  ],
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5"
+}

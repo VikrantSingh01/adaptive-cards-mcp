@@ -1,0 +1,33 @@
+{
+   "type":"AdaptiveCard",
+   "$schema":"http://adaptivecards.io/schemas/adaptive-card.json",
+   "version":"1.6",
+   "fallback":{
+      "type":"TextBlock",
+      "text":"Adaptive Cards not supported"
+   },
+   "body":[
+      {
+         "type":"TextBlock",
+         "text":"This TextBlock should NOT render at all",
+         "wrap":true
+      },
+      {
+         "type":"TextBlock",
+         "text":"This TextBLock should NOT render, but its root fallback should render",
+         "wrap":true,
+         "requires":{
+            "abc":"*"
+         }
+      },
+      {
+         "type":"TextBlock",
+         "text":"This TextBlock should NOT render at all",
+         "wrap":true,
+         "requires":{
+            "abc":"*"
+         },
+         "fallback":"drop"
+      }
+   ]
+}

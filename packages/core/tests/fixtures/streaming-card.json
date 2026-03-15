@@ -1,0 +1,40 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Streaming Card Demo",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card demonstrates progressive rendering as content streams in...",
+      "wrap": true
+    },
+    {
+      "type": "Container",
+      "id": "streamingContent",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "• First item loaded",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "• Second item loaded",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "• Loading more content...",
+          "wrap": true,
+          "color": "Accent"
+        }
+      ]
+    }
+  ]
+}

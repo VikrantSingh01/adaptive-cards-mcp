@@ -1,0 +1,24 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Simple Card",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This is a simple adaptive card with basic text elements.",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit"
+    }
+  ]
+}

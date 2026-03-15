@@ -1,0 +1,1944 @@
+{
+  "metadata": {
+    "title": "Adaptive Cards Mobile - Official Sample Catalog",
+    "description": "Index of official Adaptive Card samples fetched from Microsoft's AdaptiveCards GitHub repository",
+    "sources": [
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/v1.5/Scenarios",
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/v1.5/Elements",
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/v1.6/Scenarios",
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/v1.6/Elements",
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/Templates/Scenarios",
+      "https://github.com/microsoft/AdaptiveCards/tree/main/samples/ConsolidatedElementSamples"
+    ],
+    "totalFiles": 111,
+    "cardFiles": 90,
+    "dataFiles": 21,
+    "lastUpdated": "2026-02-12"
+  },
+  "categories": {
+    "official-samples": {
+      "description": "Complete scenario cards from the official Adaptive Cards sample gallery (v1.5 and v1.6)",
+      "count": 24
+    },
+    "element-samples": {
+      "description": "Element-focused samples demonstrating individual Adaptive Card elements and properties",
+      "count": 45
+    },
+    "teams-samples": {
+      "description": "Template/data pair samples for Adaptive Card templating with ${} bindings, $data iteration, and $when conditions",
+      "count": 42
+    }
+  },
+  "elementCoverage": {
+    "elements": [
+      "ActionSet",
+      "Carousel",
+      "CarouselPage",
+      "Column",
+      "ColumnSet",
+      "Container",
+      "Data.Query",
+      "FactSet",
+      "Image",
+      "ImageSet",
+      "Input.ChoiceSet",
+      "Input.Date",
+      "Input.Number",
+      "Input.Text",
+      "Input.Time",
+      "Input.Toggle",
+      "Media",
+      "RichTextBlock",
+      "Table",
+      "TableCell",
+      "TableRow",
+      "TextBlock",
+      "TextRun"
+    ],
+    "actions": [
+      "Action.Execute",
+      "Action.OpenUrl",
+      "Action.ShowCard",
+      "Action.Submit"
+    ],
+    "inputTypes": [
+      "Input.ChoiceSet",
+      "Input.Date",
+      "Input.Number",
+      "Input.Text",
+      "Input.Time",
+      "Input.Toggle"
+    ]
+  },
+  "samples": [
+    {
+      "file": "official-samples/activity-update.json",
+      "name": "Activity Update",
+      "description": "Task activity update card showing creator info, facts, and action buttons for due date and comments",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "FactSet",
+        "Image",
+        "Input.Date",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/agenda.json",
+      "name": "Agenda",
+      "description": "Calendar agenda card with event details, organizer info, and response actions",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "ImageSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/application-login.json",
+      "name": "Application Login",
+      "description": "Login form with username/password inputs and submit action",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/calendar-reminder.json",
+      "name": "Calendar Reminder",
+      "description": "Calendar event reminder with date, time, location, and snooze options",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.ChoiceSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/expense-report.json",
+      "name": "Expense Report",
+      "description": "Expense report approval card with line items, totals, and approve/reject actions",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "ActionSet",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "Image",
+        "Input.Text",
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/flight-details.json",
+      "name": "Flight Details",
+      "description": "Flight booking details with departure/arrival info and airline branding",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "ActionSet",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Image",
+        "RichTextBlock",
+        "TextBlock",
+        "TextRun"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/flight-itinerary.json",
+      "name": "Flight Itinerary",
+      "description": "Multi-leg flight itinerary with layover details and boarding info",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/flight-update-table.json",
+      "name": "Flight Update Table",
+      "description": "Flight update using Table element for structured data display",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/flight-update.json",
+      "name": "Flight Update",
+      "description": "Flight status update notification with gate and time changes",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/food-order.json",
+      "name": "Food Order",
+      "description": "Food ordering card with menu items, quantities, and order submission",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "ImageSet",
+        "Input.ChoiceSet",
+        "Input.Text",
+        "Input.Toggle",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/image-gallery.json",
+      "name": "Image Gallery",
+      "description": "Image gallery showcase using ImageSet element",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "ImageSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/input-form-official.json",
+      "name": "Input Form Official",
+      "description": "Comprehensive input form with text, date, time, and choice inputs",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/input-form-rtl.json",
+      "name": "Input Form Rtl",
+      "description": "Input form with right-to-left (RTL) language support",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/inputs-with-validation.json",
+      "name": "Inputs With Validation",
+      "description": "Form inputs with validation rules (required, regex, min/max)",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.ChoiceSet",
+        "Input.Date",
+        "Input.Number",
+        "Input.Text",
+        "Input.Time",
+        "Input.Toggle",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/order-confirmation.json",
+      "name": "Order Confirmation",
+      "description": "Order confirmation receipt with items, pricing, and delivery details",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Container",
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/order-delivery.json",
+      "name": "Order Delivery",
+      "description": "Package delivery tracking card with status updates and map",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/product-video.json",
+      "name": "Product Video",
+      "description": "Product video card using Media element for video playback (v1.6)",
+      "category": "official-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Media",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/restaurant-order.json",
+      "name": "Restaurant Order",
+      "description": "Restaurant food ordering with menu categories and customization",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.ChoiceSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/restaurant.json",
+      "name": "Restaurant",
+      "description": "Restaurant information card with rating, reviews, and map location",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/show-card-wizard.json",
+      "name": "Show Card Wizard",
+      "description": "Multi-step wizard using ShowCard actions for progressive disclosure",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/sporting-event.json",
+      "name": "Sporting Event",
+      "description": "Sporting event ticket/score card with team logos and stats",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/stock-update.json",
+      "name": "Stock Update",
+      "description": "Stock market update card with price, change, and chart indicators",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/weather-compact.json",
+      "name": "Weather Compact",
+      "description": "Compact weather card with current conditions and temperature",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "official-samples/weather-large.json",
+      "name": "Weather Large",
+      "description": "Detailed weather forecast card with multi-day outlook and conditions",
+      "category": "official-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-execute-is-enabled.json",
+      "name": "Action Execute Is Enabled",
+      "description": "Demonstrates Action.Execute isEnabled property for conditional button states",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-execute-mode.json",
+      "name": "Action Execute Mode",
+      "description": "Shows Action.Execute mode variations (primary, secondary)",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-execute-tooltip.json",
+      "name": "Action Execute Tooltip",
+      "description": "Action.Execute with tooltip text on hover",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.Text"
+      ],
+      "actions": [
+        "Action.Execute"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-openurl-is-enabled.json",
+      "name": "Action Openurl Is Enabled",
+      "description": "Action.OpenUrl with isEnabled toggle for URL navigation",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-openurl-mode.json",
+      "name": "Action Openurl Mode",
+      "description": "Action.OpenUrl mode property demonstration",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-openurl-tooltip.json",
+      "name": "Action Openurl Tooltip",
+      "description": "Action.OpenUrl with descriptive tooltip",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-role.json",
+      "name": "Action Role",
+      "description": "Demonstrates Action.Role property for accessibility (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "ActionSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute",
+        "Action.OpenUrl",
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-showcard-is-enabled.json",
+      "name": "Action Showcard Is Enabled",
+      "description": "Action.ShowCard with isEnabled conditional display",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-showcard-mode.json",
+      "name": "Action Showcard Mode",
+      "description": "Action.ShowCard mode variations",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute",
+        "Action.ShowCard"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-showcard-tooltip.json",
+      "name": "Action Showcard Tooltip",
+      "description": "Action.ShowCard with tooltip for inline card expansion",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-submit-is-enabled.json",
+      "name": "Action Submit Is Enabled",
+      "description": "Action.Submit isEnabled for form submission control",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-submit-mode.json",
+      "name": "Action Submit Mode",
+      "description": "Action.Submit mode property showcase",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/action-submit-tooltip.json",
+      "name": "Action Submit Tooltip",
+      "description": "Action.Submit with tooltip text",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.Text"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/adaptive-card-rtl.json",
+      "name": "Adaptive Card Rtl",
+      "description": "Full card-level RTL (right-to-left) text direction support",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-basic.json",
+      "name": "Carousel Basic",
+      "description": "Basic Carousel element with multiple pages (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-header.json",
+      "name": "Carousel Header",
+      "description": "Carousel with header text and navigation (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Container",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-height-pixels.json",
+      "name": "Carousel Height Pixels",
+      "description": "Carousel with pixel-based height setting (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-height-vertical.json",
+      "name": "Carousel Height Vertical",
+      "description": "Vertical carousel with height configuration (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-height.json",
+      "name": "Carousel Height",
+      "description": "Carousel with configurable height (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-initial-page.json",
+      "name": "Carousel Initial Page",
+      "description": "Carousel with specified initial page index (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-loop.json",
+      "name": "Carousel Loop",
+      "description": "Carousel with looping/infinite scroll (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-scenario-cards.json",
+      "name": "Carousel Scenario Cards",
+      "description": "Real-world carousel scenarios with rich cards (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-scenario-timer.json",
+      "name": "Carousel Scenario Timer",
+      "description": "Carousel with auto-advance timer (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "High",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-styles.json",
+      "name": "Carousel Styles",
+      "description": "Carousel style variations and theming (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Container",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/carousel-vertical.json",
+      "name": "Carousel Vertical",
+      "description": "Vertical carousel layout (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Image"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/column-rtl.json",
+      "name": "Column Rtl",
+      "description": "Column-level RTL layout for mixed-direction content",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/container-rtl.json",
+      "name": "Container Rtl",
+      "description": "Container-level RTL support for localized layouts",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Container",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/image-force-load.json",
+      "name": "Image Force Load",
+      "description": "Image with forceLoad property to bypass caching (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Image"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/image-select-action.json",
+      "name": "Image Select Action",
+      "description": "Image element with selectAction for clickable images",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/imageset-stacked-style.json",
+      "name": "Imageset Stacked Style",
+      "description": "ImageSet with stacked style layout (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "ImageSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-choiceset-dynamic-typeahead.json",
+      "name": "Input Choiceset Dynamic Typeahead",
+      "description": "Dynamic typeahead search with Data.Query for server-side filtering (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Data.Query",
+        "Input.ChoiceSet"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-choiceset-filtered.json",
+      "name": "Input Choiceset Filtered",
+      "description": "ChoiceSet with filtered/search functionality",
+      "category": "element-samples",
+      "schemaVersion": "1.0",
+      "elements": [
+        "Input.ChoiceSet"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-label-position.json",
+      "name": "Input Label Position",
+      "description": "Input elements with configurable label positions (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Input.ChoiceSet",
+        "Input.Date",
+        "Input.Number",
+        "Input.Text",
+        "Input.Time",
+        "Input.Toggle"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-style.json",
+      "name": "Input Style",
+      "description": "Input styling options demonstration (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Input.ChoiceSet",
+        "Input.Date",
+        "Input.Number",
+        "Input.Text",
+        "Input.Time",
+        "Input.Toggle"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-text-password-style.json",
+      "name": "Input Text Password Style",
+      "description": "Text input with password style for secure entry",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.Text"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/input-toggle-consolidated.json",
+      "name": "Input Toggle Consolidated",
+      "description": "Comprehensive Input.Toggle element variations and states",
+      "category": "element-samples",
+      "schemaVersion": "1.3",
+      "elements": [
+        "Input.Toggle"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/media-basic.json",
+      "name": "Media Basic",
+      "description": "Basic Media element for audio/video playback (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Media"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/media-sources.json",
+      "name": "Media Sources",
+      "description": "Media element with multiple source formats (v1.6)",
+      "category": "element-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Media",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-basic.json",
+      "name": "Table Basic",
+      "description": "Basic Table element with rows and cells",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-first-row-headers.json",
+      "name": "Table First Row Headers",
+      "description": "Table with first row as header styling",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-grid-style.json",
+      "name": "Table Grid Style",
+      "description": "Table with grid style variations",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-horizontal-alignment.json",
+      "name": "Table Horizontal Alignment",
+      "description": "Table horizontal cell content alignment options",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-show-grid-lines.json",
+      "name": "Table Show Grid Lines",
+      "description": "Table with visible grid lines configuration",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/table-vertical-alignment.json",
+      "name": "Table Vertical Alignment",
+      "description": "Table vertical cell content alignment options",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Table",
+        "TableCell",
+        "TableRow",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "element-samples/textblock-style.json",
+      "name": "Textblock Style",
+      "description": "TextBlock style property with heading and default styles",
+      "category": "element-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Low",
+      "usesTemplating": false,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/activity-update-data.json",
+      "name": "Activity Update Data",
+      "description": "Sample data for activity update template (creator, dates, properties)",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/activity-update-template.json",
+      "name": "Activity Update Template",
+      "description": "Templated activity update card with ${} binding expressions",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "FactSet",
+        "Image",
+        "Input.Date",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/agenda-data.json",
+      "name": "Agenda Data",
+      "description": "Sample calendar event data from Microsoft Graph API",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/agenda-template.json",
+      "name": "Agenda Template",
+      "description": "Templated calendar agenda with $data iteration for events",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "ImageSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/calendar-reminder-data.json",
+      "name": "Calendar Reminder Data",
+      "description": "Sample Google Calendar event data for reminder template",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/calendar-reminder-template.json",
+      "name": "Calendar Reminder Template",
+      "description": "Templated calendar reminder with dynamic date formatting",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.ChoiceSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/carousel-templated-pages-data.json",
+      "name": "Carousel Templated Pages Data",
+      "description": "Sample multi-page data for carousel template",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/carousel-templated-pages-template.json",
+      "name": "Carousel Templated Pages Template",
+      "description": "Carousel with templated pages using $data iteration (v1.6)",
+      "category": "teams-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/carousel-when-show-data.json",
+      "name": "Carousel When Show Data",
+      "description": "Sample conditional data for carousel visibility",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/carousel-when-show-template.json",
+      "name": "Carousel When Show Template",
+      "description": "Carousel with $when conditional page visibility (v1.6)",
+      "category": "teams-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Carousel",
+        "CarouselPage",
+        "Container",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/expense-report-data.json",
+      "name": "Expense Report Data",
+      "description": "Sample expense line items with amounts and categories",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/expense-report-template.json",
+      "name": "Expense Report Template",
+      "description": "Templated expense report with $data for line item iteration",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "ActionSet",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "Image",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl",
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/flight-details-data.json",
+      "name": "Flight Details Data",
+      "description": "Sample flight booking data (airline, route, times)",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/flight-details-template.json",
+      "name": "Flight Details Template",
+      "description": "Templated flight details with dynamic binding",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "ActionSet",
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Image",
+        "RichTextBlock",
+        "TextBlock",
+        "TextRun"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/flight-itinerary-data.json",
+      "name": "Flight Itinerary Data",
+      "description": "Sample multi-flight itinerary data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/flight-itinerary-template.json",
+      "name": "Flight Itinerary Template",
+      "description": "Templated multi-leg flight itinerary with data binding",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/flight-update-data.json",
+      "name": "Flight Update Data",
+      "description": "Sample flight status change data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/flight-update-template.json",
+      "name": "Flight Update Template",
+      "description": "Templated flight status update with conditional content",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/food-order-data.json",
+      "name": "Food Order Data",
+      "description": "Sample menu items and order data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/food-order-template.json",
+      "name": "Food Order Template",
+      "description": "Templated food order with $data menu iteration",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "ImageSet",
+        "Input.ChoiceSet",
+        "Input.Text",
+        "Input.Toggle",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.ShowCard",
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/image-gallery-data.json",
+      "name": "Image Gallery Data",
+      "description": "Sample image URLs for gallery display",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/image-gallery-template.json",
+      "name": "Image Gallery Template",
+      "description": "Templated image gallery with $data for dynamic images",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Image",
+        "ImageSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/input-form-data.json",
+      "name": "Input Form Data",
+      "description": "Sample form configuration data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/input-form-template.json",
+      "name": "Input Form Template",
+      "description": "Templated input form with dynamic field generation",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Image",
+        "Input.Text",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "High",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/order-confirmation-data.json",
+      "name": "Order Confirmation Data",
+      "description": "Sample order items and delivery data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/order-confirmation-template.json",
+      "name": "Order Confirmation Template",
+      "description": "Templated order confirmation with data binding",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Container",
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Execute"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/product-video-data.json",
+      "name": "Product Video Data",
+      "description": "Sample product video metadata and URLs",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/product-video-template.json",
+      "name": "Product Video Template",
+      "description": "Templated product video card with dynamic media (v1.6)",
+      "category": "teams-samples",
+      "schemaVersion": "1.6",
+      "elements": [
+        "Media",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/restaurant-data.json",
+      "name": "Restaurant Data",
+      "description": "Sample restaurant info (name, rating, address, reviews)",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/restaurant-order-data.json",
+      "name": "Restaurant Order Data",
+      "description": "Sample restaurant menu and pricing data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/restaurant-order-template.json",
+      "name": "Restaurant Order Template",
+      "description": "Templated restaurant order with dynamic menu items",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Input.ChoiceSet",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.Submit"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/restaurant-template.json",
+      "name": "Restaurant Template",
+      "description": "Templated restaurant info with dynamic data binding",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/simple-fallback-data.json",
+      "name": "Simple Fallback Data",
+      "description": "Sample data for fallback content demonstration",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/simple-fallback-template.json",
+      "name": "Simple Fallback Template",
+      "description": "Template demonstrating fallback content for older renderers",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/solitaire-data.json",
+      "name": "Solitaire Data",
+      "description": "Sample game state data for solitaire card",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/solitaire-template.json",
+      "name": "Solitaire Template",
+      "description": "Templated solitaire game card with complex data binding",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/sporting-event-data.json",
+      "name": "Sporting Event Data",
+      "description": "Sample sports scores and event statistics",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/sporting-event-template.json",
+      "name": "Sporting Event Template",
+      "description": "Templated sporting event with dynamic scores and stats",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/stock-update-data.json",
+      "name": "Stock Update Data",
+      "description": "Sample stock market pricing data",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/stock-update-template.json",
+      "name": "Stock Update Template",
+      "description": "Templated stock update with dynamic pricing data",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Container",
+        "FactSet",
+        "TextBlock"
+      ],
+      "actions": [],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    },
+    {
+      "file": "teams-samples/weather-large-data.json",
+      "name": "Weather Large Data",
+      "description": "Sample weather forecast data (temperatures, conditions)",
+      "category": "teams-samples",
+      "schemaVersion": "N/A",
+      "elements": [],
+      "actions": [],
+      "complexity": "N/A",
+      "usesTemplating": false,
+      "isDataFile": true
+    },
+    {
+      "file": "teams-samples/weather-large-template.json",
+      "name": "Weather Large Template",
+      "description": "Templated weather forecast with $data for daily forecasts",
+      "category": "teams-samples",
+      "schemaVersion": "1.5",
+      "elements": [
+        "Column",
+        "ColumnSet",
+        "Image",
+        "TextBlock"
+      ],
+      "actions": [
+        "Action.OpenUrl"
+      ],
+      "complexity": "Medium",
+      "usesTemplating": true,
+      "isDataFile": false
+    }
+  ]
+}

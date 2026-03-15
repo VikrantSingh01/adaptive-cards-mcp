@@ -1,0 +1,110 @@
+{
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "No Progress"
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "ProgressBar",
+					"value": 0
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "Progress in Accent",
+			"color": "Accent"
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "ProgressBar",
+					"color": "Accent",
+					"value": 70
+				},
+				{
+					"type": "ProgressBar",
+					"color": "Accent"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "Progress in Good",
+			"color": "Good"
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "ProgressBar",
+					"color": "Good",
+					"value": 70
+				},
+				{
+					"type": "ProgressBar",
+					"color": "Good",
+					"value": 40,
+					"max": 50
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "Progress in Warning",
+			"color": "Warning"
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "ProgressBar",
+					"color": "Warning",
+					"value": 70
+				},
+				{
+					"type": "ProgressBar",
+					"color": "Warning"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "Progress in Attention",
+			"color": "Attention"
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "ProgressBar",
+					"color": "Attention",
+					"max": 150,
+					"value": 170
+				},
+				{
+					"type": "ProgressBar",
+					"color": "Attention",
+					"value": 19
+				}
+			]
+		}
+	]
+}

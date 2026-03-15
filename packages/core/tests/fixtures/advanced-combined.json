@@ -1,0 +1,246 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Advanced Elements Showcase",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card demonstrates all new advanced elements working together.",
+      "wrap": true
+    },
+    {
+      "type": "TabSet",
+      "id": "mainTabs",
+      "selectedTabId": "demo",
+      "tabs": [
+        {
+          "id": "demo",
+          "title": "Demo",
+          "items": [
+            {
+              "type": "Carousel",
+              "id": "featureCarousel",
+              "timer": 0,
+              "pages": [
+                {
+                  "items": [
+                    {
+                      "type": "Container",
+                      "style": "Emphasis",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "text": "🎠 Carousel",
+                          "size": "ExtraLarge",
+                          "horizontalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "Swipe through pages with auto-advance support",
+                          "horizontalAlignment": "Center",
+                          "wrap": true
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "items": [
+                    {
+                      "type": "Container",
+                      "style": "Emphasis",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "text": "📋 Accordion",
+                          "size": "ExtraLarge",
+                          "horizontalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "Collapsible panels with single or multiple expand modes",
+                          "horizontalAlignment": "Center",
+                          "wrap": true
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "items": [
+                    {
+                      "type": "Container",
+                      "style": "Emphasis",
+                      "items": [
+                        {
+                          "type": "TextBlock",
+                          "text": "💻 CodeBlock",
+                          "size": "ExtraLarge",
+                          "horizontalAlignment": "Center"
+                        },
+                        {
+                          "type": "TextBlock",
+                          "text": "Display code with syntax highlighting and copy functionality",
+                          "horizontalAlignment": "Center",
+                          "wrap": true
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TextBlock",
+              "text": "Project Status",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "ProgressBar",
+              "label": "Implementation Progress",
+              "value": 0.95,
+              "color": "#107C10"
+            },
+            {
+              "type": "Rating",
+              "value": 4.8,
+              "count": 42,
+              "max": 5,
+              "size": "Medium"
+            }
+          ]
+        },
+        {
+          "id": "code",
+          "title": "Code",
+          "items": [
+            {
+              "type": "Accordion",
+              "expandMode": "Multiple",
+              "panels": [
+                {
+                  "title": "Swift Implementation",
+                  "isExpanded": true,
+                  "content": [
+                    {
+                      "type": "CodeBlock",
+                      "language": "swift",
+                      "startLineNumber": 1,
+                      "code": "struct ContentView: View {\n    var body: some View {\n        AdaptiveCardView(\n            json: cardJSON,\n            hostConfig: config\n        )\n    }\n}"
+                    }
+                  ]
+                },
+                {
+                  "title": "JSON Schema",
+                  "isExpanded": false,
+                  "content": [
+                    {
+                      "type": "CodeBlock",
+                      "language": "json",
+                      "code": "{\n  \"type\": \"Carousel\",\n  \"pages\": [\n    {\n      \"items\": [...]\n    }\n  ]\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "feedback",
+          "title": "Feedback",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Rate Your Experience",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "Input.Rating",
+              "id": "overallRating",
+              "label": "How would you rate these new elements?",
+              "max": 5,
+              "value": 0,
+              "isRequired": true
+            },
+            {
+              "type": "Accordion",
+              "expandMode": "Single",
+              "panels": [
+                {
+                  "title": "Carousel Feedback",
+                  "content": [
+                    {
+                      "type": "Input.Rating",
+                      "id": "carouselRating",
+                      "label": "Carousel",
+                      "max": 5
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "carouselComment",
+                      "placeholder": "Comments...",
+                      "isMultiline": true
+                    }
+                  ]
+                },
+                {
+                  "title": "Accordion Feedback",
+                  "content": [
+                    {
+                      "type": "Input.Rating",
+                      "id": "accordionRating",
+                      "label": "Accordion",
+                      "max": 5
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "accordionComment",
+                      "placeholder": "Comments...",
+                      "isMultiline": true
+                    }
+                  ]
+                },
+                {
+                  "title": "CodeBlock Feedback",
+                  "content": [
+                    {
+                      "type": "Input.Rating",
+                      "id": "codeRating",
+                      "label": "CodeBlock",
+                      "max": 5
+                    },
+                    {
+                      "type": "Input.Text",
+                      "id": "codeComment",
+                      "placeholder": "Comments...",
+                      "isMultiline": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Spinner",
+              "label": "Submitting feedback...",
+              "size": "Small"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Feedback"
+    }
+  ]
+}

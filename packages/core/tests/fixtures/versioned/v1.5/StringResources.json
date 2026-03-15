@@ -1,0 +1,489 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Pattern Match Verification",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "Valid: Prefix${rs:hello}Suffix Prefix${rs:world}Suffix",
+					"wrap": true
+				},
+				{
+					"type": "TextBlock",
+					"text": "Invalid: ${rshello} ${rsworld} [No colon, :]",
+					"wrap": true
+				},
+				{
+					"type": "TextBlock",
+					"text": "Invalid: ${RS:hello} ${RS:world}  [Case mismatch]",
+					"wrap": true
+				},
+				{
+					"type": "TextBlock",
+					"text": "Invalid: ${rS:hello} ${Rs:world} [Case mismatch]",
+					"wrap": true
+				},
+				{
+					"type": "TextBlock",
+					"text": "Invalid: ${rs:hello $rs:world} [Missing Bracket]",
+					"wrap": true
+				},
+				{
+					"type": "TextBlock",
+					"text": "Invalid: ${rshello} ${rsworld} [Missing Dollar]",
+					"wrap": true
+				},
+				{
+					"type": "RichTextBlock",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "Inside Rich Text Block\n",
+							"size": "large"
+						},
+						{
+							"type": "TextRun",
+							"text": "Valid: Prefix${rs:hello}Suffix Prefix${rs:world}Suffix \n"
+						},
+						{
+							"type": "TextRun",
+							"text": "Invalid: ${rshello} ${rsworld} [No colon, :] \n"
+						},
+						{
+							"type": "TextRun",
+							"text": "Invalid: ${RS:hello} ${RS:world}  [Case mismatch] \n"
+						},
+						{
+							"type": "TextRun",
+							"text": "Invalid: ${rS:hello} ${Rs:world} [Case mismatch] \n"
+						},
+						{
+							"type": "TextRun",
+							"text": "Invalid: ${rs:hello $rs:world} [Missing Bracket] \n"
+						},
+						{
+							"type": "TextRun",
+							"text": "Invalid: ${rshello} ${rsworld} [Missing Dollar] \n"
+						}
+					]
+				}
+			],
+			"style": "accent",
+			"showBorder": true,
+			"roundedCorners": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "Multiple String Resource in One String",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "${rs:hello} ${rs:world}",
+					"wrap": true
+				}
+			],
+			"style": "accent",
+			"showBorder": true,
+			"roundedCorners": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "Resource key doesn't exists",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "${rs:noKey} ${rs:world}",
+					"wrap": true
+				}
+			],
+			"style": "warning",
+			"showBorder": true,
+			"roundedCorners": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "No default value for resource key",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "TextBlock",
+			"text": "On Regular Text Elements in Rich Text Block",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "${rs:info1}",
+					"wrap": true
+				},
+				{
+					"type": "RichTextBlock",
+					"inlines": [
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"color": "Good"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"isSubtle": true
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"size": "Small"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"size": "Medium"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"size": "Large"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"size": "ExtraLarge"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"weight": "Lighter"
+						},
+						{
+							"type": "TextRun",
+							"text": "${rs:info1}",
+							"weight": "Bolder"
+						}
+					]
+				}
+			],
+			"style": "accent",
+			"showBorder": true,
+			"roundedCorners": true
+		},
+		{
+			"type": "TextBlock",
+			"wrap": true,
+			"text": "${rs:info2}",
+			"isVisible": false
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.ShowCard",
+					"title": "On ShowCard",
+					"card": {
+						"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+						"type": "AdaptiveCard",
+						"version": "1.5",
+						"body": [
+							{
+								"type": "TextBlock",
+								"text": "${rs:info2}",
+								"wrap": true
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.ShowCard",
+					"title": "See References",
+					"card": {
+						"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+						"type": "AdaptiveCard",
+						"version": "1.5",
+						"body": [
+							{
+								"type": "Container",
+								"items": [
+									{
+										"type": "Container",
+										"items": [
+											{
+												"type": "TextBlock",
+												"text": "References for info1",
+												"wrap": true,
+												"size": "Large"
+											},
+											{
+												"type": "TextBlock",
+												"text": "defaultValue: By default this feature helps reduce card payload size.",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "en-US: This feature helps reduce card payload size.",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "fr-FR: Cette fonctionnalité aide à réduire la taille de la charge utile de la carte.",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "es-ES: Esta función ayuda a reducir el tamaño de la carga útil de la tarjeta.",
+												"wrap": true
+											}
+										],
+										"style": "attention",
+										"showBorder": true,
+										"roundedCorners": true
+									},
+									{
+										"type": "Container",
+										"items": [
+											{
+												"type": "TextBlock",
+												"text": "References for info2",
+												"wrap": true,
+												"size": "Large"
+											},
+											{
+												"type": "TextBlock",
+												"text": "defaultValue: By default String resources also work in inline cards",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "en-US: String resources also work in inline cards",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "fr-FR: Les ressources de chaînes fonctionnent également dans les cartes intégrées",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "es-ES: Los recursos de cadena también funcionan en tarjetas en línea",
+												"wrap": true
+											}
+										],
+										"style": "attention",
+										"showBorder": true,
+										"roundedCorners": true
+									},
+									{
+										"type": "Container",
+										"items": [
+											{
+												"type": "TextBlock",
+												"text": "References for hello",
+												"wrap": true,
+												"size": "Large"
+											},
+											{
+												"type": "TextBlock",
+												"text": "defaultValue: By default Hello",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "en-US: Hello",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "fr-FR: Bonjour",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "es-ES: Hola",
+												"wrap": true
+											}
+										],
+										"style": "attention",
+										"showBorder": true,
+										"roundedCorners": true
+									},
+									{
+										"type": "Container",
+										"items": [
+											{
+												"type": "TextBlock",
+												"text": "References for World",
+												"wrap": true,
+												"size": "Large"
+											},
+											{
+												"type": "TextBlock",
+												"text": "defaultValue: By default World",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "en-US: World",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "fr-FR: Monde",
+												"wrap": true
+											},
+											{
+												"type": "TextBlock",
+												"text": "es-ES: Mundo",
+												"wrap": true
+											}
+										],
+										"style": "attention",
+										"showBorder": true,
+										"roundedCorners": true
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "On URLs",
+			"wrap": true,
+			"weight": "Bolder"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "ImageSet",
+					"images": [
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						},
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						},
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						},
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						},
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						},
+						{
+							"type": "Image",
+							"url": "${rs:catImageURL}",
+							"altText": "Cat"
+						}
+					]
+				}
+			],
+			"style": "accent",
+			"showBorder": true,
+			"roundedCorners": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "Resource strings can be clubbed with theme based images",
+			"wrap": true,
+			"size": "Large"
+		},
+		{
+			"type": "Image",
+			"url": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+			"size": "Large",
+			"themedUrls": [
+				{
+					"theme": "Light",
+					"url": "https://${rs:Lighttheme}/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+				},
+				{
+					"theme": "Dark",
+					"url": "https://images.unsplash.com/photo-1541451563641-c2bdc370f58a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+				}
+			]
+		}
+	],
+	"resources": {
+		"strings": {
+			"info1": {
+				"defaultValue": "By default this feature helps reduce card payload size.",
+				"localizedValues": {
+					"en-US": "This feature helps reduce card payload size.",
+					"FR-FR": "Cette fonctionnalité aide à réduire la taille de la charge utile de la carte.",
+					"es-ES": "Esta función ayuda a reducir el tamaño de la carga útil de la tarjeta."
+				}
+			},
+			"info2": {
+				"defaultValue": "By default String resources also work in inline cards",
+				"localizedValues": {
+					"en-US": "String resources also work in inline cards",
+					"fr-fr": "Les ressources de chaînes fonctionnent également dans les cartes intégrées",
+					"es-ES": "Los recursos de cadena también funcionan en tarjetas en línea"
+				}
+			},
+			"hello": {
+				"defaultValue": "By default Hello",
+				"localizedValues": {
+					"en-US": "Hello",
+					"es-ES": "Hola",
+					"FR-fr": "Bonjour"
+				}
+			},
+			"world": {
+				"defaultValue": "By default World",
+				"localizedValues": {
+					"en-US": "World",
+					"fr-FR": "Monde",
+					"es-ES": "Mundo"
+				}
+			},
+			"Lighttheme": {
+				"defaultValue": "plus.unsplash.com"
+			},
+			"catImageURL": {
+				"defaultValue": "https://adaptivecards.io/content/cats/1.png"
+			}
+		}
+	}
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Scrollable Container (maxHeight: 200px, overflow: scroll)",
+      "weight": "Bolder",
+      "size": "Medium"
+    },
+    {
+      "type": "Container",
+      "maxHeight": "200px",
+      "overflow": "Scroll",
+      "style": "emphasis",
+      "items": [
+        { "type": "TextBlock", "text": "Item 1 — This container has a maxHeight of 200px and overflow set to scroll." },
+        { "type": "TextBlock", "text": "Item 2 — When content exceeds the max height, a vertical scrollbar appears." },
+        { "type": "TextBlock", "text": "Item 3 — This matches the desktop R4 scrollable containers feature." },
+        { "type": "TextBlock", "text": "Item 4 — Additional content to ensure overflow." },
+        { "type": "TextBlock", "text": "Item 5 — More content." },
+        { "type": "TextBlock", "text": "Item 6 — Even more content to trigger scrolling." },
+        { "type": "TextBlock", "text": "Item 7 — The scroll indicator should be visible." },
+        { "type": "TextBlock", "text": "Item 8 — Last item in the scrollable container." }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Hidden Overflow Container (maxHeight: 100px, overflow: hidden)",
+      "weight": "Bolder",
+      "size": "Medium",
+      "spacing": "Large"
+    },
+    {
+      "type": "Container",
+      "maxHeight": "100px",
+      "overflow": "Hidden",
+      "style": "good",
+      "items": [
+        { "type": "TextBlock", "text": "This content is clipped at 100px." },
+        { "type": "TextBlock", "text": "You should NOT be able to see this line if clipping works." },
+        { "type": "TextBlock", "text": "Or this one either." },
+        { "type": "TextBlock", "text": "Definitely not this one." }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Normal Container (no overflow, no maxHeight)",
+      "weight": "Bolder",
+      "size": "Medium",
+      "spacing": "Large"
+    },
+    {
+      "type": "Container",
+      "style": "accent",
+      "items": [
+        { "type": "TextBlock", "text": "This container has no maxHeight or overflow." },
+        { "type": "TextBlock", "text": "It should render normally without any scrolling or clipping." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Responsive Layout Demo",
+      "weight": "Bolder",
+      "size": "Large",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Elements with targetWidth constraints",
+      "wrap": true,
+      "spacing": "Small"
+    },
+    {
+      "type": "Container",
+      "targetWidth": "compact",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "⚠️ Compact Only",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "This container only appears on compact screens (< 480px)",
+          "wrap": true,
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "targetWidth": "standard",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "📱 Standard Only",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "This container only appears on standard screens (480-720px)",
+          "wrap": true,
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "targetWidth": "wide",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "🖥️ Wide Only",
+          "weight": "Bolder",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "This container only appears on wide screens (> 720px)",
+          "wrap": true,
+          "isSubtle": true
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "spacing": "Large",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "targetWidth": "standard",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Standard+",
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Visible on standard and wide",
+              "wrap": true,
+              "isSubtle": true
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "targetWidth": "wide",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Wide Only",
+              "weight": "Bolder"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Only on wide screens",
+              "wrap": true,
+              "isSubtle": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Resize the window to see elements appear/disappear",
+      "horizontalAlignment": "Center",
+      "isSubtle": true,
+      "spacing": "Large"
+    }
+  ]
+}

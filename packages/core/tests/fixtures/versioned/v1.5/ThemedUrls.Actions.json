@@ -1,0 +1,374 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Change the theme to see different images",
+			"wrap": true,
+			"size": "Large"
+		},
+		{
+			"type": "TextBlock",
+			"text": "Reference images for both Themes",
+			"wrap": true,
+			"size": "Medium"
+		},
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"items": [
+						{
+							"type": "Image",
+							"url": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"size": "Medium"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Default Image",
+							"wrap": true,
+							"size": "Medium"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"items": [
+						{
+							"type": "Image",
+							"url": "https://plus.unsplash.com/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D",
+							"size": "Medium"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Light Theme",
+							"wrap": true,
+							"size": "Medium"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"items": [
+						{
+							"type": "Image",
+							"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg",
+							"size": "Medium"
+						},
+						{
+							"type": "TextBlock",
+							"text": "Dark Theme",
+							"wrap": true,
+							"size": "Medium"
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "ThemedUrls for Action Buttons",
+			"wrap": true,
+			"size": "Large"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "1 No themes - Default Image",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "2 Both themes - Pick based on Theme",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Light",
+									"url": "https://plus.unsplash.com/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+								},
+								{
+									"theme": "Dark",
+									"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "2b Themes for MenuActions",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Light",
+									"url": "https://plus.unsplash.com/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+								},
+								{
+									"theme": "Dark",
+									"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1",
+									"themedIconUrls": [
+										{
+											"theme": "Dark",
+											"url": "icon:Calendar,filled"
+										},
+										{
+											"theme": "Light",
+											"url": "icon:Send,filled"
+										}
+									]
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2",
+									"themedIconUrls": [
+										{
+											"theme": "Dark",
+											"url": "https://adaptivecards.io/content/cats/1.png"
+										},
+										{
+											"theme": "Light",
+											"url": "https://adaptivecards.io/content/Closed%20bug%2092x92.png"
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "3 Light - Fallback to Default for Dark",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Light",
+									"url": "https://plus.unsplash.com/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "4 Dark - Fallback to Default for Light",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Dark",
+									"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "5 Light - Invalid Theme default to Light",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Dark",
+									"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg"
+								},
+								{
+									"theme": "Lighter",
+									"url": "https://plus.unsplash.com/premium_photo-1667358091118-29e916ddbcc5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aHVza3l8ZW58MHx8MHx8fDA%3D"
+								},
+								{
+									"theme": "Light",
+									"url": "https://upload.wikimedia.org/wikipedia/commons/1/14/Black_dog.jpg"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "6 Multiple Entry - Pick First (Fluent)",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Dark",
+									"url": "icon:Calendar"
+								},
+								{
+									"theme": "Lighter",
+									"url": "icon:Send"
+								},
+								{
+									"theme": "Light",
+									"url": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo"
+								},
+								{
+									"theme": "Dark",
+									"url": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "7 Ignore Empty",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Dark",
+									"url": ""
+								},
+								{
+									"theme": "Light",
+									"url": ""
+								},
+								{
+									"theme": "Dark",
+									"url": "icon:Calendar,filled"
+								},
+								{
+									"theme": "Light",
+									"url": "icon:Send,filled"
+								}
+							],
+							"menuActions": [
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 1"
+								},
+								{
+									"type": "Action.Execute",
+									"title": "Menu execute 2"
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "ActionSet",
+					"actions": [
+						{
+							"type": "Action.Execute",
+							"title": "8 Icons Urls without menuActions",
+							"iconUrl": "https://yt3.ggpht.com/a/AATXAJzXc6NxfXzlwiAwWQx_7JNZA3I35bovXHiQbQ=s900-c-k-c0xffffffff-no-rj-mo",
+							"themedIconUrls": [
+								{
+									"theme": "Dark",
+									"url": "https://adaptivecards.io/content/cats/1.png"
+								},
+								{
+									"theme": "Light",
+									"url": "https://adaptivecards.io/content/Closed%20bug%2092x92.png"
+								},
+								{
+									"theme": "Dark",
+									"url": "icon:Calendar,filled"
+								},
+								{
+									"theme": "Light",
+									"url": "icon:Send,filled"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

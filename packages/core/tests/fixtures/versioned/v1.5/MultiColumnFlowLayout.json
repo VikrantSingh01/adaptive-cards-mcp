@@ -1,0 +1,160 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "ColumnSet",
+			"height": "stretch",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "1",
+					"verticalContentAlignment": "bottom",
+					"layouts": [
+						{
+							"type": "Layout.Flow",
+							"maxItemWidth": "150px"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file"
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "2",
+					"layouts": [
+						{
+							"type": "Layout.Flow",
+							"maxItemWidth": "150px"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "List",
+								"size": "Medium",
+								"style": "Regular",
+								"color": "attention"
+							},
+							"description": "Create a work item and assign it to you or a team member",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "View active work items",
+							"description": "See active tasks assigned to you or a team members",
+							"badge": "Priority",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Give feedback",
+							"icon": {
+								"name": "Calendar",
+								"size": "Medium",
+								"style": "Regular",
+								"color": "attention"
+							},
+							"description": "To give us feedback on Azure DevOps",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"description": "Create a work item and assign it to your or a team member",
+							"badge": "Priority",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Pending Taks",
+							"icon": {
+								"name": "Emoji",
+								"size": "Medium",
+								"style": "Regular",
+								"color": "attention"
+							},
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file"
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Pending Taks",
+							"icon": {
+								"name": "Emoji",
+								"size": "Medium",
+								"style": "Regular",
+								"color": "attention"
+							},
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"url": "https://www.microsoft.com",
+								"title": "Click me!",
+								"tooltip": "compound button can handle actions"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

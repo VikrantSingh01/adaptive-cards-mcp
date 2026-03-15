@@ -1,0 +1,195 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Employee Data Management",
+      "weight": "bolder",
+      "size": "large"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Edit employee information in the grid below. You can add, edit, and delete rows.",
+      "wrap": true,
+      "spacing": "small"
+    },
+    {
+      "type": "Input.DataGrid",
+      "id": "employeeGrid",
+      "label": "Employee List",
+      "isRequired": true,
+      "errorMessage": "At least one employee must be entered",
+      "maxRows": 10,
+      "columns": [
+        {
+          "id": "name",
+          "title": "Name",
+          "type": "text",
+          "width": "150px",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "age",
+          "title": "Age",
+          "type": "number",
+          "width": "80px",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "department",
+          "title": "Department",
+          "type": "text",
+          "width": "stretch",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "startDate",
+          "title": "Start Date",
+          "type": "date",
+          "width": "120px",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "active",
+          "title": "Active",
+          "type": "toggle",
+          "width": "auto",
+          "isEditable": true,
+          "isSortable": true
+        }
+      ],
+      "rows": [
+        ["Alice Johnson", 28, "Engineering", "2020-03-15", true],
+        ["Bob Smith", 35, "Marketing", "2018-06-22", true],
+        ["Carol Williams", 42, "Sales", "2015-09-10", false]
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "**Test Cases:**",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "• Add new rows (up to 10 max)\n• Edit cells by clicking\n• Sort columns by clicking headers\n• Delete rows using the delete button\n• Toggle active status\n• Pick dates using date picker",
+      "wrap": true,
+      "spacing": "small"
+    },
+    {
+      "type": "Input.DataGrid",
+      "id": "productGrid",
+      "label": "Product Inventory (Optional)",
+      "isRequired": false,
+      "columns": [
+        {
+          "id": "product",
+          "title": "Product",
+          "type": "text",
+          "width": "auto",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "quantity",
+          "title": "Quantity",
+          "type": "number",
+          "width": "100px",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "price",
+          "title": "Price ($)",
+          "type": "number",
+          "width": "100px",
+          "isEditable": true,
+          "isSortable": true
+        },
+        {
+          "id": "inStock",
+          "title": "In Stock",
+          "type": "toggle",
+          "width": "auto",
+          "isEditable": true,
+          "isSortable": false
+        }
+      ],
+      "rows": []
+    },
+    {
+      "type": "Input.DataGrid",
+      "id": "singleColumnGrid",
+      "label": "Notes (Single Column Test)",
+      "columns": [
+        {
+          "id": "note",
+          "title": "Note",
+          "type": "text",
+          "width": "stretch",
+          "isEditable": true,
+          "isSortable": false
+        }
+      ],
+      "rows": [
+        ["First note"],
+        ["Second note"]
+      ]
+    },
+    {
+      "type": "Input.DataGrid",
+      "id": "readOnlyGrid",
+      "label": "Read-Only Data (Non-editable Columns)",
+      "columns": [
+        {
+          "id": "id",
+          "title": "ID",
+          "type": "number",
+          "width": "60px",
+          "isEditable": false,
+          "isSortable": true
+        },
+        {
+          "id": "status",
+          "title": "Status",
+          "type": "text",
+          "width": "auto",
+          "isEditable": false,
+          "isSortable": true
+        }
+      ],
+      "rows": [
+        [1, "Pending"],
+        [2, "Approved"],
+        [3, "Rejected"]
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Data",
+      "style": "positive"
+    },
+    {
+      "type": "Action.ShowCard",
+      "title": "View JSON",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "TextBlock",
+            "text": "Submit the form to see the grid data in JSON format.",
+            "wrap": true
+          }
+        ]
+      }
+    }
+  ]
+}

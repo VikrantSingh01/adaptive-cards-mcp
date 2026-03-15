@@ -1,0 +1,20 @@
+{
+  "teamMembers": [
+    {
+      "name": "Alex Rivera",
+      "role": "Engineering Lead"
+    },
+    {
+      "name": "Jordan Kim",
+      "role": "Senior Designer"
+    },
+    {
+      "name": "Priya Patel",
+      "role": "Product Manager"
+    },
+    {
+      "name": "Marcus Johnson",
+      "role": "Backend Developer"
+    }
+  ]
+}

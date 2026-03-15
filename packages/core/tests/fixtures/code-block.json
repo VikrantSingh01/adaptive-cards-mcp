@@ -1,0 +1,51 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Code Examples",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Swift Example",
+      "weight": "Bolder",
+      "size": "Medium"
+    },
+    {
+      "type": "CodeBlock",
+      "id": "swiftCode",
+      "language": "swift",
+      "startLineNumber": 1,
+      "code": "import SwiftUI\n\nstruct ContentView: View {\n    @State private var count = 0\n    \n    var body: some View {\n        VStack {\n            Text(\"Count: \\(count)\")\n            Button(\"Increment\") {\n                count += 1\n            }\n        }\n    }\n}"
+    },
+    {
+      "type": "TextBlock",
+      "text": "JavaScript Example",
+      "weight": "Bolder",
+      "size": "Medium"
+    },
+    {
+      "type": "CodeBlock",
+      "id": "jsCode",
+      "language": "javascript",
+      "startLineNumber": 1,
+      "code": "function greet(name) {\n    const message = `Hello, ${name}!`;\n    console.log(message);\n    return message;\n}\n\nconst result = greet('World');"
+    },
+    {
+      "type": "TextBlock",
+      "text": "JSON Example (No Line Numbers)",
+      "weight": "Bolder",
+      "size": "Medium"
+    },
+    {
+      "type": "CodeBlock",
+      "id": "jsonCode",
+      "language": "json",
+      "code": "{\n  \"type\": \"AdaptiveCard\",\n  \"version\": \"1.6\",\n  \"body\": [\n    {\n      \"type\": \"TextBlock\",\n      \"text\": \"Hello!\"\n    }\n  ]\n}"
+    }
+  ]
+}

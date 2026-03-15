@@ -1,0 +1,102 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Mixed Input Types Form",
+      "weight": "Bolder",
+      "size": "Large"
+    },
+    {
+      "type": "Input.Text",
+      "id": "textInput1",
+      "label": "Text Input",
+      "placeholder": "Enter text"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Display text between inputs",
+      "isSubtle": true
+    },
+    {
+      "type": "Input.Number",
+      "id": "numberInput1",
+      "label": "Number Input",
+      "min": 0,
+      "max": 100,
+      "value": 50
+    },
+    {
+      "type": "Image",
+      "url": "https://adaptivecards.io/content/cats/1.png",
+      "size": "Small"
+    },
+    {
+      "type": "Input.Date",
+      "id": "dateInput1",
+      "label": "Date Input"
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Container with input inside"
+        },
+        {
+          "type": "Input.Time",
+          "id": "timeInput1",
+          "label": "Time Input"
+        }
+      ]
+    },
+    {
+      "type": "Input.Toggle",
+      "id": "toggleInput1",
+      "title": "Toggle Input",
+      "value": "true"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Fact 1",
+          "value": "Value 1"
+        }
+      ]
+    },
+    {
+      "type": "Input.ChoiceSet",
+      "id": "choiceSetInput1",
+      "label": "Choice Set Input",
+      "style": "compact",
+      "choices": [
+        {
+          "title": "Option 1",
+          "value": "1"
+        },
+        {
+          "title": "Option 2",
+          "value": "2"
+        },
+        {
+          "title": "Option 3",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Final display element",
+      "horizontalAlignment": "Right"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Mixed Form"
+    }
+  ]
+}

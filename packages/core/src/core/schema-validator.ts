@@ -1,11 +1,48 @@
 /**
- * Schema Validator — Validates Adaptive Card JSON against v1.6 schema using ajv
+ * Schema Validator — Validates Adaptive Card JSON against the official v1.6
+ * JSON Schema using ajv, with supplementary best-practice checks.
  */
 
-import Ajv from "ajv";
+import Ajv, { type ErrorObject } from "ajv";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import type { ValidationError } from "../types/index.js";
 
-// v1.6 valid element types (from AdaptiveCards-Mobile SchemaValidator.swift)
+// ─── Load & prepare the official Adaptive Card v1.6 JSON Schema ─────────────
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const schemaPath = path.resolve(__dirname, "..", "data", "schema.json");
+const rawSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
+
+// The official schema declares "id" (draft-04 style) but uses "$schema" draft-06.
+// Ajv v8 expects "$id". Normalise so ajv can resolve internal $ref pointers.
+if (rawSchema.id && !rawSchema.$id) {
+  rawSchema.$id = rawSchema.id;
+  delete rawSchema.id;
+}
+// Remove $schema meta-schema reference — ajv v8 doesn't ship draft-06 meta-schema
+// and we don't need meta-validation, just card validation.
+delete rawSchema.$schema;
+
+// ─── Create and configure the Ajv instance ──────────────────────────────────
+
+const ajv = new Ajv({
+  allErrors: true,
+  // strict:false avoids failures on draft-06 keywords like "id", unknown
+  // formats, and non-standard "version"/"features" annotation keywords that
+  // appear throughout the Adaptive Cards schema.
+  strict: false,
+  // Adaptive Card Templating adds properties like $data, $when, $root that
+  // are NOT in the official schema (which uses additionalProperties:false).
+  // We must not strip them — instead we tell ajv to silently allow extras.
+  validateFormats: false,
+});
+
+const validate = ajv.compile(rawSchema);
+
+// ─── Known types (kept for supplementary best-practice checks) ──────────────
+
 const VALID_ELEMENT_TYPES = new Set([
   "TextBlock",
   "Image",
@@ -56,51 +93,276 @@ const VALID_ACTION_TYPES = new Set([
   "Action.OpenUrlDialog",
 ]);
 
-const VALID_SPACING = new Set([
-  "none",
-  "small",
-  "default",
-  "medium",
-  "large",
-  "extraLarge",
-  "padding",
-]);
-
-const VALID_SIZE = new Set([
-  "default",
-  "small",
-  "medium",
-  "large",
-  "extraLarge",
-]);
-
-const VALID_WEIGHT = new Set(["default", "lighter", "bolder"]);
-
-const VALID_COLOR = new Set([
-  "default",
-  "dark",
-  "light",
-  "accent",
-  "good",
-  "warning",
-  "attention",
-]);
-
-const VALID_HORIZONTAL_ALIGNMENT = new Set(["left", "center", "right"]);
+// Properties added by Adaptive Card Templating that the official schema does
+// not include. We strip these before running ajv so that additionalProperties
+// checks don't reject them, then restore them afterward.
+const TEMPLATING_PROPS = ["$data", "$when", "$root"];
 
 const VERSION_PATTERN = /^\d+\.\d+$/;
+
+// ─── Public types ───────────────────────────────────────────────────────────
 
 export interface SchemaValidationResult {
   valid: boolean;
   errors: ValidationError[];
 }
 
+// ─── Helpers ────────────────────────────────────────────────────────────────
+
 /**
- * Validate an Adaptive Card JSON object against v1.6 schema
+ * Convert an ajv JSON-pointer path (e.g. "/body/0/text") to a dot-bracket
+ * path (e.g. "$.body[0].text").
+ */
+function ajvPathToJsonPath(instancePath: string): string {
+  if (!instancePath) return "$";
+  const segments = instancePath.split("/").filter(Boolean);
+  let result = "$";
+  for (const seg of segments) {
+    if (/^\d+$/.test(seg)) {
+      result += `[${seg}]`;
+    } else {
+      result += `.${seg}`;
+    }
+  }
+  return result;
+}
+
+/**
+ * Map a single ajv ErrorObject to our ValidationError format.
+ */
+function mapAjvError(err: ErrorObject): ValidationError {
+  const jsonPath = ajvPathToJsonPath(err.instancePath);
+
+  let message: string;
+  switch (err.keyword) {
+    case "additionalProperties":
+      message = `Unknown property "${(err.params as Record<string, unknown>).additionalProperty}"`;
+      break;
+    case "required":
+      message = `Missing required property "${(err.params as Record<string, unknown>).missingProperty}"`;
+      break;
+    case "enum":
+      message = `${err.message}`;
+      break;
+    case "type":
+      message = `${err.message}`;
+      break;
+    default:
+      message = err.message ?? `Schema validation failed (${err.keyword})`;
+  }
+
+  return {
+    path: jsonPath,
+    message,
+    severity: "error",
+    rule: `schema/${err.keyword}`,
+  };
+}
+
+/**
+ * Recursively strip (and collect) Adaptive Card Templating properties that
+ * are not in the official schema, so that additionalProperties:false doesn't
+ * reject them. Returns a restore function that puts them back.
+ */
+function stripTemplatingProps(obj: unknown): () => void {
+  const restoreOps: Array<() => void> = [];
+
+  function walk(node: unknown): void {
+    if (!node || typeof node !== "object") return;
+
+    if (Array.isArray(node)) {
+      for (const item of node) walk(item);
+      return;
+    }
+
+    const record = node as Record<string, unknown>;
+    for (const prop of TEMPLATING_PROPS) {
+      if (prop in record) {
+        const saved = record[prop];
+        delete record[prop];
+        restoreOps.push(() => {
+          record[prop] = saved;
+        });
+      }
+    }
+
+    for (const value of Object.values(record)) {
+      walk(value);
+    }
+  }
+
+  walk(obj);
+  return () => {
+    for (const op of restoreOps) op();
+  };
+}
+
+// ─── Supplementary best-practice checks (warnings) ─────────────────────────
+
+function runSupplementaryChecks(card: Record<string, unknown>): ValidationError[] {
+  const warnings: ValidationError[] = [];
+
+  // Walk elements recursively
+  function walkElements(elements: unknown[], basePath: string): void {
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (!el || typeof el !== "object") continue;
+      const elem = el as Record<string, unknown>;
+      const elPath = `${basePath}[${i}]`;
+
+      // Unknown element type
+      if (typeof elem.type === "string" && !VALID_ELEMENT_TYPES.has(elem.type)) {
+        warnings.push({
+          path: `${elPath}.type`,
+          message: `Unknown element type: "${elem.type}"`,
+          severity: "warning",
+          rule: "unknown-element-type",
+        });
+      }
+
+      // TextBlock missing text
+      if (elem.type === "TextBlock" && (elem.text === undefined || elem.text === null)) {
+        warnings.push({
+          path: `${elPath}.text`,
+          message: "TextBlock is missing the \"text\" property",
+          severity: "warning",
+          rule: "best-practice/textblock-text",
+        });
+      }
+
+      // Image missing url
+      if (elem.type === "Image" && !elem.url) {
+        warnings.push({
+          path: `${elPath}.url`,
+          message: "Image is missing the \"url\" property",
+          severity: "warning",
+          rule: "best-practice/image-url",
+        });
+      }
+
+      // FactSet — facts missing title/value
+      if (elem.type === "FactSet" && Array.isArray(elem.facts)) {
+        for (let f = 0; f < elem.facts.length; f++) {
+          const fact = elem.facts[f] as Record<string, unknown> | undefined;
+          if (!fact) continue;
+          if (!fact.title) {
+            warnings.push({
+              path: `${elPath}.facts[${f}].title`,
+              message: "Fact is missing the \"title\" property",
+              severity: "warning",
+              rule: "best-practice/fact-title",
+            });
+          }
+          if (!fact.value) {
+            warnings.push({
+              path: `${elPath}.facts[${f}].value`,
+              message: "Fact is missing the \"value\" property",
+              severity: "warning",
+              rule: "best-practice/fact-value",
+            });
+          }
+        }
+      }
+
+      // Recurse into nested items (Container, etc.)
+      if (Array.isArray(elem.items)) {
+        walkElements(elem.items, `${elPath}.items`);
+      }
+
+      // Recurse into columns (ColumnSet)
+      if (Array.isArray(elem.columns)) {
+        for (let c = 0; c < elem.columns.length; c++) {
+          const col = elem.columns[c] as Record<string, unknown> | undefined;
+          if (col && Array.isArray(col.items)) {
+            walkElements(col.items, `${elPath}.columns[${c}].items`);
+          }
+        }
+      }
+
+      // Recurse into rows/cells (Table)
+      if (Array.isArray(elem.rows)) {
+        for (let r = 0; r < elem.rows.length; r++) {
+          const row = elem.rows[r] as Record<string, unknown> | undefined;
+          if (row && Array.isArray(row.cells)) {
+            for (let cl = 0; cl < row.cells.length; cl++) {
+              const cell = row.cells[cl] as Record<string, unknown> | undefined;
+              if (cell && Array.isArray(cell.items)) {
+                walkElements(cell.items, `${elPath}.rows[${r}].cells[${cl}].items`);
+              }
+            }
+          }
+        }
+      }
+
+      // Recurse into images (ImageSet)
+      if (Array.isArray(elem.images)) {
+        walkElements(elem.images, `${elPath}.images`);
+      }
+
+      // Recurse into actions (ActionSet)
+      if (Array.isArray(elem.actions)) {
+        walkActions(elem.actions, `${elPath}.actions`);
+      }
+    }
+  }
+
+  function walkActions(actions: unknown[], basePath: string): void {
+    for (let i = 0; i < actions.length; i++) {
+      const act = actions[i];
+      if (!act || typeof act !== "object") continue;
+      const action = act as Record<string, unknown>;
+      const actPath = `${basePath}[${i}]`;
+
+      // Unknown action type
+      if (typeof action.type === "string" && !VALID_ACTION_TYPES.has(action.type)) {
+        warnings.push({
+          path: `${actPath}.type`,
+          message: `Unknown action type: "${action.type}"`,
+          severity: "warning",
+          rule: "unknown-action-type",
+        });
+      }
+    }
+  }
+
+  // Check host version compatibility
+  if (typeof card.version === "string" && VERSION_PATTERN.test(card.version)) {
+    const [major, minor] = card.version.split(".").map(Number);
+    if (major !== undefined && minor !== undefined) {
+      if (major > 1 || (major === 1 && minor > 6)) {
+        warnings.push({
+          path: "$.version",
+          message: `Card targets version ${card.version} which is newer than the latest supported version 1.6`,
+          severity: "warning",
+          rule: "version-compatibility",
+        });
+      }
+    }
+  }
+
+  // Walk body
+  if (Array.isArray(card.body)) {
+    walkElements(card.body, "$.body");
+  }
+
+  // Walk top-level actions
+  if (Array.isArray(card.actions)) {
+    walkActions(card.actions, "$.actions");
+  }
+
+  return warnings;
+}
+
+// ─── Main validation function ───────────────────────────────────────────────
+
+/**
+ * Validate an Adaptive Card JSON object against the official v1.6 schema
+ * using ajv, then run supplementary best-practice checks.
  */
 export function validateCard(card: unknown): SchemaValidationResult {
   const errors: ValidationError[] = [];
 
+  // Basic sanity check
   if (!card || typeof card !== "object") {
     errors.push({
       path: "$",
@@ -113,482 +375,66 @@ export function validateCard(card: unknown): SchemaValidationResult {
 
   const obj = card as Record<string, unknown>;
 
-  // Required: type must be "AdaptiveCard"
-  if (obj.type !== "AdaptiveCard") {
+  // Deep-clone so we can safely strip templating props without mutating input
+  let cardCopy: Record<string, unknown>;
+  try {
+    cardCopy = JSON.parse(JSON.stringify(obj));
+  } catch {
     errors.push({
-      path: "$.type",
-      message: `type must be "AdaptiveCard", got "${obj.type}"`,
+      path: "$",
+      message: "Card contains values that cannot be serialized to JSON",
       severity: "error",
-      rule: "required-type",
+      rule: "type-check",
     });
+    return { valid: false, errors };
   }
 
-  // Required: version must match pattern
-  if (!obj.version || typeof obj.version !== "string") {
-    errors.push({
-      path: "$.version",
-      message: "version is required and must be a string (e.g., \"1.6\")",
-      severity: "error",
-      rule: "required-version",
-    });
-  } else if (!VERSION_PATTERN.test(obj.version)) {
-    errors.push({
-      path: "$.version",
-      message: `version must match pattern "X.Y", got "${obj.version}"`,
-      severity: "error",
-      rule: "version-format",
-    });
-  }
+  // Strip Adaptive Card Templating properties before validation
+  const restore = stripTemplatingProps(cardCopy);
 
-  // Validate body elements
-  if (obj.body !== undefined) {
-    if (!Array.isArray(obj.body)) {
-      errors.push({
-        path: "$.body",
-        message: "body must be an array",
-        severity: "error",
-        rule: "body-type",
-      });
-    } else {
-      for (let i = 0; i < obj.body.length; i++) {
-        validateElement(obj.body[i], `$.body[${i}]`, errors);
+  // Run ajv schema validation
+  const schemaValid = validate(cardCopy);
+
+  // Restore templating props on the copy (not strictly needed but keeps things tidy)
+  restore();
+
+  if (!schemaValid && validate.errors) {
+    // De-duplicate errors: ajv can produce many errors for anyOf/allOf branches.
+    // Keep only unique (path + message) pairs.
+    const seen = new Set<string>();
+    for (const err of validate.errors) {
+      // Skip "if" / "anyOf" / "oneOf" wrapper errors that just say
+      // "must match X schema" without actionable detail
+      if (
+        err.keyword === "if" ||
+        err.keyword === "anyOf" ||
+        err.keyword === "oneOf" ||
+        err.keyword === "allOf"
+      ) {
+        continue;
+      }
+
+      const mapped = mapAjvError(err);
+      const key = `${mapped.path}::${mapped.message}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        errors.push(mapped);
       }
     }
   }
 
-  // Validate actions
-  if (obj.actions !== undefined) {
-    if (!Array.isArray(obj.actions)) {
-      errors.push({
-        path: "$.actions",
-        message: "actions must be an array",
-        severity: "error",
-        rule: "actions-type",
-      });
-    } else {
-      for (let i = 0; i < obj.actions.length; i++) {
-        validateAction(obj.actions[i], `$.actions[${i}]`, errors);
-      }
-    }
-  }
-
-  // Validate selectAction
-  if (obj.selectAction !== undefined) {
-    validateAction(obj.selectAction, "$.selectAction", errors);
-  }
-
-  // Validate verticalContentAlignment
-  if (
-    obj.verticalContentAlignment !== undefined &&
-    !["top", "center", "bottom"].includes(
-      obj.verticalContentAlignment as string,
-    )
-  ) {
-    errors.push({
-      path: "$.verticalContentAlignment",
-      message: `Invalid verticalContentAlignment: "${obj.verticalContentAlignment}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
+  // If schema validation passed, run supplementary best-practice checks
+  // (these are warnings, not hard errors)
+  if (schemaValid) {
+    const supplementary = runSupplementaryChecks(obj);
+    errors.push(...supplementary);
   }
 
   const hasErrors = errors.some((e) => e.severity === "error");
   return { valid: !hasErrors, errors };
 }
 
-function validateElement(
-  element: unknown,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (!element || typeof element !== "object") {
-    errors.push({
-      path,
-      message: "Element must be a JSON object",
-      severity: "error",
-      rule: "element-type",
-    });
-    return;
-  }
-
-  const el = element as Record<string, unknown>;
-
-  // Required: type
-  if (!el.type || typeof el.type !== "string") {
-    errors.push({
-      path: `${path}.type`,
-      message: "Element type is required",
-      severity: "error",
-      rule: "required-element-type",
-    });
-    return;
-  }
-
-  if (!VALID_ELEMENT_TYPES.has(el.type)) {
-    errors.push({
-      path: `${path}.type`,
-      message: `Unknown element type: "${el.type}"`,
-      severity: "warning",
-      rule: "unknown-element-type",
-    });
-  }
-
-  // Validate common properties
-  if (el.spacing !== undefined && !VALID_SPACING.has(el.spacing as string)) {
-    errors.push({
-      path: `${path}.spacing`,
-      message: `Invalid spacing: "${el.spacing}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-
-  if (
-    el.height !== undefined &&
-    !["auto", "stretch"].includes(el.height as string)
-  ) {
-    errors.push({
-      path: `${path}.height`,
-      message: `Invalid height: "${el.height}". Must be "auto" or "stretch"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-
-  // Type-specific validation
-  switch (el.type) {
-    case "TextBlock":
-      validateTextBlock(el, path, errors);
-      break;
-    case "Image":
-      validateImage(el, path, errors);
-      break;
-    case "Container":
-      validateContainer(el, path, errors);
-      break;
-    case "ColumnSet":
-      validateColumnSet(el, path, errors);
-      break;
-    case "FactSet":
-      validateFactSet(el, path, errors);
-      break;
-    case "ImageSet":
-      validateImageSet(el, path, errors);
-      break;
-    case "ActionSet":
-      validateActionSet(el, path, errors);
-      break;
-    case "Table":
-      validateTable(el, path, errors);
-      break;
-  }
-
-  // Validate nested items for containers
-  if (el.items && Array.isArray(el.items)) {
-    for (let i = 0; i < el.items.length; i++) {
-      validateElement(el.items[i], `${path}.items[${i}]`, errors);
-    }
-  }
-
-  // Validate selectAction
-  if (el.selectAction !== undefined) {
-    validateAction(el.selectAction, `${path}.selectAction`, errors);
-  }
-}
-
-function validateTextBlock(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.text === undefined || el.text === null) {
-    errors.push({
-      path: `${path}.text`,
-      message: "TextBlock requires a text property",
-      severity: "error",
-      rule: "required-property",
-    });
-  }
-  if (el.size !== undefined && !VALID_SIZE.has(el.size as string)) {
-    errors.push({
-      path: `${path}.size`,
-      message: `Invalid size: "${el.size}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-  if (el.weight !== undefined && !VALID_WEIGHT.has(el.weight as string)) {
-    errors.push({
-      path: `${path}.weight`,
-      message: `Invalid weight: "${el.weight}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-  if (el.color !== undefined && !VALID_COLOR.has(el.color as string)) {
-    errors.push({
-      path: `${path}.color`,
-      message: `Invalid color: "${el.color}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-  if (
-    el.horizontalAlignment !== undefined &&
-    !VALID_HORIZONTAL_ALIGNMENT.has(el.horizontalAlignment as string)
-  ) {
-    errors.push({
-      path: `${path}.horizontalAlignment`,
-      message: `Invalid horizontalAlignment: "${el.horizontalAlignment}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-}
-
-function validateImage(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (!el.url || typeof el.url !== "string") {
-    errors.push({
-      path: `${path}.url`,
-      message: "Image requires a url property",
-      severity: "error",
-      rule: "required-property",
-    });
-  }
-}
-
-function validateContainer(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.items !== undefined && !Array.isArray(el.items)) {
-    errors.push({
-      path: `${path}.items`,
-      message: "Container items must be an array",
-      severity: "error",
-      rule: "items-type",
-    });
-  }
-}
-
-function validateColumnSet(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.columns !== undefined) {
-    if (!Array.isArray(el.columns)) {
-      errors.push({
-        path: `${path}.columns`,
-        message: "ColumnSet columns must be an array",
-        severity: "error",
-        rule: "columns-type",
-      });
-    } else {
-      for (let i = 0; i < el.columns.length; i++) {
-        const col = el.columns[i] as Record<string, unknown>;
-        if (col && col.items && Array.isArray(col.items)) {
-          for (let j = 0; j < col.items.length; j++) {
-            validateElement(
-              col.items[j],
-              `${path}.columns[${i}].items[${j}]`,
-              errors,
-            );
-          }
-        }
-      }
-    }
-  }
-}
-
-function validateFactSet(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.facts !== undefined) {
-    if (!Array.isArray(el.facts)) {
-      errors.push({
-        path: `${path}.facts`,
-        message: "FactSet facts must be an array",
-        severity: "error",
-        rule: "facts-type",
-      });
-    } else {
-      for (let i = 0; i < el.facts.length; i++) {
-        const fact = el.facts[i] as Record<string, unknown>;
-        if (!fact.title) {
-          errors.push({
-            path: `${path}.facts[${i}].title`,
-            message: "Fact requires a title",
-            severity: "error",
-            rule: "required-property",
-          });
-        }
-        if (!fact.value) {
-          errors.push({
-            path: `${path}.facts[${i}].value`,
-            message: "Fact requires a value",
-            severity: "error",
-            rule: "required-property",
-          });
-        }
-      }
-    }
-  }
-}
-
-function validateImageSet(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.images !== undefined) {
-    if (!Array.isArray(el.images)) {
-      errors.push({
-        path: `${path}.images`,
-        message: "ImageSet images must be an array",
-        severity: "error",
-        rule: "images-type",
-      });
-    } else {
-      for (let i = 0; i < el.images.length; i++) {
-        validateElement(el.images[i], `${path}.images[${i}]`, errors);
-      }
-    }
-  }
-}
-
-function validateActionSet(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.actions !== undefined) {
-    if (!Array.isArray(el.actions)) {
-      errors.push({
-        path: `${path}.actions`,
-        message: "ActionSet actions must be an array",
-        severity: "error",
-        rule: "actions-type",
-      });
-    } else {
-      for (let i = 0; i < el.actions.length; i++) {
-        validateAction(el.actions[i], `${path}.actions[${i}]`, errors);
-      }
-    }
-  }
-}
-
-function validateTable(
-  el: Record<string, unknown>,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (el.columns !== undefined && !Array.isArray(el.columns)) {
-    errors.push({
-      path: `${path}.columns`,
-      message: "Table columns must be an array",
-      severity: "error",
-      rule: "columns-type",
-    });
-  }
-  if (el.rows !== undefined && !Array.isArray(el.rows)) {
-    errors.push({
-      path: `${path}.rows`,
-      message: "Table rows must be an array",
-      severity: "error",
-      rule: "rows-type",
-    });
-  }
-}
-
-function validateAction(
-  action: unknown,
-  path: string,
-  errors: ValidationError[],
-): void {
-  if (!action || typeof action !== "object") {
-    errors.push({
-      path,
-      message: "Action must be a JSON object",
-      severity: "error",
-      rule: "action-type",
-    });
-    return;
-  }
-
-  const act = action as Record<string, unknown>;
-
-  if (!act.type || typeof act.type !== "string") {
-    errors.push({
-      path: `${path}.type`,
-      message: "Action type is required",
-      severity: "error",
-      rule: "required-action-type",
-    });
-    return;
-  }
-
-  if (!VALID_ACTION_TYPES.has(act.type)) {
-    errors.push({
-      path: `${path}.type`,
-      message: `Unknown action type: "${act.type}"`,
-      severity: "warning",
-      rule: "unknown-action-type",
-    });
-  }
-
-  // Type-specific validation
-  if (act.type === "Action.OpenUrl" && !act.url) {
-    errors.push({
-      path: `${path}.url`,
-      message: "Action.OpenUrl requires a url property",
-      severity: "error",
-      rule: "required-property",
-    });
-  }
-
-  if (act.type === "Action.ShowCard" && act.card) {
-    // Recursively validate the sub-card
-    const subResult = validateCard(act.card);
-    for (const err of subResult.errors) {
-      errors.push({
-        ...err,
-        path: `${path}.card.${err.path.replace("$.", "")}`,
-      });
-    }
-  }
-
-  if (
-    act.style !== undefined &&
-    !["default", "positive", "destructive"].includes(act.style as string)
-  ) {
-    errors.push({
-      path: `${path}.style`,
-      message: `Invalid action style: "${act.style}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-
-  if (
-    act.mode !== undefined &&
-    !["primary", "secondary"].includes(act.mode as string)
-  ) {
-    errors.push({
-      path: `${path}.mode`,
-      message: `Invalid action mode: "${act.mode}"`,
-      severity: "error",
-      rule: "enum-value",
-    });
-  }
-}
+// ─── Public accessors ───────────────────────────────────────────────────────
 
 /**
  * Get the set of valid element types

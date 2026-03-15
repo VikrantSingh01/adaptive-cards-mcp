@@ -1,0 +1,61 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Card with Empty Containers",
+      "weight": "Bolder"
+    },
+    {
+      "type": "Container",
+      "items": []
+    },
+    {
+      "type": "TextBlock",
+      "text": "Between empty containers"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": []
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": []
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "After empty column set"
+    },
+    {
+      "type": "Table",
+      "columns": [
+        {
+          "width": 1
+        },
+        {
+          "width": 1
+        }
+      ],
+      "rows": []
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "Container",
+          "items": []
+        }
+      ]
+    }
+  ]
+}

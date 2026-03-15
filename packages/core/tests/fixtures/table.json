@@ -1,0 +1,130 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Table Example",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "Table",
+      "columns": [
+        {
+          "width": 1
+        },
+        {
+          "width": 2
+        },
+        {
+          "width": 1
+        }
+      ],
+      "rows": [
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Name",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Description",
+                  "weight": "Bolder"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Value",
+                  "weight": "Bolder"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Item 1"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "First item description"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "$10"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "TableRow",
+          "cells": [
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Item 2"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Second item description"
+                }
+              ]
+            },
+            {
+              "type": "TableCell",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "$20"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "showGridLines": true,
+      "firstRowAsHeaders": true
+    }
+  ]
+}

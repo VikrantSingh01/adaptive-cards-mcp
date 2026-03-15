@@ -1,0 +1,376 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "New Icon element",
+      "wrap": true,
+      "size": "Large"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xxSmall",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xSmall",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Small",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Standard",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Medium",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Large",
+              "style": "Regular"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xxLarge",
+              "style": "Regular"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xxSmall",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xSmall",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Small",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Standard",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Medium",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Large",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xxLarge",
+              "style": "Filled"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Standard font colors are supported",
+      "wrap": true,
+      "size": "Large"
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xSmall"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Small",
+              "color": "accent"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Standard",
+              "color": "good"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Medium",
+              "color": "warning"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Large",
+              "color": "attention"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "xSmall",
+              "style": "Filled"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Small",
+              "style": "Filled",
+              "color": "accent"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Standard",
+              "style": "Filled",
+              "color": "good"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Medium",
+              "style": "Filled",
+              "color": "warning"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "auto",
+          "items": [
+            {
+              "type": "Icon",
+              "name": "Calendar",
+              "size": "Large",
+              "style": "Filled",
+              "color": "attention"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Clickable icons",
+      "wrap": true,
+      "size": "Large",
+      "separator": true,
+      "spacing": "large"
+    },
+    {
+      "type": "Icon",
+      "name": "Emoji",
+      "selectAction": {
+        "type": "Action.OpenUrl",
+        "url": "https://www.microsoft.com",
+        "title": "Click me!",
+        "tooltip": "Icons can handle actions"
+      }
+    },
+    {
+      "type": "TextBlock",
+      "text": "Icons on buttons",
+      "wrap": true,
+      "size": "Large",
+      "separator": true,
+      "spacing": "large"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Regular icon",
+      "url": "https://www.microsoft.com",
+      "iconUrl": "icon:AccessTime"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Filled icon",
+      "url": "https://www.microsoft.com",
+      "iconUrl": "icon:AccessTime,Filled"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Invalid icon doesn't render",
+      "url": "https://www.microsoft.com",
+      "iconUrl": "icon:Invalid"
+    }
+  ]
+}

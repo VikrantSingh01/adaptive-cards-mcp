@@ -1,0 +1,181 @@
+{
+	"type": "AdaptiveCard",
+	"body": [
+		{
+			"text": "Citations in Adaptive Cards",
+			"type": "TextBlock",
+			"size": "large"
+		},
+		{
+			"text": "First Text block citations [LK1](cite:1) [L2](cite:2) [Label](https://adaptivecards.io)",
+			"type": "TextBlock",
+			"wrap": true
+		},
+		{
+			"text": "Second Text block citation [A2](cite:2) [A3](cite:3)",
+			"type": "TextBlock",
+			"wrap": true
+		},
+		{
+			"type": "RichTextBlock",
+			"inlines": [
+				{
+					"type": "TextRun",
+					"text": "Some Rich text block citations "
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": -1,
+					"text": "Invalid AC-1 "
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": 0,
+					"text": "Invalid AC0 "
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": 3,
+					"text": "AC03"
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": 1,
+					"text": "AC01"
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": 2,
+					"text": "AC02"
+				},
+				{
+					"type": "CitationRun",
+					"referenceIndex": 3,
+					"text": "AC03 Longer Reference of"
+				},
+				"."
+			]
+		}
+	],
+	"version": "1.6",
+	"references": [
+		{
+			"type": "DocumentReference",
+			"title": "Title of the reference 1",
+			"icon": "image",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "DocumentReference",
+			"title": "Title of the reference 2",
+			"icon": "image",
+			"url": "https://adaptivecards.io",
+			"abstract": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+			"keywords": [
+				"keyword 1",
+				"keyword 2",
+				"keyword 3"
+			]
+		},
+		{
+			"type": "AdaptiveCardReference",
+			"title": "Adaptive Cards 3",
+			"icon": "image",
+			"url": "https://adaptivecards.io",
+			"abstract": "Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange. When delivered to a specific app, the JSON is transformed into native UI that automatically adapts to its surroundings",
+			"content": {
+				"type": "AdaptiveCard",
+				"body": [
+					{
+						"type": "TextBlock",
+						"text": "Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange. When delivered to a specific app, the JSON is transformed into native UI that automatically adapts to its surroundings.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange.",
+						"wrap": true
+					},
+					{
+						"type": "Input.Text",
+						"id": "inputInPopover1",
+						"label": "Please enter your name"
+					},
+					{
+						"type": "ActionSet",
+						"actions": [
+							{
+								"type": "Action.Submit",
+								"title": "Submit",
+								"tooltip": "Click me",
+								"mode": "secondary"
+							}
+						]
+					},
+					{
+						"type": "ActionSet",
+						"actions": [
+							{
+								"type": "Action.ShowCard",
+								"title": "ShowCard",
+								"card": {
+									"type": "AdaptiveCard",
+									"body": [
+										{
+											"type": "TextBlock",
+											"text": "This is a show card"
+										}
+									]
+								}
+							},
+							{
+								"type": "Action.OpenUrl",
+								"title": "OpenUrl",
+								"url": "https://adaptivecards.io"
+							}
+						]
+					}
+				],
+				"actions": [
+					{
+						"type": "Action.ShowCard",
+						"title": "ShowCard",
+						"card": {
+							"type": "AdaptiveCard",
+							"body": [
+								{
+									"type": "TextBlock",
+									"text": "This is a show card"
+								}
+							]
+						}
+					},
+					{
+						"type": "Action.OpenUrl",
+						"title": "OpenUrl",
+						"url": "https://adaptivecards.io"
+					},
+					{
+						"type": "Action.OpenUrl",
+						"title": "Open URL",
+						"tooltip": "Click me",
+						"url": "https://adaptivecards.io",
+						"menuActions": [
+							{
+								"type": "Action.OpenUrl",
+								"url": "https://adaptivecards.io",
+								"title": "Hello"
+							}
+						]
+					}
+				]
+			},
+			"keywords": [
+				"Citations",
+				"Adaptive cards",
+				"updated 1 day ago"
+			]
+		}
+	]
+}

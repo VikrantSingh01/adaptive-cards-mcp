@@ -1,0 +1,57 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Action Overflow Menu Test",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card tests primary/secondary action mode and overflow behavior. The first two actions should appear as buttons. The remaining actions should be in an overflow '...' menu.",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Execute",
+      "title": "Approve",
+      "verb": "approve",
+      "style": "positive"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Reject",
+      "verb": "reject",
+      "style": "destructive"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Edit",
+      "verb": "edit",
+      "mode": "Secondary"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Forward",
+      "verb": "forward",
+      "mode": "Secondary"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Archive",
+      "verb": "archive",
+      "mode": "Secondary"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Details",
+      "url": "https://example.com/details",
+      "mode": "Secondary",
+      "tooltip": "Opens the full details page"
+    }
+  ]
+}

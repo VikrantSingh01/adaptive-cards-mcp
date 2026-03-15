@@ -1,0 +1,64 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Advanced Actions Demo",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Test the new Action.Popover, Action.RunCommands, and Action.OpenUrlDialog actions.",
+      "wrap": true
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Popover",
+      "title": "Show Details",
+      "popoverTitle": "More Information",
+      "content": {
+        "type": "Container",
+        "items": [
+          {
+            "type": "TextBlock",
+            "text": "This is a popover modal",
+            "weight": "Bolder"
+          },
+          {
+            "type": "TextBlock",
+            "text": "Popovers display content in a modal sheet or bottom sheet.",
+            "wrap": true
+          }
+        ]
+      },
+      "dismissBehavior": "manual"
+    },
+    {
+      "type": "Action.RunCommands",
+      "title": "Execute Commands",
+      "commands": [
+        {
+          "type": "navigate",
+          "id": "nav1",
+          "data": {
+            "url": "/dashboard"
+          }
+        },
+        {
+          "type": "refresh",
+          "id": "refresh1"
+        }
+      ]
+    },
+    {
+      "type": "Action.OpenUrlDialog",
+      "title": "Open in Browser",
+      "url": "https://adaptivecards.io",
+      "dialogTitle": "Adaptive Cards"
+    }
+  ]
+}

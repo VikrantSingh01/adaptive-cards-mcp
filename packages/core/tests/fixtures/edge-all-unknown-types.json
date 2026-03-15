@@ -1,0 +1,29 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "UnknownElement1",
+      "someProperty": "value1"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Known element between unknown ones"
+    },
+    {
+      "type": "FutureElement",
+      "data": {
+        "nested": "structure"
+      }
+    },
+    {
+      "type": "CustomWidget",
+      "config": ["a", "b", "c"]
+    },
+    {
+      "type": "NotImplementedYet",
+      "flag": true
+    }
+  ]
+}

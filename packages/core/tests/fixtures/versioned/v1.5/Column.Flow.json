@@ -1,0 +1,58 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "style": "good",
+      "bleed": true,
+      "columns": [
+        {
+          "type": "Column",
+          "layouts": [
+            {
+              "type": "Layout.Flow"
+            }
+          ],
+          "width": 2,
+          "items": [
+            {
+              "type": "CompoundButton",
+              "title": "Summarize",
+              "icon": {
+                "name": "TextBulletList"
+              },
+              "description": "Review key points in file",
+              "height": "stretch"
+            },
+            {
+              "type": "CompoundButton",
+              "title": "Summarize",
+              "icon": {
+                "name": "TextBulletList"
+              },
+              "description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+              "height": "stretch"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": 1,
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Column 2"
+            },
+            {
+              "type": "Image",
+              "url": "https://adaptivecards.io/content/cats/1.png",
+              "altText": "Cat"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

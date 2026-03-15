@@ -1,0 +1,126 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "# Markdown Rendering Demo",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card demonstrates all supported markdown features.",
+      "wrap": true,
+      "spacing": "small"
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Text Formatting",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This text contains **bold**, *italic*, and `inline code` formatting.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "You can also combine them: **bold with *italic inside*** or *italic with **bold inside***.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Links",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Visit [Microsoft](https://www.microsoft.com) or check out [Adaptive Cards](https://adaptivecards.io).",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Headers",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "# Header Level 1",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Header Level 2",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "### Header Level 3",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Lists",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "- First bullet item",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "- Second bullet item",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "- Third bullet item with **bold** text",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "1. First numbered item",
+      "wrap": true,
+      "spacing": "small"
+    },
+    {
+      "type": "TextBlock",
+      "text": "2. Second numbered item",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "3. Third numbered item with *italic* text",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Code Blocks",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Inline code example: `const x = 42;` or `let result = calculate();`",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "## Complex Example",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This is a **complex** example with *multiple* `markdown` [features](https://example.com) in one line!",
+      "wrap": true
+    }
+  ]
+}

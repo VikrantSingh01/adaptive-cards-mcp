@@ -1,0 +1,161 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "CompoundButton Examples",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Demonstrates CompoundButton with various styles, icons, and actions",
+      "wrap": true,
+      "isSubtle": true,
+      "spacing": "None"
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_default",
+      "title": "Default Style Button",
+      "description": "Leading icon with default styling",
+      "icon": "checkmark.circle.fill",
+      "iconPosition": "leading",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Select",
+        "data": {
+          "action": "default_selected"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_emphasis",
+      "title": "Emphasis Style Button",
+      "description": "With accent color background",
+      "icon": "star.fill",
+      "style": "emphasis",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Favorite",
+        "data": {
+          "action": "favorite"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_positive",
+      "title": "Approve Request",
+      "description": "Positive action with green styling",
+      "icon": "checkmark.circle",
+      "style": "positive",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Approve",
+        "data": {
+          "action": "approve",
+          "requestId": "12345"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_destructive",
+      "title": "Delete Item",
+      "description": "Destructive action with red styling",
+      "icon": "trash",
+      "style": "destructive",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Delete",
+        "data": {
+          "action": "delete",
+          "itemId": "item_001"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_trailing_icon",
+      "title": "Trailing Icon Button",
+      "description": "Icon positioned on the right side",
+      "icon": "arrow.right.circle",
+      "iconPosition": "trailing",
+      "selectAction": {
+        "type": "Action.OpenUrl",
+        "title": "Navigate",
+        "url": "https://adaptivecards.io"
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_no_icon",
+      "title": "Button Without Icon",
+      "description": "Only title and subtitle, no icon",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Submit",
+        "data": {
+          "action": "submit_form"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_no_subtitle",
+      "title": "Button Without Subtitle",
+      "icon": "info.circle",
+      "selectAction": {
+        "type": "Action.ShowCard",
+        "title": "Show Details",
+        "card": {
+          "type": "AdaptiveCard",
+          "version": "1.5",
+          "body": [
+            {
+              "type": "TextBlock",
+              "text": "Additional details would appear here"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_url_icon",
+      "title": "Button with URL Icon",
+      "description": "Icon loaded from a remote URL",
+      "icon": "https://adaptivecards.io/content/cats/1.png",
+      "selectAction": {
+        "type": "Action.OpenUrl",
+        "title": "Open",
+        "url": "https://adaptivecards.io"
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_long_text",
+      "title": "Button with Very Long Title That Should Truncate Properly with Ellipsis",
+      "description": "And a very long subtitle that also should truncate gracefully when it exceeds the available space in the layout",
+      "icon": "ellipsis.circle",
+      "selectAction": {
+        "type": "Action.Submit",
+        "title": "Continue",
+        "data": {
+          "action": "continue"
+        }
+      }
+    },
+    {
+      "type": "CompoundButton",
+      "id": "btn_disabled",
+      "title": "Button Without Action",
+      "description": "This button has no action and should appear disabled",
+      "icon": "xmark.circle"
+    }
+  ]
+}

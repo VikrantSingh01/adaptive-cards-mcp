@@ -1,0 +1,433 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"weight": "Bolder",
+			"size": "ExtraLarge",
+			"text": "Popover"
+		},
+		{
+			"type": "Input.Text",
+			"id": "outsidePopover1",
+			"isRequired": true,
+			"label": "Outside Popover Input Required"
+		},
+		{
+			"type": "Input.Text",
+			"id": "outsidePopover2",
+			"label": "Outside Popover Input"
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Add Name Popover",
+					"content": {
+						"type": "Container",
+						"items": [
+							{
+								"type": "TextBlock",
+								"text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies ne. pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. \n\nIn enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. ",
+								"wrap": true
+							},
+							{
+								"type": "Input.Text",
+								"id": "inputInPopover1",
+								"label": "Please enter your name"
+							},
+							{
+								"type": "ActionSet",
+								"actions": [
+									{
+										"type": "Action.Submit",
+										"title": "Submit",
+										"tooltip": "Click me",
+										"mode": "secondary"
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Less Content Popover",
+					"content": {
+						"type": "Container",
+						"items": [
+							{
+								"type": "TextBlock",
+								"text": "Less Content"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"style": "emphasis",
+			"items": [
+				{
+					"type": "TextBlock",
+					"text": "This Container is clickable and will show a popover",
+					"wrap": true
+				}
+			],
+			"selectAction": {
+				"type": "Action.Popover",
+				"tooltip": "Click me to show a popover",
+				"content": {
+					"type": "TextBlock",
+					"text": "This is a popover"
+				}
+			}
+		},
+		{
+			"type": "Image",
+			"url": "https://adaptivecards.io/content/adaptive-card-50.png",
+			"selectAction": {
+				"type": "Action.Popover",
+				"tooltip": "Click me to show a popover",
+				"content": {
+					"type": "TextBlock",
+					"text": "This Popover is made with Adaptive Card elements, it supports actions and is fully accessible.",
+					"wrap": true
+				}
+			}
+		},
+		{
+			"type": "Icon",
+			"name": "AccessTime",
+			"size": "Large",
+			"horizontalAlignment": "Center",
+			"selectAction": {
+				"type": "Action.Popover",
+				"tooltip": "Click me to show a popover",
+				"content": {
+					"type": "TextBlock",
+					"text": "This Popover is made with Adaptive Card elements, it supports actions and is fully accessible.",
+					"wrap": true
+				}
+			}
+		},
+		{
+			"type": "CompoundButton",
+			"title": "I have a popover!",
+			"description": "Click me to display a popover",
+			"selectAction": {
+				"type": "Action.Popover",
+				"tooltip": "Click me to show a popover",
+				"content": {
+					"type": "TextBlock",
+					"text": "This is a popover"
+				}
+			}
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Progress Bar",
+					"content": {
+						"type": "Container",
+						"roundedCorners": true,
+						"items": [
+							{
+								"type": "TextBlock",
+								"text": "Progress in Accent",
+								"color": "Accent"
+							},
+							{
+								"type": "ProgressBar",
+								"color": "Accent",
+								"value": 70
+							},
+							{
+								"type": "TextBlock",
+								"text": "Progress in Attention",
+								"color": "Attention"
+							},
+							{
+								"type": "ProgressBar",
+								"color": "Attention",
+								"value": 80
+							},
+							{
+								"type": "TextBlock",
+								"text": "Progress in Good",
+								"color": "Good"
+							},
+							{
+								"type": "ProgressBar",
+								"color": "Good",
+								"value": 30
+							},
+							{
+								"type": "TextBlock",
+								"text": "Progress in Warning",
+								"color": "Warning"
+							},
+							{
+								"type": "ProgressBar",
+								"color": "Warning",
+								"value": 90
+							},
+							{
+								"type": "TextBlock",
+								"text": "No Progress"
+							},
+							{
+								"type": "ProgressBar",
+								"color": "Accent"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Select rating Popover",
+					"content": {
+						"type": "Container",
+						"items": [
+							{
+								"type": "Input.Rating",
+								"id": "rating1",
+								"label": "Pick a rating(Rating Required)",
+								"size": "Medium",
+								"isRequired": true,
+								"errorMessage": "Please pick a rating"
+							},
+							{
+								"type": "ActionSet",
+								"actions": [
+									{
+										"type": "Action.Submit",
+										"title": "Submit",
+										"tooltip": "Click me"
+									},
+									{
+										"type": "Action.Popover",
+										"title": "Popover nested",
+										"content": {
+											"type": "Container",
+											"items": [
+												{
+													"type": "Input.Text",
+													"id": "inputInPopover10",
+													"label": "Please content in nested popover"
+												}
+											]
+										}
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Add Number Popover",
+					"content": {
+						"type": "Container",
+						"items": [
+							{
+								"type": "Input.Text",
+								"id": "inputInPopover2",
+								"label": "Please enter your phone(Input Required)",
+								"isRequired": true
+							},
+							{
+								"type": "ActionSet",
+								"actions": [
+									{
+										"type": "Action.Submit",
+										"title": "Submit",
+										"tooltip": "Click me",
+										"mode": "secondary"
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.Popover",
+					"title": "Menu Actions Popover",
+					"content": {
+						"type": "Container",
+						"items": [
+							{
+								"type": "Input.Text",
+								"id": "inputInPopover4",
+								"label": "Input anything"
+							},
+							{
+								"type": "ActionSet",
+								"actions": [
+									{
+										"type": "Action.Submit",
+										"title": "Submit with Menu Actions",
+										"menuActions": [
+											{
+												"type": "Action.Execute",
+												"title": "Execute"
+											},
+											{
+												"type": "Action.Submit",
+												"title": "Submit"
+											},
+											{
+												"type": "Action.OpenUrl",
+												"title": "https://www.microsoft.com/en-in/",
+												"url": "https://www.microsoft.com/en-in/"
+											},
+											{
+												"type": "Action.ResetInputs",
+												"title": "Reset Inputs"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.ShowCard",
+					"title": "ShowCard",
+					"iconUrl": "icon:Open,Filled",
+					"tooltip": "Tooltip for ShowCard",
+					"card": {
+						"type": "AdaptiveCard",
+						"body": [
+							{
+								"type": "TextBlock",
+								"text": "This is a show card"
+							},
+							{
+								"type": "Input.Text",
+								"id": "defaultInputIdShow",
+								"placeholder": "enter comment",
+								"maxLength": 500
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.ToggleVisibility",
+					"title": "ToggleVisibility",
+					"iconUrl": "icon:ToggleLeft,Filled",
+					"tooltip": "Tooltip for ToggleVisibility",
+					"style": "positive",
+					"targetElements": [
+						"outsidePopover1",
+						"outsidePopover2"
+					]
+				},
+				{
+					"type": "Action.OpenUrl",
+					"title": "OpenUrl",
+					"iconUrl": "icon:Open,Filled",
+					"tooltip": "Tooltip for OpenUrl",
+					"style": "positive",
+					"url": "https://www.microsoft.com"
+				}
+			]
+		},
+		{
+			"type": "ActionSet",
+			"actions": [
+				{
+					"type": "Action.ShowCard",
+					"title": "ShowCard",
+					"iconUrl": "icon:Open,Filled",
+					"card": {
+						"type": "AdaptiveCard",
+						"body": [
+							{
+								"type": "TextBlock",
+								"text": "This is a show card"
+							},
+							{
+								"type": "Input.Text",
+								"id": "defaultInputIdShow2",
+								"placeholder": "enter comment",
+								"maxLength": 500
+							}
+						]
+					},
+					"menuActions": [
+						{
+							"type": "Action.Submit",
+							"title": "Submit",
+							"iconUrl": "icon:Send,Filled"
+						},
+						{
+							"type": "Action.OpenUrl",
+							"title": "OpenUrl",
+							"iconUrl": "icon:Open,Filled",
+							"tooltip": "Tooltip for OpenUrl",
+							"style": "positive",
+							"url": "https://www.microsoft.com"
+						},
+						{
+							"type": "Action.ToggleVisibility",
+							"title": "ToggleVisibility",
+							"iconUrl": "icon:ToggleLeft,Filled",
+							"tooltip": "Tooltip for ToggleVisibility",
+							"style": "positive",
+							"targetElements": [
+								"outsidePopover1",
+								"outsidePopover2"
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Submit"
+		}
+	]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Team Members",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "$data": "${teamMembers}",
+      "type": "Container",
+      "separator": true,
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${name}",
+                  "weight": "bolder"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${role}",
+                  "isSubtle": true,
+                  "wrap": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "#${$index}",
+                  "isSubtle": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Total: ${count(teamMembers)} members",
+      "spacing": "medium",
+      "isSubtle": true
+    }
+  ]
+}

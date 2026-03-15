@@ -1,0 +1,184 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Badge",
+			"text": "Medium no icon",
+			"horizontalAlignment": "Left"
+		},
+		{
+			"type": "Badge",
+			"icon": "Calendar",
+			"horizontalAlignment": "Center"
+		},
+		{
+			"type": "Badge",
+			"horizontalAlignment": "Right"
+		},
+		{
+			"type": "Container",
+			"layouts": [
+				{
+					"type": "Layout.Flow",
+					"horizontalItemsAlignment": "Center",
+					"verticalItemsAlignment": "Center"
+				}
+			],
+			"items": [
+				{
+					"type": "Badge",
+					"text": "Medium with icon",
+					"icon": "Calendar",
+					"horizontalAlignment": "Center"
+				},
+				{
+					"type": "Badge",
+					"text": "Medium with icon on the right",
+					"icon": "Calendar",
+					"horizontalAlignment": "Right"
+				},
+				{
+					"type": "Badge",
+					"text": "Large with rounded corners and icon",
+					"icon": "Calendar",
+					"shape": "Rounded",
+					"style": "Attention",
+					"size": "large",
+					"horizontalAlignment": "Center"
+				},
+				{
+					"type": "Badge",
+					"icon": "Calendar",
+					"style": "Warning",
+					"size": "large"
+				},
+				{
+					"type": "Badge",
+					"text": "Large with square corners and icon",
+					"icon": "Calendar",
+					"shape": "Square",
+					"style": "Accent",
+					"size": "large"
+				},
+				{
+					"type": "Badge",
+					"text": "ExtraLarge with icon",
+					"icon": "Calendar",
+					"size": "extraLarge",
+					"style": "Accent",
+					"appearance": "Tint"
+				},
+				{
+					"type": "Badge",
+					"text": "ExtraLarge with rounded corners and icon on the right",
+					"shape": "Rounded",
+					"icon": "Calendar",
+					"iconPosition": "After",
+					"size": "extraLarge",
+					"style": "Good"
+				},
+				{
+					"type": "Badge",
+					"text": "Default Filled",
+					"icon": "Tag"
+				},
+				{
+					"type": "Badge",
+					"text": "Default Tint",
+					"icon": "Tag",
+					"appearance": "Tint"
+				},
+				{
+					"type": "Badge",
+					"text": "Subtle Filled",
+					"icon": "Info",
+					"style": "Subtle"
+				},
+				{
+					"type": "Badge",
+					"text": "Subtle Tint",
+					"icon": "Info",
+					"appearance": "Tint",
+					"style": "Subtle"
+				},
+				{
+					"type": "Badge",
+					"text": "Informative Filled",
+					"icon": "ImageCircle",
+					"style": "Informative"
+				},
+				{
+					"type": "Badge",
+					"text": "Informative Tint",
+					"icon": "ImageCircle",
+					"appearance": "Tint",
+					"style": "Informative"
+				},
+				{
+					"type": "Badge",
+					"text": "Accent Filled",
+					"icon": "Tag",
+					"style": "Accent"
+				},
+				{
+					"type": "Badge",
+					"text": "Accent Tint",
+					"icon": "Tag",
+					"appearance": "Tint",
+					"style": "Accent"
+				},
+				{
+					"type": "Badge",
+					"text": "Good Filled",
+					"icon": "CheckmarkCircle",
+					"style": "Good"
+				},
+				{
+					"type": "Badge",
+					"text": "Good Tint",
+					"icon": "CheckmarkCircle",
+					"appearance": "Tint",
+					"style": "Good"
+				},
+				{
+					"type": "Badge",
+					"text": "Attention Filled",
+					"icon": "ErrorCircle",
+					"style": "Attention"
+				},
+				{
+					"type": "Badge",
+					"text": "Attention Tint",
+					"icon": "ErrorCircle",
+					"appearance": "Tint",
+					"style": "Attention"
+				},
+				{
+					"type": "Badge",
+					"text": "Warning Filled",
+					"icon": "Important",
+					"style": "Warning"
+				},
+				{
+					"type": "Badge",
+					"text": "Warning Tint",
+					"icon": "Important",
+					"appearance": "Tint",
+					"style": "Warning"
+				},
+				{
+					"type": "Badge",
+					"text": "With tooltip",
+					"tooltip": "This is a tooltip"
+				},
+				{
+					"type": "Badge",
+					"icon": "TooltipQuote",
+					"tooltip": "This is another tooltip"
+				}
+			]
+		}
+	]
+}

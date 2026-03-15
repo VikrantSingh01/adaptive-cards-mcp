@@ -1,0 +1,135 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"layouts": [
+		{
+			"type": "Layout.Flow",
+			"itemWidth": "150px"
+		}
+	],
+	"body": [
+		{
+			"type": "Input.Text",
+			"placeholder": "Placeholder text",
+			"label": "Required text input",
+			"isRequired": true,
+			"id": "text"
+		},
+		{
+			"type": "Input.Date",
+			"label": "Required date input",
+			"id": "date"
+		},
+		{
+			"type": "Input.Toggle",
+			"id": "acceptTerms",
+			"title": "I accept the terms and agreements",
+			"valueOn": "true",
+			"valueOff": "false",
+			"label": "Please check the box below to accept the terms and agreements:",
+			"isRequired": true,
+			"errorMessage": "You must accept the terms to continue."
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myColor",
+			"style": "compact",
+			"label": "What color do you want? (isMultiSelect:false, style:compact)",
+			"isMultiSelect": false,
+			"isRequired": true,
+			"choices": [
+				{
+					"title": "Red",
+					"value": "1"
+				},
+				{
+					"title": "Green",
+					"value": "2"
+				},
+				{
+					"title": "Blue",
+					"value": "3"
+				}
+			]
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myColor2",
+			"style": "expanded",
+			"label": "What color do you want? (isMultiSelect:false, style:expanded)",
+			"isMultiSelect": false,
+			"isRequired": true,
+			"choices": [
+				{
+					"title": "Red",
+					"value": "1"
+				},
+				{
+					"title": "Green",
+					"value": "2"
+				},
+				{
+					"title": "Blue",
+					"value": "3"
+				}
+			]
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myColor3",
+			"isMultiSelect": true,
+			"isRequired": true,
+			"style": "compact",
+			"label": "What colors do you want? (isMultiSelect:true, style:compact)",
+			"choices": [
+				{
+					"title": "Red",
+					"value": "1"
+				},
+				{
+					"title": "Green",
+					"value": "2"
+				},
+				{
+					"title": "Blue",
+					"value": "3"
+				}
+			]
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myColor4",
+			"isMultiSelect": true,
+			"isRequired": true,
+			"style": "expanded",
+			"label": "What colors do you want? (isMultiSelect:true, style:expanded)",
+			"choices": [
+				{
+					"title": "Red",
+					"value": "1"
+				},
+				{
+					"title": "Green",
+					"value": "2"
+				},
+				{
+					"title": "Blue",
+					"value": "3"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Action.Submit",
+			"conditionallyEnabled": true
+		},
+		{
+			"type": "Action.Submit",
+			"title": "Permanently disabled button",
+			"isEnabled": false
+		}
+	]
+}

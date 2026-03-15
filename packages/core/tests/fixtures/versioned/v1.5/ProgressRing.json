@@ -1,0 +1,138 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Horizontal alignment",
+      "size": "large"
+    },
+    {
+      "type": "Container",
+      "showBorder": true,
+      "roundedCorners": true,
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "ProgressRing",
+          "label": "Left",
+          "horizontalAlignment": "Left"
+        },
+        {
+          "type": "ProgressRing",
+          "label": "Center",
+          "horizontalAlignment": "Center"
+        },
+        {
+          "type": "ProgressRing",
+          "label": "Right",
+          "horizontalAlignment": "Right"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Different size rings",
+      "size": "large"
+    },
+    {
+      "type": "Container",
+      "showBorder": true,
+      "roundedCorners": true,
+      "style": "emphasis",
+      "layouts": [
+        {
+          "type": "Layout.Flow",
+          "columnSpacing": "ExtraLarge"
+        }
+      ],
+      "items": [
+        {
+          "type": "ProgressRing",
+          "size": "tiny",
+          "label": "Tiny"
+        },
+        {
+          "type": "ProgressRing",
+          "size": "small",
+          "label": "Small"
+        },
+        {
+          "type": "ProgressRing",
+          "label": "Medium"
+        },
+        {
+          "type": "ProgressRing",
+          "size": "Large",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Label position",
+      "size": "large",
+      "spacing": "ExtraLarge"
+    },
+    {
+      "type": "ColumnSet",
+      "showBorder": true,
+      "roundedCorners": true,
+      "style": "emphasis",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "ProgressRing",
+              "label": "Above (default)",
+              "horizontalAlignment": "Center"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "ProgressRing",
+              "labelPosition": "Below",
+              "label": "Below",
+              "horizontalAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "showBorder": true,
+      "roundedCorners": true,
+      "style": "emphasis",
+      "columns": [
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "ProgressRing",
+              "label": "Before",
+              "labelPosition": "Before",
+              "horizontalAlignment": "Center"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "items": [
+            {
+              "type": "ProgressRing",
+              "labelPosition": "After",
+              "label": "After",
+              "horizontalAlignment": "Center"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

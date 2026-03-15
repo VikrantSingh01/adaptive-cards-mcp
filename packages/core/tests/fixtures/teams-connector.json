@@ -1,0 +1,113 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "Image",
+      "url": "https://adaptivecards.io/content/cats/1.png",
+      "size": "Large",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Microsoft Teams Connector Card",
+      "size": "ExtraLarge",
+      "weight": "Bolder",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This is a comprehensive Teams connector card showcasing various elements",
+      "wrap": true,
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Status:",
+          "value": "Active"
+        },
+        {
+          "title": "Priority:",
+          "value": "High"
+        },
+        {
+          "title": "Assigned to:",
+          "value": "John Doe"
+        },
+        {
+          "title": "Due date:",
+          "value": "2026-12-31"
+        },
+        {
+          "title": "Environment:",
+          "value": "Production"
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Project Details",
+          "weight": "Bolder",
+          "size": "Medium"
+        },
+        {
+          "type": "TextBlock",
+          "text": "This project includes integration with Microsoft Teams mobile platform for rich adaptive card rendering.",
+          "wrap": true
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Approve",
+      "data": {
+        "action": "approve"
+      }
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Reject",
+      "data": {
+        "action": "reject"
+      }
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "View Details",
+      "url": "https://adaptivecards.io"
+    },
+    {
+      "type": "Action.ShowCard",
+      "title": "Add Comment",
+      "card": {
+        "type": "AdaptiveCard",
+        "body": [
+          {
+            "type": "Input.Text",
+            "id": "comment",
+            "placeholder": "Enter your comment",
+            "isMultiline": true
+          }
+        ],
+        "actions": [
+          {
+            "type": "Action.Submit",
+            "title": "Submit",
+            "data": {
+              "action": "comment"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

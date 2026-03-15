@@ -1,0 +1,76 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "CompoundButton",
+			"title": "Summarize",
+			"icon": {
+				"name": "List",
+				"style": "Regular"
+			},
+			"description": "Create a work item and assign it to your or a team member",
+			"badge": "New",
+			"selectAction": {
+				"type": "Action.OpenUrl",
+				"url": "https://www.microsoft.com",
+				"title": "Click me!",
+				"tooltip": "compound button can handle actions"
+			}
+		},
+		{
+			"type": "CompoundButton",
+			"title": "View active work items",
+			"description": "See active tasks assigned to you or team members",
+			"badge": "New",
+			"selectAction": {
+				"type": "Action.OpenUrl",
+				"url": "https://www.microsoft.com",
+				"title": "Click me!",
+				"tooltip": "compound button can handle actions"
+			}
+		},
+		{
+			"type": "CompoundButton",
+			"title": "Give feedback",
+			"icon": {
+				"name": "Calendar",
+				"style": "Regular"
+			},
+			"description": "To give us feedback on Azure DevOps",
+			"selectAction": {
+				"type": "Action.OpenUrl",
+				"url": "https://www.microsoft.com",
+				"title": "Click me!",
+				"tooltip": "compound button can handle actions"
+			}
+		},
+		{
+			"type": "CompoundButton",
+			"title": "Summarize",
+			"description": "Create a work item and assign it to your or a team member",
+			"selectAction": {
+				"type": "Action.OpenUrl",
+				"url": "https://www.microsoft.com",
+				"title": "Click me!",
+				"tooltip": "compound button can handle actions"
+			}
+		},
+		{
+			"type": "CompoundButton",
+			"title": "Pending Tasks",
+			"icon": {
+				"name": "Emoji",
+				"style": "Regular"
+			},
+			"badge": "Priority",
+			"selectAction": {
+				"type": "Action.OpenUrl",
+				"url": "https://www.microsoft.com",
+				"title": "Click me!",
+				"tooltip": "compound button can handle actions"
+			}
+		}
+	]
+}

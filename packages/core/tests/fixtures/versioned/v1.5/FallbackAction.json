@@ -1,0 +1,20 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.0",
+  "actions": [
+	{
+	  "type": "Action.OpenUrl",
+	  "title": "This action should not show",
+	  "url": "https://adaptivecards.io",
+	  "requires": {
+		"abc": "*"
+	  },
+	  "fallback": {
+		"type": "Action.OpenUrl",
+		"title": "Fallback is working",
+		"url": "https://google.com"
+	  }
+	}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Teams Task Module Demo",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card demonstrates Teams-specific integrations including task modules, deep linking, and theme support.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Deep Link Example",
+      "weight": "Bolder",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "msteams://l/chat/0/0?users=user@example.com",
+      "wrap": true,
+      "color": "Accent"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open Task Module",
+      "url": "https://teams.microsoft.com/l/task/example"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open in Stage View",
+      "url": "https://teams.microsoft.com/l/stage/example"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit to Bot",
+      "data": {
+        "action": "submit",
+        "taskModule": true
+      }
+    }
+  ]
+}

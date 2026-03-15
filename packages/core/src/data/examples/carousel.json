@@ -1,0 +1,81 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Photo Carousel",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "Carousel",
+      "id": "photoCarousel",
+      "timer": 5000,
+      "initialPage": 0,
+      "pages": [
+        {
+          "items": [
+            {
+              "type": "Image",
+              "url": "https://picsum.photos/400/300?random=1",
+              "size": "Stretch"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Beautiful Sunset",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "A stunning view of the sunset over the ocean.",
+              "wrap": true
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "type": "Image",
+              "url": "https://picsum.photos/400/300?random=2",
+              "size": "Stretch"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Mountain Peak",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Majestic mountain peaks covered in snow.",
+              "wrap": true
+            }
+          ]
+        },
+        {
+          "items": [
+            {
+              "type": "Image",
+              "url": "https://picsum.photos/400/300?random=3",
+              "size": "Stretch"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Forest Path",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "A serene path through the forest.",
+              "wrap": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

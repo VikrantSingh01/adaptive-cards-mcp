@@ -1,0 +1,75 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Card with Maximum Actions",
+      "weight": "Bolder",
+      "size": "Large"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 1",
+      "data": {"action": 1}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 1",
+      "url": "https://example.com/1"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 2",
+      "data": {"action": 2}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 2",
+      "url": "https://example.com/2"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 3",
+      "data": {"action": 3}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 3",
+      "url": "https://example.com/3"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 4",
+      "data": {"action": 4}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 4",
+      "url": "https://example.com/4"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 5",
+      "data": {"action": 5}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 5",
+      "url": "https://example.com/5"
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit Action 6",
+      "data": {"action": 6}
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "Open URL 6",
+      "url": "https://example.com/6"
+    }
+  ]
+}

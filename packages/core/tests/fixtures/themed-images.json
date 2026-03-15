@@ -1,0 +1,69 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Themed Images Demo",
+      "weight": "Bolder",
+      "size": "Large",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Images that automatically adapt to light, dark, and high-contrast themes",
+      "wrap": true,
+      "spacing": "Medium"
+    },
+    {
+      "type": "Image",
+      "url": "https://adaptivecards.io/content/cats/1.png",
+      "themedUrls": {
+        "light": "https://adaptivecards.io/content/cats/1.png",
+        "dark": "https://adaptivecards.io/content/cats/2.png",
+        "highContrast": "https://adaptivecards.io/content/cats/3.png"
+      },
+      "altText": "Theme-aware cat image",
+      "size": "Medium",
+      "spacing": "Medium"
+    },
+    {
+      "type": "TextBlock",
+      "text": "The image above changes based on your current theme setting.",
+      "isSubtle": true,
+      "wrap": true,
+      "spacing": "Small"
+    },
+    {
+      "type": "Container",
+      "style": "emphasis",
+      "spacing": "Medium",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "Logo Example",
+          "weight": "Bolder"
+        },
+        {
+          "type": "Image",
+          "url": "https://adaptivecards.io/content/logo-light.png",
+          "themedUrls": {
+            "light": "https://adaptivecards.io/content/logo-light.png",
+            "dark": "https://adaptivecards.io/content/logo-dark.png"
+          },
+          "altText": "Adaptive Cards logo",
+          "size": "Small",
+          "horizontalAlignment": "Center"
+        }
+      ]
+    },
+    {
+      "type": "TextBlock",
+      "text": "Switch between light and dark mode to see the effect",
+      "horizontalAlignment": "Center",
+      "isSubtle": true,
+      "spacing": "Medium"
+    }
+  ]
+}

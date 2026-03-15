@@ -1,0 +1,13 @@
+{
+  "name": "Adaptive Cards",
+  "description": "A cross-platform card rendering framework for mobile applications",
+  "price": 29.99,
+  "tax": 4.50,
+  "average": 87.6,
+  "createdDate": "2024-06-15T10:30:00Z",
+  "isActive": true,
+  "score": 92,
+  "age": 25,
+  "hasLicense": true,
+  "items": ["Alpha", "Beta", "Gamma", "Delta"]
+}

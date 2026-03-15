@@ -1,0 +1,25 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Clickable icons",
+      "wrap": true,
+      "size": "Large",
+      "separator": true,
+      "spacing": "large"
+    },
+    {
+      "type": "Icon",
+      "name": "Emoji",
+      "selectAction": {
+        "type": "Action.OpenUrl",
+        "url": "https://www.microsoft.com",
+        "title": "Click me!",
+        "tooltip": "Icons can handle actions"
+      }
+    }
+  ]
+}

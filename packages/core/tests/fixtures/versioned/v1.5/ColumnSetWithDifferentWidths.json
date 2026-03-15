@@ -1,0 +1,96 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "ColumnSet",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "200px",
+					"layouts": [
+						{
+							"type": "Layout.Flow"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"badge": "New",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file",
+							"height": "stretch"
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+							"height": "stretch"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"width": "2",
+					"layouts": [
+						{
+							"type": "Layout.Flow"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file",
+							"height": "stretch"
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+							"height": "stretch"
+						}
+					]
+				},
+				{
+					"type": "Column",
+					"layouts": [
+						{
+							"type": "Layout.Flow"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"description": "Review key points in file",
+							"height": "stretch",
+							"icon": {
+								"name": "TextBulletList"
+							}
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+							"height": "stretch"
+						}
+					]
+				}
+			]
+		}
+	]
+}

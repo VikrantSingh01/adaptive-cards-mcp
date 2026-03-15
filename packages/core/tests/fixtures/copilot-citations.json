@@ -1,0 +1,44 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Copilot Citations Demo",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "The Eiffel Tower is a famous landmark in Paris [1]. It was built in 1889 [2] and receives millions of visitors annually [3].",
+      "wrap": true
+    },
+    {
+      "type": "Container",
+      "id": "citations",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "References:",
+          "weight": "Bolder"
+        },
+        {
+          "type": "TextBlock",
+          "text": "[1] Wikipedia - Eiffel Tower",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "[2] History.com - Eiffel Tower Construction",
+          "wrap": true
+        },
+        {
+          "type": "TextBlock",
+          "text": "[3] Paris Tourism Board - Annual Statistics",
+          "wrap": true
+        }
+      ]
+    }
+  ]
+}

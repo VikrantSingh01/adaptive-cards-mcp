@@ -1,0 +1,32 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Default Style",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Heading Style",
+      "wrap": true,
+      "style": "Heading"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Column Header Style",
+      "wrap": true,
+      "style": "ColumnHeader"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Heading style should override explicit size/weight",
+      "wrap": true,
+      "style": "Heading",
+      "size": "Small",
+      "weight": "Lighter"
+    }
+  ]
+}

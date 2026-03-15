@@ -1,0 +1,64 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Container",
+			"layouts": [
+				{
+					"type": "Layout.AreaGrid",
+					"columnSpacing": "Small",
+					"columns": [
+						"auto",
+						"auto",
+						"auto"
+					],
+					"areas": [
+						{
+							"name": "image1"
+						},
+						{
+							"name": "image2",
+							"column": 2
+						},
+						{
+							"name": "text",
+							"column": 3
+						}
+					]
+				}
+			],
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://picsum.photos/id/16/400/300",
+					"grid.area": "image1"
+				},{
+					"type": "Image",
+					"url": "https://picsum.photos/id/16/400/300",
+					"grid.area": "image2"
+				},
+				{
+					"type": "Container",
+					"grid.area": "text",
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "This is a beautiful landscape",
+							"wrap": true,
+							"size": "ExtraLarge",
+							"weight": "Bolder"
+						},
+						{
+							"type": "TextBlock",
+							"text": "You can see mountains, a lake, trees in the foreground. The sun is shining, there's some mist in the background.",
+							"wrap": true
+						}
+					]
+				}
+			]
+		}
+	]
+}
+

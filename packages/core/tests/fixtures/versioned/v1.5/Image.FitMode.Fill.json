@@ -1,0 +1,183 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fill Mode Card"
+				}
+			]
+		},
+
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "auto",
+					"width": "auto",
+					"fitMode": "fill"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Auto"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "stretch",
+					"width": "stretch"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Stretch"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "100px",
+					"width": "300px",
+					"fitMode": "fill"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Landscape - 100px * 300px"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "400px",
+					"width": "200px",
+					"fitMode": "fill"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Portrait - 400px * 200px"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "300px",
+					"width": "300px"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Square - 300px * 300px"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "auto",
+					"width": "auto"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Auto"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "stretch",
+					"width": "stretch"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Stretch"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "200px",
+					"width": "300px"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Landscape - 200px * 300px"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "400px",
+					"width": "200px"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Portrait - 400px * 200px"
+				}
+			]
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "300px",
+					"width": "300px"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Fit Square - 300px * 300px"
+				}
+			]
+		}
+
+	]
+}

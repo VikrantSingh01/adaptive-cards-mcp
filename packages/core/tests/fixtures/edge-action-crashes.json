@@ -1,0 +1,124 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Action Crash Resilience Test Card",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "This card contains all known crash-risk action patterns. No action should crash the app.",
+      "wrap": true,
+      "id": "toggleTarget",
+      "isVisible": true
+    },
+    {
+      "type": "Input.Text",
+      "id": "testInput",
+      "placeholder": "Test input for submit"
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.OpenUrl",
+      "title": "OpenUrl - Empty URL",
+      "url": ""
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "OpenUrl - Blocked Scheme",
+      "url": "javascript:alert(1)"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "OpenUrl - Invalid URL",
+      "url": "not a valid url"
+    },
+    {
+      "type": "Action.OpenUrl",
+      "title": "OpenUrl - Valid HTTPS",
+      "url": "https://adaptivecards.io"
+    },
+    {
+      "type": "Action.ToggleVisibility",
+      "title": "Toggle - Empty Targets",
+      "targetElements": []
+    },
+    {
+      "type": "Action.ToggleVisibility",
+      "title": "Toggle - Valid Target",
+      "targetElements": ["toggleTarget"]
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit - Null Data",
+      "data": null
+    },
+    {
+      "type": "Action.Submit",
+      "title": "Submit - With Data",
+      "data": { "key": "value" }
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Execute - No Verb"
+    },
+    {
+      "type": "Action.Execute",
+      "title": "Execute - With Verb",
+      "verb": "doSomething",
+      "data": { "action": "test" }
+    },
+    {
+      "type": "Action.ShowCard",
+      "title": "ShowCard - Nested 3 Levels",
+      "card": {
+        "type": "AdaptiveCard",
+        "version": "1.6",
+        "body": [
+          { "type": "TextBlock", "text": "Level 1" }
+        ],
+        "actions": [
+          {
+            "type": "Action.ShowCard",
+            "title": "ShowCard Level 2",
+            "card": {
+              "type": "AdaptiveCard",
+              "version": "1.6",
+              "body": [
+                { "type": "TextBlock", "text": "Level 2" }
+              ],
+              "actions": [
+                {
+                  "type": "Action.ShowCard",
+                  "title": "ShowCard Level 3",
+                  "card": {
+                    "type": "AdaptiveCard",
+                    "version": "1.6",
+                    "body": [
+                      { "type": "TextBlock", "text": "Level 3 - deepest" }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Action.RunCommands",
+      "title": "RunCommands - Empty",
+      "commands": []
+    },
+    {
+      "type": "Action.OpenUrlDialog",
+      "title": "OpenUrlDialog - Empty URL",
+      "url": "",
+      "dialogTitle": "Test Dialog"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+	"type":"AdaptiveCard",
+	"$schema":"http://adaptivecards.io/schemas/adaptive-card.json",
+	"version":"1.6",
+	"requires":{
+		"responsiveLayout":"1.0"
+	},
+	"fallback":{
+		"type":"TextBlock",
+		"text":"Should not render root fallback"
+	},
+	"body":[
+		{
+			"type":"Container",
+			"items":[
+				{
+					"type":"TextBlock",
+					"text":"Header 1 should render",
+					"weight":"bolder",
+					"size":"medium"
+				},
+				{
+					"type":"ColumnSet",
+					"fallback":{
+						"type":"TextBlock",
+						"text":"Should render body fallback"
+					},
+					"columns":[
+						{
+							"type":"Column",
+							"width":"auto",
+							"items":[
+								{
+									"type":"TextBlock",
+									"text":"Should not render",
+									"wrap":true
+								},
+								{
+									"type":"TextBlock",
+									"text":"Should not render",
+									"wrap":true
+								},
+								{
+									"type":"TextBlock",
+									"text":"Should not render",
+									"wrap":true
+								},
+								{
+									"type":"Container",
+									"items":[
+										{
+											"type":"TextBlock",
+											"text":"header 2 Should not render",
+											"weight":"bolder",
+											"size":"medium"
+										},
+										{
+											"type":"ColumnSet",
+											"columns":[
+												{
+													"type":"Column",
+													"width":"auto",
+													"items":[
+														{
+															"type":"TextBlock",
+															"text":"Should not render",
+															"wrap":true,
+															"requires":{
+																"abc":"*"
+															}
+														}
+													]
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"msTeams":{
+		"width":"full"
+	}
+}

@@ -1,0 +1,28 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Invalid Sample 3",
+      "wrap": true,
+      "weight": "bolder"
+    },
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "${rs:hello} ${rs:world}",
+          "wrap": true
+        }
+      ],
+      "style": "accent",
+      "showBorder": true,
+      "roundedCorners": true
+    }
+  ],
+  "resources": {
+  }
+}

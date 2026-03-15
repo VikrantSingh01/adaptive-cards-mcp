@@ -1,0 +1,85 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "ColumnSet",
+			"height": "stretch",
+			"columns": [
+				{
+					"type": "Column",
+					"width": "stretch",
+					"layouts": [
+						{
+							"type": "Layout.Flow",
+							"itemWidth": "150px"
+						}
+					],
+					"items": [
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"badge": "New",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Summarize",
+							"icon": {
+								"name": "TextBulletList"
+							},
+							"description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Insights",
+							"badge": "Priority",
+							"description": "Who's reviewed my latest document?",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Insights",
+							"description": "Tell me about John Doe",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Get key info",
+							"description": "List key points from my latest document",
+							"selectAction": {
+								"type": "Action.OpenUrl",
+								"tooltip": "Go to www.microsoft.com",
+								"url": "https://www.microsoft.com"
+							},
+							"height": "stretch",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Catch up on meeting",
+							"badge": "New",
+							"icon": {
+								"name": "Calendar"
+							},
+							"description": "Recap my latest meeting summarizing key takeaways and action items as separate sections including who's responsible for each",
+							"separator": true
+						},
+						{
+							"type": "CompoundButton",
+							"title": "Insights",
+							"description": "Tell me about John Doe",
+							"separator": true
+						}
+					]
+				}
+			]
+		}
+	]
+}

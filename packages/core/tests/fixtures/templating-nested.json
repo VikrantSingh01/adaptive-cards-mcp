@@ -1,0 +1,140 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Order #${orderId}",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Customer: ${customer.name}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Email: ${customer.email}",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Items Ordered",
+      "weight": "bolder",
+      "spacing": "medium"
+    },
+    {
+      "$data": "${items}",
+      "type": "Container",
+      "separator": true,
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "${product.name}",
+                  "weight": "bolder"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "${product.description}",
+                  "isSubtle": true,
+                  "wrap": true
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Qty: ${quantity}"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "$${mul(product.price, quantity)}",
+                  "weight": "bolder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Container",
+      "spacing": "medium",
+      "separator": true,
+      "items": [
+        {
+          "type": "ColumnSet",
+          "columns": [
+            {
+              "type": "Column",
+              "width": "stretch",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "Subtotal",
+                  "horizontalAlignment": "right"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "Tax",
+                  "horizontalAlignment": "right"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "Total",
+                  "weight": "bolder",
+                  "horizontalAlignment": "right"
+                }
+              ]
+            },
+            {
+              "type": "Column",
+              "width": "auto",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "$${subtotal}"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "$${tax}"
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "$${add(subtotal, tax)}",
+                  "weight": "bolder"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "$when": "${$root.customer.isPremium}",
+      "type": "TextBlock",
+      "text": "⭐ Premium customer discount applied",
+      "color": "good",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "Shipping to: ${$root.customer.address.street}, ${$root.customer.address.city}",
+      "spacing": "medium",
+      "wrap": true,
+      "isSubtle": true
+    }
+  ]
+}

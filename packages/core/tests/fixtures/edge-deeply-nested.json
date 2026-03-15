@@ -1,0 +1,41 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "Container",
+      "items": [
+        {
+          "type": "Container",
+          "items": [
+            {
+              "type": "Container",
+              "items": [
+                {
+                  "type": "Container",
+                  "items": [
+                    {
+                      "type": "Container",
+                      "items": [
+                        {
+                          "type": "Container",
+                          "items": [
+                            {
+                              "type": "TextBlock",
+                              "text": "This is at 6 levels of nesting"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

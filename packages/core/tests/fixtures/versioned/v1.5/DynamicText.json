@@ -1,0 +1,21 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Dynamic Expressions on TextBlock",
+			"style": "heading",
+			"wrap": true
+		},
+		{
+			"type": "TextBlock",
+			"text": "Text is static",
+			"style": "body",
+			"text.dynamic": "if(defaultHandler(), \"Text updated: Text is dynamic\", \"Text updated: Text is dynamic\")",
+			"wrap": true
+		}
+		
+	]
+}

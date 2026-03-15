@@ -1,0 +1,229 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Project Dashboard",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "TabSet",
+      "id": "projectTabs",
+      "selectedTabId": "overview",
+      "tabs": [
+        {
+          "id": "overview",
+          "title": "Overview",
+          "icon": "house.fill",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Project Overview",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Welcome to the Adaptive Cards Mobile SDK project!",
+              "wrap": true
+            },
+            {
+              "type": "FactSet",
+              "facts": [
+                {
+                  "title": "Status:",
+                  "value": "Active"
+                },
+                {
+                  "title": "Team Size:",
+                  "value": "8 members"
+                },
+                {
+                  "title": "Start Date:",
+                  "value": "Jan 15, 2024"
+                },
+                {
+                  "title": "Completion:",
+                  "value": "75%"
+                }
+              ]
+            },
+            {
+              "type": "ProgressBar",
+              "label": "Overall Progress",
+              "value": 0.75,
+              "color": "#0078D4"
+            }
+          ]
+        },
+        {
+          "id": "tasks",
+          "title": "Tasks",
+          "icon": "checklist",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Active Tasks",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "Container",
+              "style": "Emphasis",
+              "items": [
+                {
+                  "type": "TextBlock",
+                  "text": "✅ Implement Carousel element",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "✅ Implement Accordion element",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "🔄 Add CodeBlock syntax highlighting",
+                  "wrap": true
+                },
+                {
+                  "type": "TextBlock",
+                  "text": "⏳ Write comprehensive tests",
+                  "wrap": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "team",
+          "title": "Team",
+          "icon": "person.3.fill",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Team Members",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://picsum.photos/50/50?random=10",
+                      "style": "Person",
+                      "size": "Small"
+                    }
+                  ]
+                },
+                {
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Alice Johnson",
+                      "weight": "Bolder"
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "Tech Lead",
+                      "size": "Small",
+                      "color": "Accent"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "ColumnSet",
+              "columns": [
+                {
+                  "width": "auto",
+                  "items": [
+                    {
+                      "type": "Image",
+                      "url": "https://picsum.photos/50/50?random=11",
+                      "style": "Person",
+                      "size": "Small"
+                    }
+                  ]
+                },
+                {
+                  "width": "stretch",
+                  "items": [
+                    {
+                      "type": "TextBlock",
+                      "text": "Bob Smith",
+                      "weight": "Bolder"
+                    },
+                    {
+                      "type": "TextBlock",
+                      "text": "iOS Developer",
+                      "size": "Small",
+                      "color": "Accent"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "analytics",
+          "title": "Analytics",
+          "icon": "chart.bar.fill",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Project Metrics",
+              "weight": "Bolder",
+              "size": "Medium"
+            },
+            {
+              "type": "TextBlock",
+              "text": "Code Coverage",
+              "weight": "Bolder"
+            },
+            {
+              "type": "ProgressBar",
+              "label": "Unit Tests",
+              "value": 0.85,
+              "color": "green"
+            },
+            {
+              "type": "ProgressBar",
+              "label": "Integration Tests",
+              "value": 0.72,
+              "color": "blue"
+            },
+            {
+              "type": "TextBlock",
+              "text": "User Satisfaction",
+              "weight": "Bolder"
+            },
+            {
+              "type": "Rating",
+              "value": 4.7,
+              "count": 234,
+              "max": 5,
+              "size": "Large"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "Save Changes"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+	"$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+	"type": "AdaptiveCard",
+	"version": "1.6",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Default text input"
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myCountry",
+			"style": "compact",
+			"label": "Country",
+			"isMultiSelect": false,
+			"value": "1",
+			"choices": [
+				{
+					"title": "India",
+					"value": "1"
+				},
+				{
+					"title": "USA",
+					"value": "2"
+				},
+				{
+					"title": "UK",
+					"value": "3"
+				}
+			],
+			"valueChangedAction": {
+				"type": "Action.ResetInputs",
+				"targetInputIds": [
+					"defaultInputId",
+					"myZone"
+				]
+			}
+		},
+		{
+			"type": "Input.ChoiceSet",
+			"id": "myZone",
+			"style": "compact",
+			"label": "Zone",
+			"isMultiSelect": false,
+			"value": "1",
+			"choices": [
+				{
+					"title": "East",
+					"value": "1"
+				},
+				{
+					"title": "West",
+					"value": "2"
+				},
+				{
+					"title": "North",
+					"value": "3"
+				},
+				{
+					"title": "South",
+					"value": "3"
+				}
+			]
+		},
+		{
+			"type": "Input.Text",
+			"id": "defaultInputId",
+			"placeholder": "enter comment",
+			"maxLength": 500
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "OK"
+		}
+	]
+}

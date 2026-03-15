@@ -1,0 +1,146 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Container",
+			"showBorder": true,
+			"roundedCorners": true,
+			"items": [
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Cover Mode Card"
+				}
+			]
+		},
+
+		{
+			"type": "TextBlock",
+			"size": "Large",
+			"text": "Potrait Image (Original Image)"
+		},
+		{
+			"type": "Image",
+			"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+			"height": "auto",
+			"width": "stretch",
+			"fitMode": "cover"
+		},
+		{
+			"type": "TextBlock",
+			"size": "Large",
+			"text": "Potrait Image (fitMode as Cover)"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"verticalContentAlignment": "top"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Vertical Top"
+				},
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"verticalContentAlignment": "center"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Vertical Center"
+				},
+				{
+					"type": "Image",
+					"url": "https://cdn.pixabay.com/photo/2021/12/20/16/28/moose-6883432_1280.jpg",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"verticalContentAlignment": "bottom"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Vertical Bottom"
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"size": "Large",
+			"text": "   "
+		},
+		{
+			"type": "TextBlock",
+			"size": "Large",
+			"text": "Landscape Image (Original Image)"
+		},
+		{
+			"type": "Image",
+			"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+			"height": "200px",
+			"width": "stretch",
+			"fitMode": "cover"
+		},
+		{
+			"type": "TextBlock",
+			"size": "Large",
+			"text": "Landscape Image (fitMode as Cover)"
+		},
+		{
+			"type": "Container",
+			"items": [
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"horizontalContentAlignment": "left"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Horizontal Left"
+				},
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"horizontalContentAlignment": "center"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Horizontal Center"
+				},
+				{
+					"type": "Image",
+					"url": "https://th.bing.com/th/id/OIP.wlTpyLn8mhmAwuX9-lbcjwHaEO?w=267&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7",
+					"height": "250px",
+					"width": "250px",
+					"fitMode": "cover",
+					"horizontalContentAlignment": "right"
+				},
+				{
+					"type": "TextBlock",
+					"size": "Medium",
+					"text": "Horizontal Right"
+				}
+			]
+		}
+	]
+}

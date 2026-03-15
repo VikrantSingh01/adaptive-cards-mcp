@@ -1,0 +1,23 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Media Example",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "Media",
+      "poster": "https://adaptivecards.io/content/poster-video.png",
+      "sources": [
+        {
+          "mimeType": "video/mp4",
+          "url": "https://adaptivecards.io/content/videopicker.mp4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+	"type": "AdaptiveCard",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"wrap": true,
+			"text": "Actions with dynamic isEnabled, isVisible, and title.dynamic properties"
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Action Submit",
+			"isEnabled": true,
+			"isEnabled.dynamic": "defaultHandler()",
+			"title.dynamic": "if(defaultHandler(), \"Action Submit enabled\", \"Action Submit disabled\")"
+		},
+		{
+			"type": "Action.Submit",
+			"title": "Action Submit should Hide",
+			"isEnabled": true,
+			"isVisible.dynamic": "defaultHandler()"
+		},
+		{
+			"type": "Action.Execute",
+			"title": "Action Execute",
+			"isEnabled": true,
+			"isEnabled.dynamic": "defaultHandler()",
+			"title.dynamic": "if(defaultHandler(), \"Action Execute enabled\", \"Action Execute disabled\")"
+		},
+		{
+			"type": "Action.Execute",
+			"title": "Action Execute should Hide",
+			"isEnabled": true,
+			"isVisible.dynamic": "defaultHandler()"
+		},
+		{
+			"type": "Action.OpenUrl",
+			"title": "Action.OpenUrl",
+			"url": "https://adaptivecards.io",
+			"isEnabled": true,
+			"isEnabled.dynamic": "defaultHandler()",
+			"title.dynamic": "if(defaultHandler(), \"Action.OpenUrl enabled\", \"Action Execute disabled\")"
+		},
+		{
+			"type": "Action.OpenUrl",
+			"title": "Action.OpenUrl should Hide",
+			"isEnabled": true,
+			"url": "https://adaptivecards.io",
+			"isVisible.dynamic": "defaultHandler()"
+		}
+	]
+}

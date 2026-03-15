@@ -1,0 +1,69 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "RichTextBlock",
+      "inlines": [
+        {
+          "type": "TextRun",
+          "text": "This is "
+        },
+        {
+          "type": "TextRun",
+          "text": "bold",
+          "weight": "Bolder"
+        },
+        {
+          "type": "TextRun",
+          "text": " and "
+        },
+        {
+          "type": "TextRun",
+          "text": "italic",
+          "italic": true
+        },
+        {
+          "type": "TextRun",
+          "text": " text."
+        }
+      ]
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Name:",
+          "value": "John Doe"
+        },
+        {
+          "title": "Email:",
+          "value": "john@example.com"
+        },
+        {
+          "title": "Phone:",
+          "value": "+1 (555) 123-4567"
+        }
+      ]
+    },
+    {
+      "type": "ImageSet",
+      "imageSize": "Small",
+      "images": [
+        {
+          "type": "Image",
+          "url": "https://adaptivecards.io/content/cats/1.png"
+        },
+        {
+          "type": "Image",
+          "url": "https://adaptivecards.io/content/cats/2.png"
+        },
+        {
+          "type": "Image",
+          "url": "https://adaptivecards.io/content/cats/3.png"
+        }
+      ]
+    }
+  ]
+}

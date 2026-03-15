@@ -1,0 +1,76 @@
+{
+  "type": "AdaptiveCard",
+  "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.5",
+  "body": [
+    {
+      "type": "Container",
+      "layouts": [
+        {
+          "type": "Layout.Flow"
+        }
+      ],
+      "items": [
+        {
+          "type": "CompoundButton",
+          "title": "Summarize",
+          "icon": {
+            "name": "TextBulletList"
+          },
+          "description": "Review key points in file",
+          "height": "stretch"
+        },
+        {
+          "type": "Container",
+          "layouts": [
+            {
+              "type": "Layout.Flow"
+            }
+          ],
+          "items": [
+            {
+              "type": "CompoundButton",
+              "title": "Summarize",
+              "icon": {
+                "name": "TextBulletList"
+              },
+              "description": "Review key points in file",
+              "height": "stretch"
+            },
+            {
+              "type": "CompoundButton",
+              "title": "Summarize",
+              "icon": {
+                "name": "TextBulletList"
+              },
+              "description": "Review key points in file but longer lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+              "height": "stretch"
+            },
+            {
+              "type": "CompoundButton",
+              "title": "Insights",
+              "description": "Who's reviewed my latest document?",
+              "height": "stretch"
+            },
+            {
+              "type": "CompoundButton",
+              "title": "Insights",
+              "badge": "Updated",
+              "description": "Tell me about John Doe",
+              "height": "stretch"
+            },
+            {
+              "type": "CompoundButton",
+              "title": "Catch up on meeting",
+              "icon": {
+                "name": "Calendar"
+              },
+              "description": "Recap my latest meeting summarizing key takeaways and action items as separate sections including who's responsible for each",
+              "height": "stretch"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

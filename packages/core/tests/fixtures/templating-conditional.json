@@ -1,0 +1,53 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "$when": "${showWelcome}",
+      "type": "TextBlock",
+      "text": "Welcome Message",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "$when": "${isPremiumUser}",
+      "type": "Container",
+      "style": "accent",
+      "items": [
+        {
+          "type": "TextBlock",
+          "text": "⭐ Premium Member Benefits",
+          "weight": "bolder",
+          "color": "light"
+        },
+        {
+          "type": "TextBlock",
+          "text": "You have access to premium features",
+          "wrap": true,
+          "color": "light"
+        }
+      ]
+    },
+    {
+      "$when": "${age >= 18}",
+      "type": "TextBlock",
+      "text": "Adult content available",
+      "wrap": true
+    },
+    {
+      "$when": "${!isVerified}",
+      "type": "TextBlock",
+      "text": "⚠️ Please verify your email address",
+      "wrap": true,
+      "color": "warning"
+    },
+    {
+      "$when": "${score > 100}",
+      "type": "TextBlock",
+      "text": "🎉 Congratulations! You've achieved a high score!",
+      "wrap": true,
+      "color": "good"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "Expression Functions Demo",
+      "size": "large",
+      "weight": "bolder"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "String Upper",
+          "value": "${toUpper(name)}"
+        },
+        {
+          "title": "String Length",
+          "value": "${length(name)} characters"
+        },
+        {
+          "title": "Substring",
+          "value": "${substring(description, 0, 20)}..."
+        },
+        {
+          "title": "Math Add",
+          "value": "${add(price, tax)}"
+        },
+        {
+          "title": "Math Round",
+          "value": "${round(average)}"
+        },
+        {
+          "title": "Date Format",
+          "value": "${formatDateTime(createdDate, 'MM/dd/yyyy')}"
+        },
+        {
+          "title": "Conditional",
+          "value": "${if(isActive, 'Active', 'Inactive')}"
+        },
+        {
+          "title": "Ternary",
+          "value": "${score >= 80 ? 'Pass' : 'Fail'}"
+        },
+        {
+          "title": "Comparison",
+          "value": "${age >= 18 && hasLicense ? 'Eligible' : 'Not Eligible'}"
+        },
+        {
+          "title": "Collection First",
+          "value": "${first(items)}"
+        },
+        {
+          "title": "Collection Count",
+          "value": "${count(items)} items"
+        }
+      ]
+    }
+  ]
+}

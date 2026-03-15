@@ -1,0 +1,55 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "rtl": true,
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "بطاقة تجريبية",
+      "weight": "Bolder",
+      "size": "Large"
+    },
+    {
+      "type": "TextBlock",
+      "text": "هذا نص تجريبي باللغة العربية لاختبار دعم اللغات التي تكتب من اليمين إلى اليسار.",
+      "wrap": true
+    },
+    {
+      "type": "TextBlock",
+      "text": "שלום עולם! זהו טקסט בעברית.",
+      "wrap": true
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "عمود 1"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "עמודה 2"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "type": "Action.Submit",
+      "title": "إرسال"
+    }
+  ]
+}

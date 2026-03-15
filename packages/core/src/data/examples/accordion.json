@@ -1,0 +1,79 @@
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "body": [
+    {
+      "type": "TextBlock",
+      "text": "FAQ Accordion",
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "Accordion",
+      "id": "faqAccordion",
+      "expandMode": "Single",
+      "panels": [
+        {
+          "title": "What is Adaptive Cards?",
+          "isExpanded": true,
+          "content": [
+            {
+              "type": "TextBlock",
+              "text": "Adaptive Cards are platform-agnostic snippets of UI, authored in JSON, that apps and services can openly exchange. When delivered to a specific app, the JSON is transformed into native UI that automatically adapts to its surroundings.",
+              "wrap": true
+            }
+          ]
+        },
+        {
+          "title": "Where can I use Adaptive Cards?",
+          "isExpanded": false,
+          "content": [
+            {
+              "type": "TextBlock",
+              "text": "Adaptive Cards can be used in:",
+              "wrap": true
+            },
+            {
+              "type": "TextBlock",
+              "text": "• Microsoft Teams\n• Outlook Actionable Messages\n• Bot Framework\n• Windows Timeline\n• And more!",
+              "wrap": true
+            }
+          ]
+        },
+        {
+          "title": "How do I get started?",
+          "isExpanded": false,
+          "content": [
+            {
+              "type": "TextBlock",
+              "text": "Visit adaptivecards.io to explore the designer, view samples, and read the documentation.",
+              "wrap": true
+            },
+            {
+              "type": "ActionSet",
+              "actions": [
+                {
+                  "type": "Action.OpenUrl",
+                  "title": "Visit Site",
+                  "url": "https://adaptivecards.io"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "What elements are supported?",
+          "isExpanded": false,
+          "content": [
+            {
+              "type": "TextBlock",
+              "text": "Adaptive Cards support a rich set of elements including text, images, containers, inputs, and actions. New advanced elements like Carousel, Accordion, CodeBlock, Rating, TabSet, and progress indicators are now available!",
+              "wrap": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

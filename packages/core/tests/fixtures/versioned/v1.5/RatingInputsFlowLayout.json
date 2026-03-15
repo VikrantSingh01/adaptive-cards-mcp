@@ -1,0 +1,88 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "Container",
+			"layouts": [
+				{
+					"type": "Layout.Flow",
+					"minItemWidth": "100px",
+					"itemWidth": "150px",
+					"itemFit": "Fill"
+				}
+			],
+			"items": [
+				{
+					"type": "TextBlock",
+					"size": "Large",
+					"text": "Rating input",
+					"height": "stretch"
+				},
+				{
+					"type": "Input.Rating",
+					"id": "rating1",
+					"size": "medium",
+					"isRequired": true,
+					"label": "Pick a rating",
+					"errorMessage": "Please pick a rating",
+					"horizontalAlignment": "left",
+					"height": "stretch",
+					"max": 5
+				},
+				{
+					"type": "Input.Rating",
+					"id": "rating2",
+					"label": "Pick a rating",
+					"size": "large",
+					"isRequired": true,
+					"errorMessage": "Please pick a rating",
+					"color": "marigold",
+					"value": 2,
+					"horizontalAlignment": "left",
+					"height": "stretch",
+					"max": 5
+				},
+				{
+					"type": "TextBlock",
+					"size": "large",
+					"text": "Read-only ratings",
+					"separator": true,
+					"spacing": "extraLarge"
+				},
+				{
+					"type": "Rating",
+					"value": 3.2,
+					"size": "medium",
+					"horizontalAlignment": "left",
+					"count": 10
+				},
+				{
+					"type": "Rating",
+					"max": 20,
+					"value": 3.2,
+					"color": "marigold",
+					"size": "large",
+					"horizontalAlignment": "left",
+					"count": 150
+				},
+				{
+					"type": "Rating",
+					"style": "compact",
+					"value": 3.2,
+					"color": "marigold",
+					"count": 1500,
+					"size": "large",
+					"horizontalAlignment": "left"
+				}
+			]
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.Submit",
+			"title": "Submit"
+		}
+	]
+}

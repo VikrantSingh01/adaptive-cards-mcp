@@ -1,0 +1,302 @@
+{
+	"type": "AdaptiveCard",
+	"$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+	"version": "1.5",
+	"body": [
+		{
+			"type": "TextBlock",
+			"text": "Below is a Carousel with 6 pages",
+			"wrap": true,
+			"size": "Large"
+		},
+		{
+			"type": "Carousel",
+			"pageAnimation": "None",
+			"pages": [
+				{
+					"type": "CarouselPage",
+					"style": "emphasis",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 1 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"style": "accent",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 2 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"style": "good",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 3 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"style": "warning",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 4 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						},
+						{
+							"type": "TextBlock",
+							"size": "Large",
+							"text": "Rating input"
+						},
+						{
+							"type": "Input.Rating",
+							"id": "rating1",
+							"label": "Pick a rating",
+							"size": "medium",
+							"isRequired": true,
+							"errorMessage": "Please pick a rating"
+						},
+						{
+							"type": "Input.Rating",
+							"id": "rating2",
+							"label": "Pick a rating",
+							"allowHalfSteps": true,
+							"size": "large",
+							"isRequired": true,
+							"errorMessage": "Please pick a rating",
+							"color": "marigold",
+							"value": 3
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"style": "attention",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 5 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 6 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						}
+					]
+				},
+				{
+					"type": "CarouselPage",
+					"style": "warning",
+					"showBorder": true,
+					"roundedCorners": true,
+					"items": [
+						{
+							"type": "TextBlock",
+							"text": "PAGE 7 of 7",
+							"wrap": true,
+							"size": "Large"
+						},
+						{
+							"type": "TextBlock",
+							"text": "First TextBlock",
+							"wrap": true
+						},
+						{
+							"type": "TextBlock",
+							"text": "Second TextBlock with separator",
+							"wrap": true,
+							"separator": true,
+							"spacing": "Medium"
+						},
+						{
+							"type": "Input.Text",
+							"id": "defaultInputId",
+							"placeholder": "enter comment",
+							"maxLength": 500
+						},
+						{
+							"type": "Input.ChoiceSet",
+							"id": "myCountry",
+							"style": "compact",
+							"label": "Country",
+							"isMultiSelect": false,
+							"value": "1",
+							"choices": [
+								{
+									"title": "India",
+									"value": "1"
+								},
+								{
+									"title": "USA",
+									"value": "2"
+								},
+								{
+									"title": "UK",
+									"value": "3"
+								}
+							],
+							"valueChangedAction": {
+								"type": "Action.ResetInputs",
+								"targetInputIds": [
+									"defaultInputId",
+									"myZone"
+								]
+							}
+						},
+						{
+							"type": "Input.ChoiceSet",
+							"id": "myZone",
+							"style": "compact",
+							"label": "Zone",
+							"isMultiSelect": false,
+							"value": "1",
+							"choices": [
+								{
+									"title": "East",
+									"value": "1"
+								},
+								{
+									"title": "West",
+									"value": "2"
+								},
+								{
+									"title": "North",
+									"value": "3"
+								},
+								{
+									"title": "South",
+									"value": "3"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"type": "TextBlock",
+			"text": "This text is below the Carousel",
+			"wrap": true,
+			"size": "Large"
+		}
+	],
+	"actions": [
+		{
+			"type": "Action.OpenUrl",
+			"title": "Click me",
+			"url": "https://www.microsoft.com"
+		},
+		{
+			"type": "Action.Submit",
+			"title": "Submit"
+		}
+	]
+}

@@ -1,0 +1,117 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "https://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.5",
+    "body": [
+        
+        {
+            "type": "CompoundButton",
+
+            "title": "View active work items By having a Good summary and priority items",
+            "icon": {
+                "name": "List",
+                "style": "Regular"
+            },
+            
+            "description": "Create a work item and assign it to your or a team member",
+
+            "height": "stretch",
+            "badge": "New Badge ve Case and of a very renounded and famous and logical",
+            
+            "selectAction": {
+              "type": "Action.OpenUrl",
+              "url": "https://www.microsoft.com",
+              "title": "Click me!",
+              "tooltip": "compound button can handle actions"
+            }
+            
+        },
+        
+        
+        {
+            "type": "CompoundButton",
+
+            "title": "View active work items By having a Good summary and health",
+            
+            "description": "See active tasks assigned to you or a team members",
+
+            "height": "stretch",
+
+            "badge": "New",
+            
+            "selectAction": {
+              "type": "Action.OpenUrl",
+              "url": "https://www.microsoft.com",
+              "title": "Click me!",
+              "tooltip": "compound button can handle actions"
+            }
+            
+        },
+        
+
+        
+        {
+            "type": "CompoundButton",
+
+            "title": "Give feedback bbbbb having a break of",
+            "icon": {
+                "name": "Calendar",
+                "style": "Regular"
+            },
+            
+            "description": "To give us feedback on Azure DevOps",
+
+            "height": "stretch",
+            
+            "selectAction": {
+              "type": "Action.OpenUrl",
+              "url": "https://www.microsoft.com",
+              "title": "Click me!",
+              "tooltip": "compound button can handle actions"
+            },
+            "spacing": "large"
+            
+        },
+        
+        {
+            "type": "CompoundButton",
+
+            "title": "Summarize by some means",
+            
+            "description": "Create a work item and assign it to your or a team member",
+
+            "height": "stretch",
+            
+            "selectAction": {
+              "type": "Action.OpenUrl",
+              "url": "https://www.microsoft.com",
+              "title": "Click me!",
+              "tooltip": "compound button can handle actions"
+            },
+            "spacing": "large"
+        },
+
+        {
+            "type": "CompoundButton",
+
+            "title": "Pending Taks",
+            "icon": {
+                "name": "Emoji",
+                "style": "Regular"
+            },
+            
+            "badge": "Priority",
+            
+            "height": "stretch",
+            
+            "selectAction": {
+              "type": "Action.OpenUrl",
+              "url": "https://www.microsoft.com",
+              "title": "Click me!",
+              "tooltip": "compound button can handle actions"
+            },
+            "spacing": "large"
+            
+        }
+    ]
+}
