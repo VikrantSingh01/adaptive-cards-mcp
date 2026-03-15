@@ -23,7 +23,7 @@ This is a monorepo. Each package is also published as a standalone repo for inde
 |---------|-------------|-----------------|---------|
 | [packages/core](packages/core/) | MCP server + npm library (7 tools) | — | `npx adaptive-cards-mcp` |
 | [packages/vscode-extension](packages/vscode-extension/) | VS Code extension — generate, preview, validate, optimize | [adaptive-cards-ai-vscode](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) | VS Code Marketplace (coming soon) |
-| [packages/browser-extension](packages/browser-extension/) | Chrome/Edge extension — AI panel for AC Designer | [adaptive-cards-ai-designer](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) | Chrome Web Store (coming soon) |
+
 
 ## Quick Start
 
@@ -131,15 +131,6 @@ cd packages/vscode-extension && npm install && npm run compile
 
 Press `Cmd+Shift+A` to generate a card. See the [extension README](packages/vscode-extension/README.md) for all features.
 
-### Browser Extension
-
-Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) or load `packages/browser-extension/` as an unpacked extension:
-
-1. Open `chrome://extensions/` → Enable Developer mode
-2. Click "Load unpacked" → select `packages/browser-extension/`
-3. Navigate to [adaptivecards.io/designer](https://adaptivecards.io/designer)
-
-See the [extension README](packages/browser-extension/README.md) for details.
 
 ## MCP Tools (7)
 
@@ -179,8 +170,6 @@ cd packages/vscode-extension
 npm install
 npm run compile  # Then press F5 in VS Code
 
-# Browser extension
-# No build step — load packages/browser-extension/ as unpacked extension
 ```
 
 ## Architecture
@@ -199,12 +188,10 @@ packages/
 │   │   └── types/                 # TypeScript interfaces
 │   └── tests/                     # 62 unit tests (vitest)
 ├── vscode-extension/              # repo: adaptive-cards-ai-vscode
-│   ├── src/                       # 5 commands, preview panel, CodeLens
-│   └── snippets/                  # 11 AC code snippets
-└── browser-extension/             # repo: adaptive-cards-ai-designer
-    ├── content-script.js          # AI panel for AC Designer
-    ├── manifest.json              # Chrome/Edge Manifest V3
-    └── popup.html                 # Quick-generate popup
+    ├── src/                       # 5 commands, preview panel, CodeLens
+    └── snippets/                  # 11 AC code snippets
+
+    
 ```
 
 ## Related Projects
