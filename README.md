@@ -1,120 +1,59 @@
 # Adaptive Cards AI Builder
 
-AI-powered tool that converts any content into schema-validated [Adaptive Card](https://adaptivecards.io/) v1.6 JSON. Available as an MCP server, npm library, and (coming soon) VS Code extension.
+AI-powered tool that converts any content into schema-validated [Adaptive Card](https://adaptivecards.io/) v1.6 JSON.
+
+Available as an **MCP server**, **npm library**, **VS Code extension**, and **browser extension** for the Adaptive Cards Designer.
+
+## Packages
+
+| Package | Description | Status |
+|---------|-------------|--------|
+| [`packages/core`](packages/core/) | MCP server + npm library — 7 tools for card generation, validation, optimization, templating, and transformation | Published |
+| [`packages/vscode-extension`](packages/vscode-extension/) | VS Code extension — generate, preview, validate, optimize cards with keyboard shortcuts and CodeLens | [Standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-vscode) |
+| [`packages/browser-extension`](packages/browser-extension/) | Chrome/Edge extension — AI panel injected into the Adaptive Cards Designer | [Standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-builder-browser) |
 
 ## Quick Start
 
-### As MCP Server (Claude Code / Copilot / Cursor)
+### MCP Server (Claude Code / Copilot / Cursor)
 
 ```bash
-# Add to Claude Code
-claude mcp add adaptive-cards-ai-builder -- node /path/to/dist/server.js
-
-# Or run directly
 npx adaptive-cards-ai-builder
 ```
 
-Then in your AI assistant:
-- *"Generate an expense approval card for Teams"*
-- *"Convert this JSON data to an Adaptive Card table"*
-- *"Validate this card JSON and check accessibility"*
+Add to Claude Code:
+```bash
+claude mcp add adaptive-cards-ai-builder -- npx adaptive-cards-ai-builder
+```
 
-### As npm Library
+### npm Library
 
 ```typescript
-import { generateCard, validateCardFull, dataToCard } from 'adaptive-cards-ai-builder';
+import { generateCard, validateCardFull, dataToCard, optimizeCard } from 'adaptive-cards-ai-builder';
 
-// Generate a card from description
 const result = await generateCard({
-  content: "Create a flight status card showing airline, flight number, departure and arrival",
+  content: "Create a flight status card",
   host: "teams",
   intent: "display"
 });
-console.log(JSON.stringify(result.card, null, 2));
-
-// Convert data to a card
-const tableResult = await dataToCard({
-  data: [
-    { name: "Alice", role: "Engineer", team: "Platform" },
-    { name: "Bob", role: "Designer", team: "UX" }
-  ],
-  title: "Team Members",
-  host: "teams"
-});
-
-// Validate a card
-const validation = validateCardFull({
-  card: myCardJson,
-  host: "outlook",
-  strictMode: true
-});
-console.log(`Valid: ${validation.valid}, Accessibility: ${validation.accessibility.score}/100`);
 ```
 
-## MCP Tools
+## MCP Tools (7)
 
 | Tool | Description |
 |------|-------------|
-| `generate_card` | Convert any content (natural language, data) into a valid Adaptive Card |
-| `validate_card` | Schema validation + accessibility score + host compatibility check |
-| `data_to_card` | Auto-select best presentation (Table/FactSet/Chart/List) from data shape |
-
-### generate_card
-
-```json
-{
-  "content": "Create an expense approval card with line items",
-  "host": "teams",
-  "intent": "approval",
-  "version": "1.6"
-}
-```
-
-### validate_card
-
-```json
-{
-  "card": { "type": "AdaptiveCard", "version": "1.6", "body": [...] },
-  "host": "outlook",
-  "strictMode": true
-}
-```
-
-Returns: schema errors, accessibility score (0-100), host compatibility, structural stats.
-
-### data_to_card
-
-```json
-{
-  "data": [{"month": "Jan", "revenue": 100}, {"month": "Feb", "revenue": 150}],
-  "presentation": "auto",
-  "title": "Monthly Revenue"
-}
-```
-
-Auto-detects data shape: array-of-objects -> Table, key-value -> FactSet, numeric series -> Chart, flat list -> List.
-
-## LLM Integration
-
-By default, the tool uses deterministic pattern matching (11 layout patterns, data shape analysis). For AI-powered creative generation, set an API key:
-
-```bash
-# Anthropic Claude
-export ANTHROPIC_API_KEY=sk-ant-...
-
-# Or OpenAI
-export OPENAI_API_KEY=sk-...
-```
-
-When used via MCP (Claude Code/Copilot), the host LLM provides the intelligence — no API key needed.
+| `generate_card` | Natural language / data → valid Adaptive Card v1.6 JSON |
+| `validate_card` | Schema validation + accessibility score (0-100) + host compatibility |
+| `data_to_card` | Auto-select Table / FactSet / Chart / List from data shape |
+| `optimize_card` | Improve accessibility, performance, modernize actions |
+| `template_card` | Static card → `${expression}` data-bound template |
+| `transform_card` | Version upgrade/downgrade, host-config adaptation |
+| `suggest_layout` | Recommend best layout pattern for a description |
 
 ## Host Compatibility
 
-The tool validates cards against specific host constraints:
-
 | Host | Max Version | Notes |
 |------|-------------|-------|
-| Teams | 1.5 | Max 6 actions, Action.Execute preferred |
+| Teams | 1.6 | Max 6 actions, Action.Execute preferred |
 | Outlook | 1.4 | Limited elements, max 4 actions |
 | Web Chat | 1.6 | Full support |
 | Windows | 1.6 | Subset of elements |
@@ -124,23 +63,40 @@ The tool validates cards against specific host constraints:
 ## Development
 
 ```bash
-npm install
-npm run build    # TypeScript + copy data files
-npm test         # Run vitest (42 tests)
-npm run lint     # TypeScript type check
+# Install dependencies
+cd packages/core && npm install
+
+# Build
+npm run build
+
+# Test (42 tests)
+npm test
+
+# Run MCP server locally
+node dist/server.js
 ```
 
 ## Architecture
 
 ```
-src/
-├── server.ts              # MCP server (stdio transport)
-├── index.ts               # Library exports
-├── tools/                 # Tool handlers (generate, validate, data-to-card)
-├── core/                  # Schema validator, card analyzer, accessibility, host compat
-├── generation/            # Layout patterns, data analyzer, card assembler, LLM client
-├── data/                  # v1.6 schema, example cards, host configs
-└── types/                 # TypeScript interfaces
+packages/
+├── core/                          # MCP server + npm library
+│   ├── src/
+│   │   ├── server.ts              # MCP server (stdio, 7 tools)
+│   │   ├── index.ts               # Library exports
+│   │   ├── tools/                 # 7 tool handlers
+│   │   ├── core/                  # Schema validator, analyzer, accessibility, host compat
+│   │   ├── generation/            # Patterns, data analyzer, assembler, LLM client
+│   │   ├── data/                  # v1.6 schema, 25 examples, host configs
+│   │   └── types/                 # TypeScript interfaces
+│   └── tests/                     # 42 unit tests (vitest)
+├── vscode-extension/              # VS Code extension
+│   ├── src/                       # 5 commands, preview panel, CodeLens
+│   └── snippets/                  # 11 AC snippets
+└── browser-extension/             # Chrome/Edge extension
+    ├── content-script.js          # AI panel for AC Designer
+    ├── manifest.json              # Manifest V3
+    └── popup.html                 # Quick-generate popup
 ```
 
 ## License

@@ -1,4 +1,4 @@
-name: Publish to npm
+name: Publish Core to npm
 on:
   release:
     types: [created]
@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    defaults:
+      run:
+        working-directory: packages/core
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
