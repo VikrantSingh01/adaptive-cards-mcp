@@ -1,8 +1,8 @@
-# Adaptive Cards AI Builder — Browser Extension
+# adaptive-cards-ai-designer
 
 AI-powered card generation panel for the [Adaptive Cards Designer](https://adaptivecards.io/designer).
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Part of the [Adaptive Cards MCP](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
 > Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) and [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode).
 
 ## Features
@@ -80,8 +80,8 @@ Replace the placeholder icons in `icons/` with actual PNG files:
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
-- [Adaptive Cards AI Builder (VS Code extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) — Generate, preview, validate cards in VS Code
+- [Adaptive Cards MCP (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
+- [Adaptive Cards AI VS Code](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) — Generate, preview, validate cards in VS Code
 - [Adaptive Cards Documentation](https://adaptivecards.io/) — Official docs and Designer
 
 ## License

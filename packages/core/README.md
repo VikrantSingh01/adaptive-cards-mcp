@@ -1,8 +1,8 @@
-# Adaptive Cards AI Builder — Core
+# adaptive-cards-mcp
 
 MCP server + npm library for AI-powered Adaptive Card generation, validation, and optimization.
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Part of the [Adaptive Cards MCP](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
 > Also available as a [VS Code extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer).
 
 ## Install
@@ -104,13 +104,13 @@ When used via MCP (Claude Code, Copilot, Cursor), the host LLM provides the inte
 ```bash
 npm install
 npm run build    # TypeScript + copy data files
-npm test         # 42 tests (vitest)
+npm test         # 62 tests (vitest)
 npm run lint     # TypeScript type check
 ```
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — All packages in one repo
+- [Adaptive Cards MCP (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — All packages in one repo
 - [VS Code Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) — Generate, preview, validate cards in VS Code
 - [Browser Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) — AI panel for the Adaptive Cards Designer
 

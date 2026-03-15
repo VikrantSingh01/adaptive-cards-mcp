@@ -1,8 +1,8 @@
-# Adaptive Cards AI Builder — VS Code Extension
+# adaptive-cards-ai-vscode
 
 AI-powered Adaptive Card generation, preview, and validation inside VS Code.
 
-> Part of the [Adaptive Cards AI Builder](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
+> Part of the [Adaptive Cards MCP](https://github.com/VikrantSingh01/adaptive-cards-mcp) ecosystem.
 > Also available as an [MCP server](https://github.com/VikrantSingh01/adaptive-cards-mcp/tree/main/packages/core) and [browser extension](https://github.com/VikrantSingh01/adaptive-cards-ai-designer).
 
 ## Features
@@ -79,8 +79,8 @@ This extension uses [adaptive-cards-mcp](https://github.com/VikrantSingh01/adapt
 
 ## Related
 
-- [Adaptive Cards AI Builder (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
-- [Adaptive Cards AI Builder (browser extension)](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) — Chrome/Edge extension for the AC Designer
+- [Adaptive Cards MCP (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp) — MCP server + core library + all extensions
+- [Adaptive Cards AI Designer (browser)](https://github.com/VikrantSingh01/adaptive-cards-ai-designer) — Chrome/Edge extension for the AC Designer
 - [Adaptive Cards Documentation](https://adaptivecards.io/) — Official docs and Designer
 
 ## License

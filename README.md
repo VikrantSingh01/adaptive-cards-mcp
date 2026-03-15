@@ -1,4 +1,4 @@
-# Adaptive Cards AI Builder
+# Adaptive Cards MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
@@ -97,7 +97,7 @@ See the [extension README](packages/browser-extension/README.md) for details.
 cd packages/core
 npm install
 npm run build    # TypeScript + copy data files
-npm test         # 42 tests (vitest)
+npm test         # 62 tests (vitest)
 node dist/server.js  # Run MCP server locally
 
 # VS Code extension
@@ -123,7 +123,7 @@ packages/
 │   │   ├── generation/            # 11 layout patterns, data analyzer, assembler, LLM client
 │   │   ├── data/                  # v1.6 schema, 25 examples, host configs
 │   │   └── types/                 # TypeScript interfaces
-│   └── tests/                     # 42 unit tests (vitest)
+│   └── tests/                     # 62 unit tests (vitest)
 ├── vscode-extension/              # repo: adaptive-cards-ai-vscode
 │   ├── src/                       # 5 commands, preview panel, CodeLens
 │   └── snippets/                  # 11 AC code snippets
