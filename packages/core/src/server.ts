@@ -443,6 +443,12 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
     }
 
+    // Add preview link for tools that produce cards
+    if (result && typeof result === "object" && "card" in (result as Record<string, unknown>)) {
+      (result as Record<string, unknown>).preview =
+        "Preview this card at https://adaptivecards.microsoft.com/designer — paste the card JSON into the Card Payload Editor.";
+    }
+
     const elapsed = Date.now() - startTime;
     const resultStr = JSON.stringify(result, null, 2);
     logger.info("Tool complete", { reqId, tool: name, elapsed, outputBytes: resultStr.length });
