@@ -41,6 +41,7 @@ export { checkRateLimit, setRateLimitEnabled, setToolRateLimit, registerToolIfMi
 export type { BucketConfig } from "./utils/rate-limiter.js";
 export { storeCard, getCard, listCards, clearCards, resolveCardRef } from "./utils/card-store.js";
 export { configureAuth, validateAuth, getAuthMode, setBearerValidator } from "./utils/auth.js";
+export { generatePreviewHtml, writePreviewFile } from "./utils/preview.js";
 export { initTelemetry, recordToolCall, getMetricsSnapshot, resetMetrics, isTelemetryEnabled } from "./utils/telemetry.js";
 
 // Types

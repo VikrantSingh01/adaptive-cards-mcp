@@ -37,7 +37,8 @@ import { initLLMFromEnv } from "./generation/llm-client.js";
 import { createLogger, nextRequestId, initLogger } from "./utils/logger.js";
 import { checkInputSize, checkCardComplexity, checkDataSize } from "./utils/input-guards.js";
 import { checkRateLimit, setRateLimitEnabled } from "./utils/rate-limiter.js";
-import { storeCard, resolveCardRef, listCards, clearCards } from "./utils/card-store.js";
+import { storeCard, resolveCardRef, listCards, clearCards, getCard } from "./utils/card-store.js";
+import { generatePreviewHtml, writePreviewFile } from "./utils/preview.js";
 
 import type {
   HostApp,
@@ -443,10 +444,28 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         };
     }
 
-    // Add preview link for tools that produce cards
+    // Add designer preview for tools that produce cards
     if (result && typeof result === "object" && "card" in (result as Record<string, unknown>)) {
-      (result as Record<string, unknown>).preview =
-        "Preview this card at https://adaptivecards.microsoft.com/designer — paste the card JSON into the Card Payload Editor.";
+      const r = result as Record<string, unknown>;
+      const cardId = r.cardId as string | undefined;
+      const transport = process.env.TRANSPORT || "stdio";
+
+      if (transport === "sse" || transport === "http") {
+        // SSE mode: link to /preview/{cardId} endpoint served by this server
+        const port = process.env.PORT || "3001";
+        r.preview = cardId
+          ? `http://localhost:${port}/preview/${cardId}`
+          : "https://adaptivecards.microsoft.com/designer";
+      } else {
+        // stdio mode: write a temp HTML file that auto-loads the designer with the card
+        try {
+          const card = r.card as Record<string, unknown>;
+          const previewPath = writePreviewFile(card);
+          r.preview = `file://${previewPath}`;
+        } catch {
+          r.preview = "https://adaptivecards.microsoft.com/designer";
+        }
+      }
     }
 
     const elapsed = Date.now() - startTime;
@@ -1003,8 +1022,9 @@ async function startSSE() {
       return;
     }
 
-    // Auth check for non-health endpoints
-    if (req.url !== "/health") {
+    // Auth check for non-health and non-preview endpoints
+    const isPublicRoute = req.url === "/health" || req.url?.startsWith("/preview/");
+    if (!isPublicRoute) {
       const authResult = await validateAuth(req.headers.authorization);
       if (!authResult.authorized) {
         res.writeHead(401, { "Content-Type": "application/json" });
@@ -1022,6 +1042,22 @@ async function startSSE() {
         tools: TOOLS.length,
         transport: "sse",
       }));
+      return;
+    }
+
+    // Preview route: serves an HTML page that opens the AC Designer with the card
+    const previewMatch = req.url?.match(/^\/preview\/(card-[a-f0-9-]+)$/);
+    if (previewMatch) {
+      const cardId = previewMatch[1];
+      const card = getCard(cardId);
+      if (!card) {
+        res.writeHead(404, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ error: `Card "${cardId}" not found or expired.` }));
+        return;
+      }
+      const html = generatePreviewHtml(card);
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+      res.end(html);
       return;
     }
 
