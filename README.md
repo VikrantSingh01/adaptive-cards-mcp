@@ -3,27 +3,37 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![Adaptive Cards](https://img.shields.io/badge/Adaptive%20Cards-v1.6-blue.svg)](https://adaptivecards.io/)
-[![Tests](https://img.shields.io/badge/Tests-862%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-909%20passing-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Version-2.1.0-blue.svg)](https://github.com/VikrantSingh01/adaptive-cards-mcp/releases/tag/v2.1.0)
 
 <p align="center">
-  <img src="media/hero.png" alt="adaptive-cards-mcp — 7 tools, 21 patterns, 862 tests, 0 competitors" width="800">
+  <img src="media/hero.png" alt="adaptive-cards-mcp — 9 tools, 21 patterns, 909 tests, 0 competitors" width="800">
 </p>
 
-The world's first MCP server for Adaptive Cards — **7 tools** that make any LLM 10x better at card generation. An MCP server that helps AI assistants generate valid, accessible Adaptive Cards for Teams, Outlook, and Copilot and other agentic surfaces.
+The world's first MCP server for Adaptive Cards — **9 tools** that make any LLM 10x better at card generation. An MCP server that helps AI assistants generate valid, accessible Adaptive Cards for Teams, Outlook, Copilot, and other agentic surfaces.
 
 > **Blog:** [I Built an MCP Server That Makes AI 10x Better at Adaptive Cards](https://singhvikrant.substack.com/p/i-built-an-mcp-server-that-makes)
 
-Available as an **MCP server**, **npm library**, **VS Code extension**, and **browser extension** for the Adaptive Cards Designer.
+Available as an **MCP server** (stdio + HTTP/SSE), **npm library**, and **VS Code extension**.
+
+## What's New in v2.1.0
+
+- **HTTP/SSE Transport** — Deploy for M365 Copilot, Copilot Studio, and ChatGPT (`TRANSPORT=sse`)
+- **Card Persistence** — `cardId` references across tool calls to reduce token overhead
+- **Compound Tools** — `generate_and_validate` and `card_workflow` for multi-step pipelines
+- **MCP Prompts** — 3 guided prompts for common workflows
+- **Auth Middleware** — API key + bearer token for HTTP deployments
+- **Azure OpenAI + Ollama** — Additional LLM provider support
+- **Input Guards, Rate Limiting, Telemetry** — Enterprise hardening
+
+See the full [CHANGELOG](CHANGELOG.md) for details.
 
 ## Ecosystem
 
-This is a monorepo. Each package is also published as a standalone repo for independent installation.
-
-| Package | Description | Standalone Repo | Install |
-|---------|-------------|-----------------|---------|
-| [packages/core](packages/core/) | MCP server + npm library (7 tools) | — | `npx adaptive-cards-mcp` |
-| [packages/vscode-extension](packages/vscode-extension/) | VS Code extension — generate, preview, validate, optimize | [adaptive-cards-ai-vscode](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) | VS Code Marketplace (coming soon) |
-
+| Package | Description | Install |
+|---------|-------------|---------|
+| [packages/core](packages/core/) | MCP server + npm library (9 tools) | `npx adaptive-cards-mcp` |
+| [packages/vscode-extension](packages/vscode-extension/) | VS Code extension — generate, preview, validate | [adaptive-cards-ai-vscode](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) |
 
 ## Quick Start
 
@@ -70,20 +80,22 @@ claude mcp add adaptive-cards-mcp -- npx adaptive-cards-mcp
 }
 ```
 
-**Microsoft 365 Copilot / Copilot Studio:**
-1. Open [Copilot Studio](https://copilotstudio.microsoft.com/) → your agent → Tools → Add a tool → New tool → **Model Context Protocol**
-2. Enter your MCP server URL (requires hosting as a remote HTTP server — see [deployment guide](https://learn.microsoft.com/en-us/microsoft-365-copilot/extensibility/build-mcp-plugins))
-3. Select the tools to expose (generate_card, validate_card, etc.)
+**Microsoft 365 Copilot / Copilot Studio (HTTP/SSE):**
+```bash
+# Start the HTTP/SSE server
+TRANSPORT=sse PORT=3001 npx adaptive-cards-mcp
 
-> Note: M365 Copilot requires a **remote MCP server** (HTTP/SSE), not local stdio. Deploy to Azure Functions or any HTTPS endpoint.
+# With auth enabled
+TRANSPORT=sse MCP_API_KEY=your-secret npx adaptive-cards-mcp
+```
+1. Open [Copilot Studio](https://copilotstudio.microsoft.com/) → your agent → Tools → Add a tool → New tool → **Model Context Protocol**
+2. Enter your MCP server URL (e.g., `https://your-server.azurewebsites.net/sse`)
+3. Select the tools to expose
 
 **OpenAI ChatGPT:**
 1. Enable [Developer mode](https://help.openai.com/en/articles/12584461-developer-mode-apps-and-full-mcp-connectors-in-chatgpt-beta) in ChatGPT settings
 2. Go to Settings → Connectors → Create
 3. Enter your MCP server HTTPS URL
-4. ChatGPT discovers the 7 tools automatically
-
-> Note: ChatGPT requires a **remote MCP server** over HTTPS. See [OpenAI MCP docs](https://developers.openai.com/api/docs/mcp/).
 
 **Any MCP client (stdio):**
 ```bash
@@ -97,10 +109,10 @@ Then ask your AI assistant:
 
 ## Demo
 
-**7 MCP tools available in any AI assistant:**
+**9 MCP tools available in any AI assistant:**
 
 <p align="center">
-  <img src="media/mcp-tools.png" alt="7 MCP tools for Adaptive Cards" width="800">
+  <img src="media/mcp-tools.png" alt="9 MCP tools for Adaptive Cards" width="800">
 </p>
 
 **Live card generation — natural language to valid Adaptive Card JSON:**
@@ -119,30 +131,62 @@ const result = await generateCard({
   host: "teams",
   intent: "display"
 });
+
+console.log(result.card);       // Adaptive Card JSON
+console.log(result.cardId);     // Reference ID for subsequent calls
+console.log(result.validation); // Schema + accessibility + host compat
 ```
 
-### VS Code Extension
-
-Install from the [standalone repo](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode) or from `packages/vscode-extension/`:
-
-```bash
-cd packages/vscode-extension && npm install && npm run compile
-```
-
-Press `Cmd+Shift+A` to generate a card. See the [extension README](packages/vscode-extension/README.md) for all features.
-
-
-## MCP Tools (7)
+## MCP Tools (9)
 
 | Tool | Description |
 |------|-------------|
 | `generate_card` | Natural language / data → valid Adaptive Card v1.6 JSON |
-| `validate_card` | Schema validation + accessibility score (0-100) + host compatibility |
+| `validate_card` | Schema validation + accessibility score + host compatibility + **suggested fixes** |
 | `data_to_card` | Auto-select Table / FactSet / Chart / List from data shape |
 | `optimize_card` | Improve accessibility, performance, modernize actions |
 | `template_card` | Static card → `${expression}` data-bound template |
 | `transform_card` | Version upgrade/downgrade, host-config adaptation |
 | `suggest_layout` | Recommend best layout pattern for a description |
+| `generate_and_validate` | **New** — Generate + validate + optionally optimize in one call |
+| `card_workflow` | **New** — Multi-step pipeline: generate → optimize → template → transform |
+
+### MCP Prompts (3)
+
+| Prompt | Description |
+|--------|-------------|
+| `create-adaptive-card` | Guided card creation with host/intent parameters |
+| `review-adaptive-card` | Accessibility and compatibility review workflow |
+| `convert-data-to-card` | Data transformation with presentation selection |
+
+### MCP Resources (5) + Templates (2)
+
+| Resource | Description |
+|----------|-------------|
+| `ac://schema/v1.6` | Complete JSON Schema for Adaptive Cards v1.6 |
+| `ac://hosts` | Host compatibility matrix for all 7 hosts |
+| `ac://hosts/{hostName}` | **Template** — Single host compatibility info |
+| `ac://examples` | 36 curated example cards catalog |
+| `ac://examples/{intent}` | **Template** — Examples filtered by intent |
+| `ac://patterns` | 11 canonical layout patterns |
+| `ac://cards` | Session card store (cards by cardId) |
+
+## Configuration
+
+| Environment Variable | Description | Default |
+|---------------------|-------------|---------|
+| `TRANSPORT` | Transport mode: `stdio` or `sse` | `stdio` |
+| `PORT` | HTTP port for SSE transport | `3001` |
+| `MCP_API_KEY` | API key for HTTP auth | *(disabled)* |
+| `MCP_AUTH_MODE` | Auth mode: `bearer` for token validation | *(disabled)* |
+| `ANTHROPIC_API_KEY` | Anthropic Claude API key | *(deterministic mode)* |
+| `OPENAI_API_KEY` | OpenAI API key | *(deterministic mode)* |
+| `AZURE_OPENAI_API_KEY` | Azure OpenAI API key | *(disabled)* |
+| `AZURE_OPENAI_ENDPOINT` | Azure OpenAI endpoint URL | *(disabled)* |
+| `OLLAMA_BASE_URL` | Ollama local model URL | *(disabled)* |
+| `DEBUG` | Enable debug logging: `adaptive-cards-mcp` | *(disabled)* |
+| `MCP_RATE_LIMIT` | Enable rate limiting: `true` | `false` |
+| `MCP_TELEMETRY` | Enable metrics collection: `true` | `false` |
 
 ## Host Compatibility
 
@@ -158,45 +202,33 @@ Press `Cmd+Shift+A` to generate a card. See the [extension README](packages/vsco
 ## Development
 
 ```bash
-# Core library
 cd packages/core
 npm install
-npm run build    # TypeScript + copy data files
-npm test         # 62 tests (vitest)
-node dist/server.js  # Run MCP server locally
-
-# VS Code extension
-cd packages/vscode-extension
-npm install
-npm run compile  # Then press F5 in VS Code
-
+npm run build         # TypeScript + copy data files
+npm test              # 909 tests (vitest)
+npm run test:coverage # With coverage report
+npm run lint          # TypeScript type check
+npm run lint:eslint   # ESLint check
+npm run format        # Prettier formatting
 ```
 
 ## Architecture
 
 ```
-packages/
-├── core/                          # npm: adaptive-cards-mcp
-│   ├── src/
-│   │   ├── server.ts              # MCP server (stdio, 7 tools)
-│   │   ├── index.ts               # Library exports
-│   │   ├── tools/                 # generate, validate, data-to-card, optimize,
-│   │   │                          # template, transform, suggest-layout
-│   │   ├── core/                  # Schema validator, analyzer, accessibility, host compat
-│   │   ├── generation/            # 11 layout patterns, data analyzer, assembler, LLM client
-│   │   ├── data/                  # v1.6 schema, 25 examples, host configs
-│   │   └── types/                 # TypeScript interfaces
-│   └── tests/                     # 62 unit tests (vitest)
-├── vscode-extension/              # repo: adaptive-cards-ai-vscode
-    ├── src/                       # 5 commands, preview panel, CodeLens
-    └── snippets/                  # 11 AC code snippets
-
-    
+packages/core/src/
+├── server.ts              # MCP server (stdio + SSE, 9 tools, 3 prompts)
+├── index.ts               # Library exports
+├── types/                 # TypeScript interfaces
+├── core/                  # Schema validator, analyzer, accessibility, host compat
+├── generation/            # 11 layout patterns, data analyzer, assembler, LLM client
+├── tools/                 # 9 tool handlers
+├── utils/                 # Logger, input guards, rate limiter, card store, auth, telemetry
+└── data/                  # v1.6 schema, 36 examples, host configs
 ```
 
 ## Related Projects
 
-- [AdaptiveCards-Mobile](https://github.com/nicfera/AdaptiveCards-Mobile) — Cross-platform Adaptive Cards renderer (source for schema + test cards)
+- [AdaptiveCards-Mobile](https://github.com/nicfera/AdaptiveCards-Mobile) — Cross-platform Adaptive Cards renderer
 - [Adaptive Cards Documentation](https://adaptivecards.io/) — Official docs and Designer
 - [Adaptive Cards Schema Explorer](https://adaptivecards.io/explorer/) — Interactive schema reference
 
