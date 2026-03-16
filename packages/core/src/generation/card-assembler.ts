@@ -569,17 +569,21 @@ function fillPattern(
   // Deep clone the template
   const card = JSON.parse(JSON.stringify(template));
 
-  // Replace placeholders with actual values
+  // Extract contextual hints from content for smarter defaults
+  const content = options.content || "";
+  const title = options.title || extractTitle(content || "Untitled");
+
+  // Replace placeholders with actual values (prefer meaningful defaults over empty strings)
   const replacements: Record<string, string> = {
-    "{{title}}": options.title || extractTitle(options.content || "Untitled"),
-    "{{body}}": options.content || "",
-    "{{description}}": options.content || "",
-    "{{subtitle}}": "",
-    "{{requesterName}}": "",
-    "{{avatarUrl}}": "https://adaptivecards.io/content/cats/1.png",
+    "{{title}}": title,
+    "{{body}}": content,
+    "{{description}}": content,
+    "{{subtitle}}": extractSubtitle(content, title),
+    "{{requesterName}}": extractName(content) || "Pending",
+    "{{avatarUrl}}": "https://ui-avatars.com/api/?name=AC&background=0078D4&color=fff&size=64&rounded=true",
     "{{iconUrl}}": "https://adaptivecards.io/content/pending.png",
-    "{{status}}": "Status",
-    "{{name}}": "",
+    "{{status}}": "Pending",
+    "{{name}}": extractName(content) || "Name",
     "{{role}}": "",
     "{{organization}}": "",
     "{{profileUrl}}": "https://example.com",
@@ -609,7 +613,113 @@ function fillPattern(
   if (options.version) {
     filled.version = options.version;
   }
+
+  // Post-process: clean up empty elements and fix spec violations
+  cleanupCard(filled);
+
   return filled;
+}
+
+/**
+ * Remove empty TextBlocks, empty FactSets, and strip version from nested ShowCard cards
+ */
+function cleanupCard(card: Record<string, unknown>): void {
+  // Clean body elements
+  if (Array.isArray(card.body)) {
+    card.body = cleanupElements(card.body);
+  }
+
+  // Clean actions (including nested ShowCard cards)
+  if (Array.isArray(card.actions)) {
+    cleanupActions(card.actions);
+  }
+}
+
+function cleanupElements(elements: unknown[]): unknown[] {
+  const cleaned: unknown[] = [];
+
+  for (const el of elements) {
+    if (!el || typeof el !== "object") {
+      cleaned.push(el);
+      continue;
+    }
+    const element = el as Record<string, unknown>;
+
+    // Remove TextBlocks with empty text
+    if (element.type === "TextBlock" && typeof element.text === "string" && element.text.trim() === "") {
+      continue;
+    }
+
+    // Remove FactSets with no facts
+    if (element.type === "FactSet" && Array.isArray(element.facts) && element.facts.length === 0) {
+      continue;
+    }
+
+    // Recurse into containers
+    if (Array.isArray(element.items)) {
+      element.items = cleanupElements(element.items);
+    }
+    if (Array.isArray(element.columns)) {
+      for (const col of element.columns) {
+        if (col && typeof col === "object") {
+          const column = col as Record<string, unknown>;
+          if (Array.isArray(column.items)) {
+            column.items = cleanupElements(column.items);
+          }
+        }
+      }
+    }
+
+    cleaned.push(element);
+  }
+
+  return cleaned;
+}
+
+function cleanupActions(actions: unknown[]): void {
+  for (const action of actions) {
+    if (!action || typeof action !== "object") continue;
+    const act = action as Record<string, unknown>;
+
+    // Strip version from nested ShowCard cards (spec violation)
+    if (act.type === "Action.ShowCard" && act.card && typeof act.card === "object") {
+      const nested = act.card as Record<string, unknown>;
+      delete nested.version;
+      // Recurse into nested card
+      cleanupCard(nested);
+    }
+  }
+}
+
+/**
+ * Extract a subtitle from content that differs from the title
+ */
+function extractSubtitle(content: string, title: string): string {
+  if (!content) return "";
+  // If content has multiple sentences, use the second as subtitle
+  const sentences = content.split(/[.!?\n]/).map(s => s.trim()).filter(Boolean);
+  if (sentences.length > 1 && sentences[1] !== title) {
+    return sentences[1];
+  }
+  return "";
+}
+
+/**
+ * Try to extract a person's name from content (e.g. "from John Smith" or "by Jane Doe")
+ */
+function extractName(content: string): string {
+  const namePatterns = [
+    /\bfrom\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/,
+    /\bby\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/,
+    /\bfor\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/,
+    /\bsubmitted\s+by\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/i,
+    /\brequester[:\s]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)/i,
+  ];
+  for (const pattern of namePatterns) {
+    const match = content.match(pattern);
+    if (match) return match[1];
+  }
+  return "";
 }
 
 function extractTitle(content: string): string {

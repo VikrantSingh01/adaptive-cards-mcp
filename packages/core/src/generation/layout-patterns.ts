@@ -131,7 +131,6 @@ function approvalPattern(): LayoutPattern {
           title: "Comment",
           card: {
             type: "AdaptiveCard",
-            version: "1.6",
             body: [
               {
                 type: "Input.Text",
@@ -1387,7 +1386,6 @@ function pullRequestPattern(): LayoutPattern {
           title: "Comment",
           card: {
             type: "AdaptiveCard",
-            version: "1.6",
             body: [
               {
                 type: "Input.Text",
@@ -1716,7 +1714,6 @@ function wizardStepPattern(): LayoutPattern {
           title: "Next \u2192",
           card: {
             type: "AdaptiveCard",
-            version: "1.6",
             body: [
               {
                 type: "Container",

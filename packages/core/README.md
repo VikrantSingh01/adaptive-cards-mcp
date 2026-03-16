@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/adaptive-cards-mcp.svg)](https://www.npmjs.com/package/adaptive-cards-mcp)
 
-The world's first MCP server for Adaptive Cards — 9 tools, 3 prompts, 918 tests. Now with Designer preview.
+The world's first MCP server for Adaptive Cards — 9 tools, 3 prompts, 924 tests. Clean card output with Designer preview.
 
 > **Blog:** [I Built an MCP Server That Makes AI 10x Better at Adaptive Cards](https://singhvikrant.substack.com/p/i-built-an-mcp-server-that-makes)
 
@@ -169,21 +169,72 @@ When used via MCP (Claude Code, Copilot, Cursor), the host LLM provides the inte
 | `MCP_RATE_LIMIT` | `true` to enable | `false` |
 | `MCP_TELEMETRY` | `true` to enable metrics | `false` |
 
+## Response Format
+
+Card-producing tools return **two content blocks** for clear separation:
+
+**Block 1 — Card JSON** (copy-friendly, fenced code block):
+```json
+{
+  "type": "AdaptiveCard",
+  "version": "1.6",
+  "body": [ ... ],
+  "actions": [ ... ]
+}
+```
+
+**Block 2 — Metadata** (human-readable):
+```
+---
+
+**Validation:** Valid
+**Accessibility Score:** 100/100
+**Elements:** 7 | **Nesting Depth:** 2 | **Version:** 1.6
+**Card ID:** card-abc123
+**Steps:** generate → validate → optimize
+**Try it out:** Paste the card JSON into the Adaptive Cards Designer
+**Local Preview:** file:///tmp/ac-preview-xyz.html
+```
+
 ## Development
 
 ```bash
 npm install
 npm run build         # TypeScript + copy data files
-npm test              # 918 tests (vitest)
+npm test              # 924 tests (vitest)
 npm run test:coverage # Coverage report
 npm run lint          # TypeScript type check
 npm run lint:eslint   # ESLint
 npm run format        # Prettier
 ```
 
+### Local Testing
+
+**MCP Inspector (visual UI):**
+```bash
+npm run build
+npx @modelcontextprotocol/inspector node dist/server.js
+# Opens http://localhost:6274 — pick a tool, enter params, click Run
+```
+
+**Terminal (stdio):**
+```bash
+npm run build
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"generate_card","arguments":{"content":"expense approval card","intent":"approval","host":"teams"}}}' \
+  | node dist/server.js 2>/dev/null | tail -1 | python3 -m json.tool
+```
+
+**SSE mode:**
+```bash
+TRANSPORT=sse PORT=3001 node dist/server.js
+# In another terminal:
+curl http://localhost:3001/health
+```
+
 ### Designer Preview
 
-Card-producing tools (`generate_card`, `data_to_card`, `generate_and_validate`, `card_workflow`) return a `preview` URL that auto-opens the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer) with the card pre-loaded:
+Card-producing tools (`generate_card`, `data_to_card`, `generate_and_validate`, `card_workflow`) include a link to the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer) in every response, plus a local preview URL:
 
 - **stdio mode** — Writes a self-contained HTML bridge page to a temp file (`file://` URL)
 - **SSE mode** — Serves preview at `/preview/{cardId}` (no auth required)
