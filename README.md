@@ -9,7 +9,7 @@
   <img src="media/hero.png" alt="adaptive-cards-mcp — 7 tools, 21 patterns, 862 tests, 0 competitors" width="800">
 </p>
 
-The world's first MCP server for Adaptive Cards — **7 tools** that make any LLM 10x better at card generation. Zero competition.
+The world's first MCP server for Adaptive Cards — **7 tools** that make any LLM 10x better at card generation. An MCP server that helps AI assistants generate valid, accessible Adaptive Cards for Teams, Outlook, and Copilot and other agentic surfaces.
 
 > **Blog:** [I Built an MCP Server That Makes AI 10x Better at Adaptive Cards](https://singhvikrant.substack.com/p/i-built-an-mcp-server-that-makes)
 
