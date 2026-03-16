@@ -232,6 +232,7 @@ packages/core/src/
 - [AdaptiveCards-Mobile](https://github.com/nicfera/AdaptiveCards-Mobile) — Cross-platform Adaptive Cards renderer
 - [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/) — Official docs
 - [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer) — Interactive card designer
+- [openclaw-adaptive-cards](https://github.com/VikrantSingh01/openclaw-adaptive-cards) — OpenClaw AI agent plugin that uses this library as its core engine for card validation, host adaptation, and accessibility checking
 - [Adaptive Cards Schema Explorer](https://adaptivecards.io/explorer/) — Interactive schema reference
 
 ## License
