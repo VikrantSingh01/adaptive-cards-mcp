@@ -3,12 +3,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg)](https://www.typescriptlang.org/)
 [![Adaptive Cards](https://img.shields.io/badge/Adaptive%20Cards-v1.6-blue.svg)](https://adaptivecards.io/)
-[![Tests](https://img.shields.io/badge/Tests-918%20passing-brightgreen.svg)]()
+[![Tests](https://img.shields.io/badge/Tests-924%20passing-brightgreen.svg)]()
 [![npm](https://img.shields.io/npm/v/adaptive-cards-mcp.svg)](https://www.npmjs.com/package/adaptive-cards-mcp)
-[![Version](https://img.shields.io/badge/Version-2.2.0-blue.svg)](https://github.com/VikrantSingh01/adaptive-cards-mcp/releases/tag/v2.2.0)
+[![Version](https://img.shields.io/badge/Version-2.2.1-blue.svg)](https://github.com/VikrantSingh01/adaptive-cards-mcp/releases/tag/v2.2.1)
 
 <p align="center">
-  <img src="media/hero.png" alt="adaptive-cards-mcp — 9 tools, 21 patterns, 918 tests, 0 competitors" width="800">
+  <img src="media/hero.png" alt="adaptive-cards-mcp — 9 tools, 21 patterns, 924 tests, 0 competitors" width="800">
 </p>
 
 The world's first MCP server for Adaptive Cards — **9 tools** that make any LLM 10x better at card generation. An MCP server that helps AI assistants generate valid, accessible Adaptive Cards for Teams, Outlook, Copilot, and other agentic surfaces.
@@ -17,12 +17,12 @@ The world's first MCP server for Adaptive Cards — **9 tools** that make any LL
 
 Available as an **MCP server** (stdio + HTTP/SSE), **npm library**, and **VS Code extension**.
 
-## What's New in v2.2.0
+## What's New in v2.2.1
 
-- **Designer Preview** — Card-producing tools now return a `preview` URL that auto-opens the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer) with the card pre-loaded via `postMessage`
-  - **stdio**: file-based HTML bridge page (cross-platform `file://` URLs)
-  - **SSE**: served at `/preview/{cardId}` with CSP headers
-- **XSS-safe embedding** — Card JSON is escaped before injecting into the preview page
+- **Cleaner output** — Card JSON is returned in a copy-friendly code block, separated from metadata (validation, accessibility score, preview links)
+- **No more empty elements** — Deterministic generator cleans up empty TextBlocks, empty FactSets, and broken speak text
+- **Designer link** — Every card response includes a direct link to the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer)
+- **Spec compliance** — Nested ShowCard cards no longer carry a `version` property
 
 See the full [CHANGELOG](CHANGELOG.md) for details.
 
@@ -203,11 +203,36 @@ console.log(result.validation); // Schema + accessibility + host compat
 cd packages/core
 npm install
 npm run build         # TypeScript + copy data files
-npm test              # 918 tests (vitest)
+npm test              # 924 tests (vitest)
 npm run test:coverage # With coverage report
 npm run lint          # TypeScript type check
 npm run lint:eslint   # ESLint check
 npm run format        # Prettier formatting
+```
+
+### Local Testing
+
+**MCP Inspector (visual UI):**
+```bash
+cd packages/core
+npm run build
+npx @modelcontextprotocol/inspector node dist/server.js
+# Opens http://localhost:6274 — pick a tool, enter params, click Run
+```
+
+**Terminal (stdio):**
+```bash
+cd packages/core
+echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"1.0"}}}
+{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"generate_card","arguments":{"content":"expense approval card","intent":"approval","host":"teams"}}}' \
+  | node dist/server.js 2>/dev/null | tail -1 | python3 -m json.tool
+```
+
+**SSE mode:**
+```bash
+TRANSPORT=sse PORT=3001 node dist/server.js
+# In another terminal:
+curl http://localhost:3001/health
 ```
 
 ## Architecture

@@ -617,9 +617,10 @@ function extractSpeakText(card: Record<string, unknown>): string {
       if (!el || typeof el !== "object") continue;
       const element = el as Record<string, unknown>;
       if (element.type === "TextBlock" && typeof element.text === "string") {
-        // Skip templating expressions for speak text
-        if (!element.text.includes("${")) {
-          texts.push(element.text);
+        const trimmed = element.text.trim();
+        // Skip empty strings and templating expressions for speak text
+        if (trimmed && !trimmed.includes("${")) {
+          texts.push(trimmed);
         }
       }
       if (Array.isArray(element.items)) walk(element.items);

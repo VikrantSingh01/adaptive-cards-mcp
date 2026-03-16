@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.1] - 2026-03-16
+
+### Fixed
+- **Empty card elements** — Deterministic card generator no longer produces empty `TextBlock` (`text: ""`) or empty `FactSet` (`facts: []`) elements; post-processing removes them automatically
+- **Broken speak text** — `extractSpeakText()` now skips empty/whitespace-only strings, fixing garbled output like `"Title. . "`
+- **ShowCard version violation** — Nested cards inside `Action.ShowCard` no longer include a `version` property (per Adaptive Cards spec, only the root card should)
+- **Placeholder image** — Replaced broken `adaptivecards.io/content/PersonaMatilda.png` with dynamically generated avatar via `ui-avatars.com`
+- **Better defaults** — `fillPattern()` now extracts names from content (e.g. `"from John Smith"`), derives subtitles, and uses `"Pending"` instead of empty strings
+
+### Changed
+- **Cleaner MCP response** — Card-producing tools now return two separate content blocks: (1) card JSON in a fenced code block (copy-friendly), (2) human-readable metadata with validation summary, accessibility score, Designer link, and local preview URL
+- **Designer link always shown** — Every card response includes a link to the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer) for quick testing
+- Test count increased from 918 to 924 (6 new regression tests for card quality)
+
 ## [2.2.0] - 2026-03-16
 
 ### Added

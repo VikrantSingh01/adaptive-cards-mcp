@@ -105,6 +105,122 @@ describe("card_workflow error cases", () => {
   });
 });
 
+describe("card quality — no empty elements or broken patterns", () => {
+  it("approval card should not have empty TextBlocks", async () => {
+    const result = await handleGenerateCard({
+      content: "An awesome expense approval card for Microsoft Teams",
+      host: "teams",
+      intent: "approval",
+    });
+
+    const emptyTextBlocks = findElements(result.card, (el) =>
+      el.type === "TextBlock" && typeof el.text === "string" && el.text.trim() === "",
+    );
+    expect(emptyTextBlocks).toHaveLength(0);
+  });
+
+  it("approval card should not have empty FactSets", async () => {
+    const result = await handleGenerateCard({
+      content: "Expense approval card",
+      intent: "approval",
+    });
+
+    const emptyFactSets = findElements(result.card, (el) =>
+      el.type === "FactSet" && Array.isArray(el.facts) && el.facts.length === 0,
+    );
+    expect(emptyFactSets).toHaveLength(0);
+  });
+
+  it("nested ShowCard cards should not have a version property", async () => {
+    const result = await handleGenerateCard({
+      content: "Approval card with comment action",
+      intent: "approval",
+    });
+
+    const actions = result.card.actions as any[];
+    if (actions) {
+      for (const action of actions) {
+        if (action.type === "Action.ShowCard" && action.card) {
+          expect(action.card.version).toBeUndefined();
+        }
+      }
+    }
+  });
+
+  it("should not use placeholder cat images", async () => {
+    const result = await handleGenerateCard({
+      content: "Approval card for expense request",
+      intent: "approval",
+    });
+
+    const catImages = findElements(result.card, (el) =>
+      el.type === "Image" && typeof el.url === "string" && el.url.includes("/cats/"),
+    );
+    expect(catImages).toHaveLength(0);
+  });
+
+  it("speak text should not have empty segments or trailing dots", async () => {
+    const genResult = await handleGenerateCard({
+      content: "Expense approval card",
+      intent: "approval",
+    });
+
+    const optResult = handleOptimizeCard({
+      card: genResult.card,
+      goals: ["accessibility"],
+    });
+
+    if (typeof optResult.card.speak === "string") {
+      expect(optResult.card.speak).not.toMatch(/\.\s*\./);
+      expect(optResult.card.speak).not.toMatch(/^\.\s/);
+      expect(optResult.card.speak.trim()).not.toBe("");
+    }
+  });
+
+  it("title should not echo the full content description verbatim", async () => {
+    const result = await handleGenerateCard({
+      content: "An awesome expense approval card for Microsoft Teams",
+      intent: "approval",
+    });
+
+    const titleBlock = findElements(result.card, (el) =>
+      el.type === "TextBlock" && el.style === "heading",
+    );
+    if (titleBlock.length > 0) {
+      // Title should be a concise version, not the full description
+      expect((titleBlock[0].text as string).length).toBeLessThanOrEqual(60);
+    }
+  });
+});
+
+/** Walk card body recursively and find elements matching a predicate */
+function findElements(
+  card: Record<string, unknown>,
+  predicate: (el: Record<string, unknown>) => boolean,
+): Record<string, unknown>[] {
+  const results: Record<string, unknown>[] = [];
+
+  function walk(elements: unknown[]): void {
+    if (!Array.isArray(elements)) return;
+    for (const el of elements) {
+      if (!el || typeof el !== "object") continue;
+      const element = el as Record<string, unknown>;
+      if (predicate(element)) results.push(element);
+      if (Array.isArray(element.items)) walk(element.items);
+      if (Array.isArray(element.columns)) {
+        for (const col of element.columns) {
+          const column = col as Record<string, unknown>;
+          if (Array.isArray(column.items)) walk(column.items);
+        }
+      }
+      if (Array.isArray(element.body)) walk(element.body);
+    }
+  }
+
+  if (Array.isArray(card.body)) walk(card.body);
+  return results;
+}
+
 describe("validate_card with suggested fixes", () => {
   it("should include suggestedFix for missing card type", () => {
     const result = handleValidateCard({

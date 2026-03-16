@@ -469,13 +469,27 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     }
 
     const elapsed = Date.now() - startTime;
-    const resultStr = JSON.stringify(result, null, 2);
+
+    // Present card JSON cleanly (copy-friendly), then metadata separately
+    const content: Array<{ type: "text"; text: string }> = [];
+    if (result && typeof result === "object" && "card" in (result as Record<string, unknown>)) {
+      const r = result as Record<string, unknown>;
+      // Card JSON in a fenced code block — clean, copy-friendly
+      content.push({
+        type: "text" as const,
+        text: "```json\n" + JSON.stringify(r.card, null, 2) + "\n```",
+      });
+      // Metadata in human-readable markdown, clearly separated
+      content.push({ type: "text" as const, text: formatMetadata(r) });
+    } else {
+      content.push({ type: "text" as const, text: JSON.stringify(result, null, 2) });
+    }
+
+    const resultStr = content.map(c => c.text).join("\n");
     logger.info("Tool complete", { reqId, tool: name, elapsed, outputBytes: resultStr.length });
     recordToolCall(name, elapsed);
 
-    return {
-      content: [{ type: "text" as const, text: resultStr }],
-    };
+    return { content };
   } catch (error) {
     const elapsed = Date.now() - startTime;
     const message = error instanceof Error ? error.message : String(error);
@@ -502,6 +516,53 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     };
   }
 });
+
+// ─── Response Formatting ─────────────────────────────────────────────────────
+
+function formatMetadata(result: Record<string, unknown>): string {
+  const lines: string[] = ["---", ""];
+
+  // Validation summary
+  const validation = result.validation as Record<string, unknown> | undefined;
+  if (validation) {
+    const valid = validation.valid ? "Valid" : "Invalid";
+    const errors = validation.errors as unknown[];
+    const errorCount = errors?.length ?? 0;
+    const accessibility = validation.accessibility as Record<string, unknown> | undefined;
+    const a11yScore = accessibility?.score ?? "N/A";
+    const stats = validation.stats as Record<string, unknown> | undefined;
+
+    lines.push(`**Validation:** ${valid}${errorCount > 0 ? ` (${errorCount} error${errorCount > 1 ? "s" : ""})` : ""}`);
+    lines.push(`**Accessibility Score:** ${a11yScore}/100`);
+    if (stats) {
+      lines.push(`**Elements:** ${stats.elementCount ?? 0} | **Nesting Depth:** ${stats.nestingDepth ?? 0} | **Version:** ${stats.version ?? "1.6"}`);
+    }
+  }
+
+  // Card ID
+  if (result.cardId) {
+    lines.push(`**Card ID:** ${result.cardId}`);
+  }
+
+  // Steps completed
+  const steps = result.stepsCompleted as string[] | undefined;
+  if (steps && steps.length > 0) {
+    lines.push(`**Steps:** ${steps.join(" → ")}`);
+  }
+
+  // Preview links
+  lines.push(`**Try it out:** Paste the card JSON into the [Adaptive Cards Designer](https://adaptivecards.microsoft.com/designer)`);
+  if (result.preview) {
+    lines.push(`**Local Preview:** ${result.preview}`);
+  }
+
+  // Design notes
+  if (result.designNotes) {
+    lines.push(`**Notes:** ${result.designNotes}`);
+  }
+
+  return lines.join("\n");
+}
 
 // ─── Compound Tool Handlers ──────────────────────────────────────────────────
 
