@@ -469,6 +469,12 @@ packages/core/src/
 
 See the full [CHANGELOG](CHANGELOG.md) for details.
 
+## Links
+
+- [npm](https://www.npmjs.com/package/adaptive-cards-mcp) — Install and package details
+- [GitHub](https://github.com/VikrantSingh01/adaptive-cards-mcp) — Source code, issues, and contributions
+- [MCP Registry](https://registry.modelcontextprotocol.io/?q=adaptive) — Official MCP server listing
+
 ## Related Projects
 
 - [AdaptiveCards-Mobile](https://github.com/nicfera/AdaptiveCards-Mobile) — Cross-platform Adaptive Cards renderer

@@ -312,9 +312,14 @@ TRANSPORT=sse PORT=3001 node dist/server.js
 curl http://localhost:3001/health
 ```
 
+## Links
+
+- [npm](https://www.npmjs.com/package/adaptive-cards-mcp) — Install and package details
+- [GitHub](https://github.com/VikrantSingh01/adaptive-cards-mcp) — Source code, issues, and contributions
+- [MCP Registry](https://registry.modelcontextprotocol.io/?q=adaptive) — Official MCP server listing
+
 ## Related
 
-- [Adaptive Cards MCP (monorepo)](https://github.com/VikrantSingh01/adaptive-cards-mcp)
 - [VS Code Extension](https://github.com/VikrantSingh01/adaptive-cards-ai-vscode)
 - [openclaw-adaptive-cards](https://github.com/VikrantSingh01/openclaw-adaptive-cards) — OpenClaw AI agent plugin using this library
 - [Adaptive Cards Documentation](https://adaptivecards.microsoft.com/) — Official docs
