@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/vikrantsingh01-adaptive-cards-mcp-badge.png)](https://mseep.ai/app/vikrantsingh01-adaptive-cards-mcp)
+
 # Adaptive Cards MCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
