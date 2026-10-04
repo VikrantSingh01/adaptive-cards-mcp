@@ -6,7 +6,16 @@
  */
 
 // Core modules
-export { validateCard, getValidElementTypes, getValidActionTypes } from "./core/schema-validator.js";
+export {
+  validateCard,
+  getValidElementTypes,
+  getValidActionTypes,
+  refreshSchema,
+  resetSchemaToBundled,
+  getSchemaInfo,
+  getActiveSchema,
+  DEFAULT_REMOTE_SCHEMA_URL,
+} from "./core/schema-validator.js";
 export { analyzeCard, findDuplicateIds, countElements } from "./core/card-analyzer.js";
 export { checkAccessibility } from "./core/accessibility-checker.js";
 export {
