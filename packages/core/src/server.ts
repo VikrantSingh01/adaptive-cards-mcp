@@ -29,6 +29,7 @@ import { createRequire } from "module";
 const require = createRequire(import.meta.url);
 const { version: PKG_VERSION } = require("../package.json");
 import { getAllHostSupport, getHostSupport } from "./core/host-compatibility.js";
+import { getActiveSchema, getSchemaInfo, refreshSchema } from "./core/schema-validator.js";
 import { getAllPatterns } from "./generation/layout-patterns.js";
 import { handleGenerateCard } from "./tools/generate-card.js";
 import { handleValidateCard } from "./tools/validate-card.js";
@@ -838,14 +839,19 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
 
   switch (uri) {
     case "ac://schema/v1.6": {
-      const schemaPath = join(
-        dirname(fileURLToPath(import.meta.url)),
-        "data",
-        "schema.json",
-      );
-      const schema = readFileSync(schemaPath, "utf-8");
+      const schema = getActiveSchema();
       return {
-        contents: [{ uri, mimeType: "application/json", text: schema }],
+        contents: [
+          {
+            uri,
+            mimeType: "application/json",
+            text: JSON.stringify(
+              { ...schema, "_adaptiveCardsMcp": getSchemaInfo() },
+              null,
+              2,
+            ),
+          },
+        ],
       };
     }
 
@@ -1277,6 +1283,23 @@ function setupShutdownHandlers() {
 
 async function main() {
   setupShutdownHandlers();
+
+  if (process.env.ADAPTIVE_CARDS_SCHEMA_REFRESH !== "false") {
+    const schemaRefresh = await refreshSchema();
+    if (schemaRefresh.updated) {
+      logger.info("Adaptive Cards schema refreshed", {
+        source: schemaRefresh.source,
+        url: schemaRefresh.url,
+        refreshedAt: schemaRefresh.refreshedAt,
+      });
+    } else {
+      logger.warn("Adaptive Cards schema refresh failed; using existing schema", {
+        source: schemaRefresh.source,
+        url: schemaRefresh.url,
+        error: schemaRefresh.error,
+      });
+    }
+  }
 
   const transport = process.env.TRANSPORT || "stdio";
 

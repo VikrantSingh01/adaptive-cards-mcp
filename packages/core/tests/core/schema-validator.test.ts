@@ -1,5 +1,14 @@
-import { describe, it, expect } from "vitest";
-import { validateCard } from "../../src/core/schema-validator.js";
+import { afterEach, describe, it, expect, vi } from "vitest";
+import {
+  getSchemaInfo,
+  refreshSchema,
+  resetSchemaToBundled,
+  validateCard,
+} from "../../src/core/schema-validator.js";
+
+afterEach(() => {
+  resetSchemaToBundled();
+});
 
 describe("schema-validator", () => {
   it("validates a minimal valid card", () => {
@@ -153,5 +162,59 @@ describe("schema-validator", () => {
   it("does not throw on empty input", () => {
     expect(() => validateCard({})).not.toThrow();
     expect(() => validateCard({ type: "AdaptiveCard" })).not.toThrow();
+  });
+
+  it("refreshes the active schema without changing the sync validateCard API", async () => {
+    const remoteSchema = {
+      type: "object",
+      properties: {
+        type: { const: "AdaptiveCard" },
+        version: { type: "string" },
+        body: { type: "array" },
+        marker: { type: "string" },
+      },
+      required: ["type"],
+      additionalProperties: false,
+    };
+
+    const fetchImpl = vi.fn(async () =>
+      new Response(JSON.stringify(remoteSchema), {
+        status: 200,
+        headers: { "content-type": "application/json" },
+      }),
+    ) as unknown as typeof fetch;
+
+    const result = await refreshSchema({
+      url: "https://example.test/adaptive-card.json",
+      fetchImpl,
+    });
+
+    expect(result.updated).toBe(true);
+    expect(getSchemaInfo().source).toBe("remote");
+    expect(
+      validateCard({ type: "AdaptiveCard", marker: "remote-schema" }).valid,
+    ).toBe(true);
+  });
+
+  it("keeps the bundled schema when a remote refresh fails", async () => {
+    const fetchImpl = vi.fn(async () => {
+      throw new Error("offline");
+    }) as unknown as typeof fetch;
+
+    const result = await refreshSchema({
+      url: "https://example.test/unavailable.json",
+      fetchImpl,
+    });
+
+    expect(result.updated).toBe(false);
+    expect(result.source).toBe("bundled");
+    expect(result.error).toContain("offline");
+    expect(
+      validateCard({
+        type: "AdaptiveCard",
+        version: "1.6",
+        body: [{ type: "TextBlock", text: "Still valid" }],
+      }).valid,
+    ).toBe(true);
   });
 });

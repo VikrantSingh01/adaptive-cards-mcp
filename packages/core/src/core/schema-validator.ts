@@ -1,6 +1,6 @@
 /**
- * Schema Validator — Validates Adaptive Card JSON against the official v1.6
- * JSON Schema using ajv, with supplementary best-practice checks.
+ * Schema Validator — Validates Adaptive Card JSON against the bundled schema
+ * and can refresh to the latest Microsoft-hosted schema at runtime.
  */
 
 import Ajv, { type ErrorObject } from "ajv";
@@ -9,7 +9,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { ValidationError } from "../types/index.js";
 
-// ─── Load & prepare the official Adaptive Card v1.6 JSON Schema ─────────────
+// ─── Load & prepare the Adaptive Card JSON Schema ────────────────────────────
+
+export const DEFAULT_REMOTE_SCHEMA_URL =
+  "https://adaptivecards.microsoft.com/schemas/adaptive-card-2026-01-13.json";
+
+const DEFAULT_SCHEMA_REFRESH_TIMEOUT_MS = 3_000;
 
 // Support both ESM (import.meta.url) and CJS (__dirname) environments
 let resolvedDir: string;
@@ -19,45 +24,160 @@ try {
   resolvedDir = __dirname;
 }
 const schemaPath = path.resolve(resolvedDir, "..", "data", "schema.json");
-let rawSchema: Record<string, unknown>;
-try {
-  rawSchema = JSON.parse(fs.readFileSync(schemaPath, "utf-8"));
-} catch {
-  // Fallback: try relative to process.cwd() for bundled environments
+
+function loadBundledSchema(): Record<string, unknown> {
   try {
-    const fallbackPath = path.resolve(process.cwd(), "node_modules", "adaptive-cards-mcp", "dist", "data", "schema.json");
-    rawSchema = JSON.parse(fs.readFileSync(fallbackPath, "utf-8"));
+    return JSON.parse(fs.readFileSync(schemaPath, "utf-8")) as Record<string, unknown>;
   } catch {
-    // Minimal inline schema as last resort
-    rawSchema = { type: "object", properties: { type: { type: "string" }, version: { type: "string" }, body: { type: "array" } } };
+    // Fallback: try relative to process.cwd() for bundled environments
+    try {
+      const fallbackPath = path.resolve(
+        process.cwd(),
+        "node_modules",
+        "adaptive-cards-mcp",
+        "dist",
+        "data",
+        "schema.json",
+      );
+      return JSON.parse(fs.readFileSync(fallbackPath, "utf-8")) as Record<string, unknown>;
+    } catch {
+      // Minimal inline schema as last resort
+      return {
+        type: "object",
+        properties: {
+          type: { type: "string" },
+          version: { type: "string" },
+          body: { type: "array" },
+        },
+      };
+    }
   }
 }
 
-// The official schema declares "id" (draft-04 style) but uses "$schema" draft-06.
-// Ajv v8 expects "$id". Normalise so ajv can resolve internal $ref pointers.
-if (rawSchema.id && !rawSchema.$id) {
-  rawSchema.$id = rawSchema.id;
-  delete rawSchema.id;
+function prepareSchema(schema: Record<string, unknown>): Record<string, unknown> {
+  const prepared = structuredClone(schema);
+
+  // Older Adaptive Cards schemas declare "id" while Ajv v8 expects "$id".
+  if (prepared.id && !prepared.$id) {
+    prepared.$id = prepared.id;
+    delete prepared.id;
+  }
+
+  // The bundled schema references draft-06 and the 2026 schema draft-07.
+  // We only need card validation, not meta-schema validation.
+  delete prepared.$schema;
+  return prepared;
 }
-// Remove $schema meta-schema reference — ajv v8 doesn't ship draft-06 meta-schema
-// and we don't need meta-validation, just card validation.
-delete rawSchema.$schema;
 
-// ─── Create and configure the Ajv instance ──────────────────────────────────
+function compileSchema(schema: Record<string, unknown>) {
+  const ajv = new Ajv({
+    allErrors: true,
+    strict: false,
+    validateFormats: false,
+  });
+  return ajv.compile(schema);
+}
 
-const ajv = new Ajv({
-  allErrors: true,
-  // strict:false avoids failures on draft-06 keywords like "id", unknown
-  // formats, and non-standard "version"/"features" annotation keywords that
-  // appear throughout the Adaptive Cards schema.
-  strict: false,
-  // Adaptive Card Templating adds properties like $data, $when, $root that
-  // are NOT in the official schema (which uses additionalProperties:false).
-  // We must not strip them — instead we tell ajv to silently allow extras.
-  validateFormats: false,
-});
+const bundledSchema = prepareSchema(loadBundledSchema());
+let rawSchema = bundledSchema;
+let validate = compileSchema(rawSchema);
+let activeSchemaSource: "bundled" | "remote" = "bundled";
+let activeSchemaUrl: string | undefined;
+let lastSchemaRefreshAt: string | undefined;
 
-const validate = ajv.compile(rawSchema);
+export interface SchemaRefreshOptions {
+  url?: string;
+  timeoutMs?: number;
+  fetchImpl?: typeof fetch;
+}
+
+export interface SchemaRefreshResult {
+  updated: boolean;
+  source: "bundled" | "remote";
+  url?: string;
+  refreshedAt?: string;
+  error?: string;
+}
+
+/**
+ * Refresh the active validator from the Microsoft-hosted Adaptive Cards schema.
+ * A failed fetch or compile never replaces the currently working validator.
+ */
+export async function refreshSchema(
+  options: SchemaRefreshOptions = {},
+): Promise<SchemaRefreshResult> {
+  const url =
+    options.url ??
+    process.env.ADAPTIVE_CARDS_SCHEMA_URL ??
+    DEFAULT_REMOTE_SCHEMA_URL;
+  const timeoutMs =
+    options.timeoutMs ?? DEFAULT_SCHEMA_REFRESH_TIMEOUT_MS;
+  const fetchImpl = options.fetchImpl ?? fetch;
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetchImpl(url, {
+      signal: controller.signal,
+      headers: { "user-agent": "adaptive-cards-mcp/schema-refresh" },
+    });
+    if (!response.ok) {
+      throw new Error(`Schema request failed with HTTP ${response.status}`);
+    }
+
+    const downloaded = (await response.json()) as unknown;
+    if (!downloaded || typeof downloaded !== "object" || Array.isArray(downloaded)) {
+      throw new Error("Schema response was not a JSON object");
+    }
+
+    const prepared = prepareSchema(downloaded as Record<string, unknown>);
+    const nextValidator = compileSchema(prepared);
+
+    // Swap only after the new schema has compiled successfully.
+    rawSchema = prepared;
+    validate = nextValidator;
+    activeSchemaSource = "remote";
+    activeSchemaUrl = url;
+    lastSchemaRefreshAt = new Date().toISOString();
+
+    return {
+      updated: true,
+      source: activeSchemaSource,
+      url: activeSchemaUrl,
+      refreshedAt: lastSchemaRefreshAt,
+    };
+  } catch (error) {
+    return {
+      updated: false,
+      source: activeSchemaSource,
+      url,
+      refreshedAt: lastSchemaRefreshAt,
+      error: error instanceof Error ? error.message : String(error),
+    };
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export function resetSchemaToBundled(): void {
+  rawSchema = structuredClone(bundledSchema);
+  validate = compileSchema(rawSchema);
+  activeSchemaSource = "bundled";
+  activeSchemaUrl = undefined;
+  lastSchemaRefreshAt = undefined;
+}
+
+export function getSchemaInfo(): Omit<SchemaRefreshResult, "updated" | "error"> {
+  return {
+    source: activeSchemaSource,
+    url: activeSchemaUrl,
+    refreshedAt: lastSchemaRefreshAt,
+  };
+}
+
+export function getActiveSchema(): Record<string, unknown> {
+  return structuredClone(rawSchema);
+}
 
 // ─── Known types (kept for supplementary best-practice checks) ──────────────
 
